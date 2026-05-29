@@ -604,32 +604,49 @@ footer{
 <!-- ═══ MAIN ═══ -->
 <main>
 
-<!-- ── CHECKLIST START ── -->
-<div class="section" id="checklist-start">
+<!-- ── ЧЕКЛИСТ 3 ДНЯ ── -->
+<div class="section" id="checklist-days">
   <div class="s-hdr open" onclick="toggleSec(this)">
     <div class="s-hdr-left">
-      <div class="s-icon s-icon-green">✅</div>
-      <div><div class="s-title">Всё готово к выпечке?</div><div class="s-sub">Быстрый чеклист перед началом</div></div>
+      <div class="s-icon s-icon-green">🗓️</div>
+      <div><div class="s-title">Этапы выпечки — 3 дня</div><div class="s-sub">Общий план: отмечай по ходу</div></div>
     </div>
     <div class="s-toggle">+</div>
   </div>
   <div class="s-body open">
-    <div class="box box-sage" style="margin-top:0">Отмечай по ходу — галочки сохраняются даже если закрыть страницу.</div>
-    <ul class="cl" id="clS">
-      <li onclick="chk(this,'clS',0)"><input type="checkbox"><span>Закваска активная: поднялась куполом, пузырчатая, на пике</span></li>
-      <li onclick="chk(this,'clS',1)"><input type="checkbox"><span>Закваска нужного количества (110 г × кол-во буханок)</span></li>
-      <li onclick="chk(this,'clS',2)"><input type="checkbox"><span>Вода взвешена — фильтрованная или бутилированная</span></li>
-      <li onclick="chk(this,'clS',3)"><input type="checkbox"><span>Мука взвешена: пшеничная + цельнозерновая</span></li>
-      <li onclick="chk(this,'clS',4)"><input type="checkbox"><span>Соль: 11 г на каждую буханку</span></li>
-      <li onclick="chk(this,'clS',5)"><input type="checkbox"><span>Форма для выпечки (утятница / казан с крышкой)</span></li>
-      <li onclick="chk(this,'clS',6)"><input type="checkbox"><span>Пергамент нарезан</span></li>
-      <li onclick="chk(this,'clS',7)"><input type="checkbox"><span>Полотенце или расстоечная корзина + рисовая мука</span></li>
-      <li onclick="chk(this,'clS',8)"><input type="checkbox"><span>Впереди ~3 часа дома (замес + обминки)</span></li>
-      <li onclick="chk(this,'clS',9)"><input type="checkbox"><span>Температура кухни 23–28°C (термометр)</span></li>
+    <div class="box box-sage" style="margin-top:0">Отмечай этапы по ходу — галочки сохраняются даже если закрыть страницу.</div>
+
+    <p style="font-family:Arial,sans-serif;font-size:.8rem;font-weight:bold;text-transform:uppercase;letter-spacing:.5px;color:var(--accent);margin:.8rem 0 .4rem">📅 День 1 — Вечер</p>
+    <ul class="cl" id="clD">
+      <li onclick="chk(this,'clD',0)"><input type="checkbox"><span>Покормить закваску (10 минут)</span></li>
+      <li onclick="chk(this,'clD',1)"><input type="checkbox"><span>Отложить нужное количество для выпечки (110 г × кол-во буханок)</span></li>
+      <li onclick="chk(this,'clD',2)"><input type="checkbox"><span>Оставить подниматься — пару часов на кухне, потом в холодильник на ночь</span></li>
     </ul>
-    <div class="cl-prog" id="clS-prog">0 из 10</div>
-    <div class="prog-bar"><div class="prog-fill" id="clS-bar" style="width:0%"></div></div>
-    <button class="cl-reset" onclick="resetCl('clS',10)">Сбросить</button>
+
+    <p style="font-family:Arial,sans-serif;font-size:.8rem;font-weight:bold;text-transform:uppercase;letter-spacing:.5px;color:var(--accent);margin:.8rem 0 .4rem">📅 День 2 — Весь день</p>
+    <ul class="cl" id="clD2" style="margin-bottom:0">
+      <li onclick="chk(this,'clD2',0)"><input type="checkbox"><span>Закваска на пике: купол, пузыри, выросла в 3 раза</span></li>
+      <li onclick="chk(this,'clD2',1)"><input type="checkbox"><span>Замес теста (блендер + мука + соль)</span></li>
+      <li onclick="chk(this,'clD2',2)"><input type="checkbox"><span>Автолиз 1 час (или миксер 20 мин)</span></li>
+      <li onclick="chk(this,'clD2',3)"><input type="checkbox"><span>Ламинирование</span></li>
+      <li onclick="chk(this,'clD2',4)"><input type="checkbox"><span>Обминки катушкой 1–2–3 (каждые 40 мин)</span></li>
+      <li onclick="chk(this,'clD2',5)"><input type="checkbox"><span>Предформовка → 15 мин отдыха</span></li>
+      <li onclick="chk(this,'clD2',6)"><input type="checkbox"><span>Финальная формовка</span></li>
+      <li onclick="chk(this,'clD2',7)"><input type="checkbox"><span>В холодильник на ночь (в корзину / миску с полотенцем)</span></li>
+    </ul>
+
+    <p style="font-family:Arial,sans-serif;font-size:.8rem;font-weight:bold;text-transform:uppercase;letter-spacing:.5px;color:var(--accent);margin:.8rem 0 .4rem">📅 День 3 — Утро</p>
+    <ul class="cl" id="clD3" style="margin-bottom:.5rem">
+      <li onclick="chk(this,'clD3',0)"><input type="checkbox"><span>Разогреть духовку с формой до 250°C (40–60 мин)</span></li>
+      <li onclick="chk(this,'clD3',1)"><input type="checkbox"><span>Надрезы лезвием</span></li>
+      <li onclick="chk(this,'clD3',2)"><input type="checkbox"><span>Выпечка с паром 30 мин (с крышкой)</span></li>
+      <li onclick="chk(this,'clD3',3)"><input type="checkbox"><span>Выпечка без пара 25 мин (без крышки)</span></li>
+      <li onclick="chk(this,'clD3',4)"><input type="checkbox"><span>Остудить на решётке минимум 1 час 🍞</span></li>
+    </ul>
+
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;margin-top:.5rem">
+      <button class="cl-reset" onclick="resetCl('clD',3);resetCl('clD2',8);resetCl('clD3',5)">Сбросить всё</button>
+    </div>
   </div>
 </div>
 
@@ -671,6 +688,34 @@ footer{
       <strong>Главное:</strong> один раз купила или получила закваску — больше не нужно покупать. После каждой выпечки оставляй немного, кормишь — и она живёт бесконечно.
     </div>
     <a href="https://www.hlebomoli.ru/blog/ob-italyanskoy-zakvaske-levito-madre" target="_blank" style="font-family:Arial,sans-serif;font-size:.86rem;color:var(--sky)">📖 Подробная статья о Левито Мадре →</a>
+  </div>
+</div>
+
+<!-- ── ЧЕКЛИСТ ПОДГОТОВКИ ── -->
+<div class="section" id="checklist-prep">
+  <div class="s-hdr" onclick="toggleSec(this)">
+    <div class="s-hdr-left">
+      <div class="s-icon s-icon-rose">✅</div>
+      <div><div class="s-title">Готова к замесу? Чеклист подготовки</div><div class="s-sub">Проверь перед тем как начать</div></div>
+    </div>
+    <div class="s-toggle">+</div>
+  </div>
+  <div class="s-body">
+    <ul class="cl" id="clS">
+      <li onclick="chk(this,'clS',0)"><input type="checkbox"><span>Закваска активная: поднялась куполом, пузырчатая, на пике</span></li>
+      <li onclick="chk(this,'clS',1)"><input type="checkbox"><span>Закваска нужного количества (110 г × кол-во буханок)</span></li>
+      <li onclick="chk(this,'clS',2)"><input type="checkbox"><span>Вода взвешена — фильтрованная или бутилированная</span></li>
+      <li onclick="chk(this,'clS',3)"><input type="checkbox"><span>Мука взвешена: пшеничная + цельнозерновая</span></li>
+      <li onclick="chk(this,'clS',4)"><input type="checkbox"><span>Соль: 11 г на каждую буханку</span></li>
+      <li onclick="chk(this,'clS',5)"><input type="checkbox"><span>Форма для выпечки (утятница / казан с крышкой)</span></li>
+      <li onclick="chk(this,'clS',6)"><input type="checkbox"><span>Пергамент нарезан</span></li>
+      <li onclick="chk(this,'clS',7)"><input type="checkbox"><span>Полотенце или расстоечная корзина + рисовая мука</span></li>
+      <li onclick="chk(this,'clS',8)"><input type="checkbox"><span>Впереди ~3 часа дома (замес + обминки)</span></li>
+      <li onclick="chk(this,'clS',9)"><input type="checkbox"><span>Температура кухни 23–28°C (термометр)</span></li>
+    </ul>
+    <div class="cl-prog" id="clS-prog">0 из 10</div>
+    <div class="prog-bar"><div class="prog-fill" id="clS-bar" style="width:0%"></div></div>
+    <button class="cl-reset" onclick="resetCl('clS',10)">Сбросить</button>
   </div>
 </div>
 
@@ -847,8 +892,9 @@ footer{
   </div>
   <div class="s-body open">
     <div class="box box-sage" style="margin-top:0">
-      <strong>Базовый рецепт на 1 буханку (~700 г теста):</strong><br>
-      500 г пшеничной + 50 г цельнозерновой + 385 г воды + 110 г закваски + 11 г соли
+      <strong>Базовый рецепт (~1056 г теста):</strong><br>
+      500 г пшеничной + 50 г цельнозерновой + 385 г воды + 110 г закваски + 11 г соли<br>
+      <span style="font-size:.85em;opacity:.85">→ Выход: <strong>2 небольшие буханки</strong> или <strong>1 большой каравай</strong> (готовый хлеб ~700 г)</span>
     </div>
 
     <div class="calc">
@@ -1361,6 +1407,9 @@ function loadCl(id,total){
 }
 loadCl('clS',10);
 loadCl('clF',18);
+loadCl('clD',3);
+loadCl('clD2',8);
+loadCl('clD3',5);
 
 // ── CALC: FEEDING ──
 function calcFeed(){
