@@ -188,7 +188,7 @@ main{max-width:960px;margin:0 auto;padding:0 2rem 6rem}
 ul.lst,ol.lst{padding-left:1.4rem;margin:.8rem 0}
 ul.lst li,ol.lst li{margin-bottom:.5rem;font-size:1rem;color:var(--ink2)}
 h4.sub{
-  font-family:var(--serif);font-size:1.2rem;
+  font-family:var(--serif);font-size:1.45rem;
   font-weight:400;color:var(--ink);
   margin:2.4rem 0 1rem;letter-spacing:-.01em;
 }
@@ -267,6 +267,7 @@ h4.sub::before{
 }
 .flour-card .callout{
   background:#F0E8E4;
+  margin-top:1.4rem;
   margin-bottom:0;
 }
 
@@ -277,9 +278,9 @@ h4.sub::before{
   padding:.8rem 0;border-bottom:1px solid var(--linelt);
 }
 .flour-pct{
-  font-family:var(--serif);font-size:2rem;
+  font-family:var(--serif);font-size:2.8rem;
   font-weight:300;color:var(--gold);
-  min-width:3rem;line-height:1;flex-shrink:0;
+  min-width:4rem;line-height:1;flex-shrink:0;
 }
 .flour-name{font-size:1rem;color:var(--ink);margin-bottom:.15rem;font-weight:500}
 .flour-brand{font-size:.82rem;color:var(--ink3);letter-spacing:.02em}
@@ -524,6 +525,20 @@ h4.sub::before{
 
 /* ═══ VIDEO ═══ */
 .video-block{margin:1.8rem 0}
+.video-link{
+  display:inline-flex;align-items:center;gap:.75rem;
+  padding:.9rem 1.4rem;
+  border:1px solid var(--line);
+  text-decoration:none;
+  transition:border-color .2s, background .2s;
+}
+.video-link:hover{border-color:var(--gold);background:var(--goldbg);}
+.video-link-icon{
+  font-size:1.1rem;color:var(--gold);flex-shrink:0;
+}
+.video-link-text{display:flex;flex-direction:column;gap:.15rem}
+.video-link-title{font-size:.9rem;color:var(--ink);font-family:var(--sans);}
+.video-link-desc{font-size:.8rem;color:var(--ink3);}
 .video-label{
   font-size:.75rem;letter-spacing:.12em;
   text-transform:uppercase;color:var(--ink3);margin-bottom:.7rem;font-weight:500;
@@ -986,11 +1001,12 @@ footer{
   <div class="s-body">
     <div class="flour-card">
     <h4 class="sub" style="margin-top:0">Мука</h4>
-    <div style="display:flex;gap:3rem;align-items:flex-start;flex-wrap:wrap">
-      <div style="flex:1;min-width:260px">
+    <div style="display:flex;gap:2.5rem;align-items:center;flex-wrap:wrap">
+
+      <div style="flex:1;min-width:240px">
         <div class="flour-list">
           <div class="flour-item">
-            <div class="flour-pct">70%</div>
+            <div class="flour-pct" style="color:#7A3F30;font-weight:700">70%</div>
             <div>
               <div class="flour-name">Пшеничная высшего сорта</div>
               <div class="flour-brand">Макфа, Челябинский завод — код А на упаковке</div>
@@ -998,7 +1014,7 @@ footer{
             </div>
           </div>
           <div class="flour-item">
-            <div class="flour-pct">20%</div>
+            <div class="flour-pct" style="color:#C4503A;font-weight:400">20%</div>
             <div>
               <div class="flour-name">Цельнозерновая</div>
               <div class="flour-brand">«Французская штучка»</div>
@@ -1006,7 +1022,7 @@ footer{
             </div>
           </div>
           <div class="flour-item">
-            <div class="flour-pct">10%</div>
+            <div class="flour-pct" style="color:#D4A090;font-weight:200">10%</div>
             <div>
               <div class="flour-name">Ржаная</div>
               <div class="flour-brand">«Увелка» — маленький пакет</div>
@@ -1015,8 +1031,8 @@ footer{
           </div>
         </div>
       </div>
-      <div style="flex-shrink:0;width:100px;opacity:.6;padding-top:1rem">
-        <svg viewBox="0 0 80 200" xmlns="http://www.w3.org/2000/svg" width="80">
+      <div style="flex-shrink:0;width:140px;opacity:.6;display:flex;justify-content:center">
+        <svg viewBox="0 0 80 200" xmlns="http://www.w3.org/2000/svg" width="120">
           <defs><style>.wl{fill:none;stroke:#1A1612;stroke-linecap:round}</style></defs>
           <line class="wl" stroke-width="1" x1="25" y1="200" x2="25" y2="60"/>
           <line class="wl" stroke-width=".8" x1="25" y1="85"  x2="14" y2="72"/>
@@ -1143,6 +1159,7 @@ footer{
       </svg>
     </div>
 
+    <!-- шаг 1 -->
     <div class="step-sec">
       <div class="step-hdr" onclick="toggleStep(this)">
         <span class="step-title">Покормите закваску</span>
@@ -1160,8 +1177,25 @@ footer{
           <p>Кормить раз в неделю. Если пропустили — ничего страшного, можно раз в две недели. Если закваска пахнет спиртом или кислотой — просто голодная, не испорченная. Покормите, и всё пройдёт.</p>
         </div>
         <div class="note">Хранить в высокой прозрачной банке с неплотно закрытой крышкой: закваска растёт в три раза и должна иметь доступ к воздуху. Прозрачность важна — нужно видеть рост и пузырьки через стенки. Хорошо подходят высокие банки-колбы с бамбуковой крышкой (1–1,5 л).</div>
+        <div class="video-block" style="margin-top:1.5rem">
+          <a class="video-link" href="https://www.youtube.com/watch?v=6vTwfiyXIM8" target="_blank" rel="noopener">
+            <span class="video-link-icon">▶</span>
+            <span class="video-link-text">
+              <span class="video-link-title">Как кормить и хранить закваску</span>
+              <span class="video-link-desc">Пропорции, консистенция, закваска на пике — YouTube</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
 
-        <h4 class="sub">Как ускорить рост</h4>
+    <!-- шаг 2 -->
+    <div class="step-sec">
+      <div class="step-hdr" onclick="toggleStep(this)">
+        <span class="step-title">Тайминг и ускорение роста</span>
+        <span class="step-toggle">+</span>
+      </div>
+      <div class="step-body">
         <div class="prose">
           <p>Если нужно быстро: накройте банку пакетом неплотно (нужен кислород, но не заветривание) и поставьте в выключенную духовку. При 25–28°С закваска выйдет на пик за 4 часа вместо 6–8.</p>
           <p><strong>Два рабочих варианта тайминга:</strong></p>
@@ -1170,46 +1204,8 @@ footer{
             <li><strong>Вечером покормили</strong> → на пару часов в духовку → убрали в холодильник → на следующий день во второй половине дня замес</li>
           </ul>
         </div>
-
-        <h4 class="sub">Если закваска перекисла — реанимация</h4>
-        <div class="prose">
-          <p>Если закваска долго стояла и стала очень кислой (резкий кислотный запах, кисловатая на вкус) — попробуйте купание. Растворите 1 ч.л. сахара или мёда в 50 мл тёплой воды, опустите закваску на 20–30 минут, затем покормите по обычной схеме. Этого обычно достаточно, чтобы вернуть активность.</p>
-        </div>
-
-        <div class="video-block" style="margin-top:1.5rem">
-          <div class="video-label">Видео — как кормить и хранить закваску</div>
-          <div class="video-wrap">
-            <iframe src="https://www.youtube.com/embed/6vTwfiyXIM8" allowfullscreen loading="lazy"></iframe>
-          </div>
-          <p class="video-desc">Пошаговый показ: пропорции, консистенция, как выглядит закваска на пике</p>
-        </div>
-
-        <h4 class="sub">Калькулятор кормления</h4>
-        <div class="calc">
-          <div class="calc-title">Сколько муки и воды нужно?</div>
-          <div class="calc-row">
-            <label>У меня есть закваски, г</label>
-            <input type="number" id="s-have" value="100" min="1" max="5000">
-          </div>
-          <button class="calc-btn" onclick="calcFeed()">Рассчитать</button>
-          <div class="calc-res" id="feed-res">
-            <div class="res-row"><span class="nm">Закваска</span><span class="am" id="f-s">—</span></div>
-            <div class="res-row"><span class="nm">Мука Макфа</span><span class="am" id="f-f">—</span></div>
-            <div class="res-row"><span class="nm">Вода фильтрованная</span><span class="am" id="f-w">—</span></div>
-            <div class="res-row"><span class="nm">Итого после кормления</span><span class="am" id="f-t">—</span></div>
-          </div>
-        </div>
-
-        <h4 class="sub">Закваска на пике — как понять</h4>
-        <div class="prose">
-          <p>Закваска готова к замесу когда поднялась куполом, вся в пузырях, увеличилась примерно в три раза. Выглядит активной и пышной.</p>
-          <p>Если стояла без кормления 2–4 дня — сначала покормите, дождитесь пика, только потом месите.</p>
-        </div>
-        <div class="callout"><strong>Float test:</strong> опустите ложку закваски в стакан воды — если всплыла, закваска на пике и готова к замесу.</div>
-
-        <h4 class="sub">Время подъёма при разной температуре</h4>
-        <table class="tbl">
-          <thead><tr><th>Температура</th><th>Время</th></tr></thead>
+        <table class="tbl" style="margin-top:1.4rem">
+          <thead><tr><th>Температура</th><th>Время до пика</th></tr></thead>
           <tbody>
             <tr><td>28°С — тепло</td><td>~4 часа</td></tr>
             <tr><td>25°С</td><td>~4–6 часов</td></tr>
@@ -1219,7 +1215,49 @@ footer{
           </tbody>
         </table>
       </div>
-    </div><!-- /step-sec -->
+    </div>
+
+    <!-- шаг 3 -->
+    <div class="step-sec">
+      <div class="step-hdr" onclick="toggleStep(this)">
+        <span class="step-title">Закваска на пике — как понять</span>
+        <span class="step-toggle">+</span>
+      </div>
+      <div class="step-body">
+        <div class="prose">
+          <p>Закваска готова к замесу, когда поднялась куполом, вся в пузырях, увеличилась примерно в три раза. Выглядит активной и пышной.</p>
+          <p>Если стояла без кормления 2–4 дня — сначала покормите, дождитесь пика, только потом месите.</p>
+        </div>
+        <div class="callout"><strong>Float test:</strong> опустите ложку закваски в стакан воды — если всплыла, закваска на пике и готова к замесу.</div>
+        <div class="note" style="margin-top:1.2rem"><strong>Если перекисла — реанимация:</strong> растворите 1 ч.л. сахара или мёда в 50 мл тёплой воды, опустите закваску на 20–30 минут, затем покормите по обычной схеме.</div>
+      </div>
+    </div>
+
+    <!-- шаг 4 -->
+    <div class="step-sec">
+      <div class="step-hdr" onclick="toggleStep(this)">
+        <span class="step-title">Калькулятор кормления</span>
+        <span class="step-toggle">+</span>
+      </div>
+      <div class="step-body">
+        <div class="calc">
+          <div class="calc-title">Сколько муки и воды нужно?</div>
+          <div class="calc-fields">
+            <div class="calc-row">
+              <label>У меня есть закваски, г</label>
+              <div class="calc-field"><input type="number" id="s-have" value="100" min="1" max="5000"></div>
+            </div>
+          </div>
+          <button class="calc-btn" onclick="calcFeed()">Рассчитать</button>
+          <div class="calc-res" id="feed-res">
+            <div class="res-row"><span class="nm">Закваска</span><span class="am" id="f-s">—</span></div>
+            <div class="res-row"><span class="nm">Мука Макфа</span><span class="am" id="f-f">—</span></div>
+            <div class="res-row"><span class="nm">Вода фильтрованная</span><span class="am" id="f-w">—</span></div>
+            <div class="res-row"><span class="nm">Итого после кормления</span><span class="am" id="f-t">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <hr class="day-sep">
     <!-- ══ ДЕНЬ ВТОРОЙ ══ -->
@@ -1378,11 +1416,13 @@ footer{
       </div>
       <div class="step-body">
         <div class="video-block" style="margin-bottom:1.5rem">
-          <div class="video-label">Видео — полный рецепт хлеба на Левито Мадре</div>
-          <div class="video-wrap">
-            <iframe src="https://www.youtube.com/embed/eS9S2ZWIS7c" allowfullscreen loading="lazy"></iframe>
-          </div>
-          <p class="video-desc">Весь процесс от замеса до выпечки — хороший ориентир перед первым разом</p>
+          <a class="video-link" href="https://www.youtube.com/watch?v=eS9S2ZWIS7c" target="_blank" rel="noopener">
+            <span class="video-link-icon">▶</span>
+            <span class="video-link-text">
+              <span class="video-link-title">Полный рецепт хлеба на Левито Мадре</span>
+              <span class="video-link-desc">Весь процесс от замеса до выпечки — YouTube</span>
+            </span>
+          </a>
         </div>
         <div class="prose">
           <p>Разбейте закваску с водой блендером до однородной консистенции. Добавьте муку и соль — замесите тесто.</p>
@@ -1541,28 +1581,59 @@ footer{
       </svg>
     </div>
 
+    <!-- шаг: подготовка -->
     <div class="step-sec">
       <div class="step-hdr" onclick="toggleStep(this)">
-        <span class="step-title">Выпечка</span>
+        <span class="step-title">Подготовка — разогрев и надрезы</span>
         <span class="step-toggle">+</span>
       </div>
       <div class="step-body">
         <div class="stat-row">
-          <div class="stat-item"><span class="stat-val">250°</span><span class="stat-key">температура</span></div>
-          <div class="stat-item"><span class="stat-val">30'</span><span class="stat-key">с паром, крышка</span></div>
-          <div class="stat-item"><span class="stat-val">25'</span><span class="stat-key">без пара</span></div>
-          <div class="stat-item"><span class="stat-val">60'</span><span class="stat-key">разогрев формы</span></div>
+          <div class="stat-item"><span class="stat-val">250°</span><span class="stat-key">температура духовки</span></div>
+          <div class="stat-item"><span class="stat-val">40–60'</span><span class="stat-key">разогрев формы</span></div>
         </div>
         <ol class="lst" style="margin-top:1.2rem">
           <li>Разогрейте духовку вместе с формой до 250°С — не менее 40–60 минут. Форма должна быть раскалённой.</li>
-          <li>Достаньте тесто из холодильника. Сделайте надрезы лезвием глубиной ~1 см.</li>
-          <li>На дно формы — несколько кубиков льда, сверху — пергамент с тестом. Накройте крышкой.</li>
-          <li>Выпекайте <strong>30 минут с крышкой</strong> — лёд тает, пар поднимается, хлеб раскрывается.</li>
-          <li>Снимите крышку, пеките ещё <strong>25 минут</strong> до золотистой корочки.</li>
-          <li>Остужайте на решётке <strong>минимум 1 час</strong> — мякиш ещё доходит внутри.</li>
+          <li>Достаньте тесто из холодильника прямо перед посадкой. Сделайте надрезы лезвием глубиной ~1 см.</li>
         </ol>
+        <div class="note">Холодное тесто прямо из холодильника надрезать проще — оно плотнее. Не давайте ему согреться перед посадкой.</div>
+      </div>
+    </div>
+
+    <!-- шаг: выпечка -->
+    <div class="step-sec">
+      <div class="step-hdr" onclick="toggleStep(this)">
+        <span class="step-title">Выпечка — пар и корочка</span>
+        <span class="step-toggle">+</span>
+      </div>
+      <div class="step-body">
+        <div class="stat-row">
+          <div class="stat-item"><span class="stat-val">30'</span><span class="stat-key">с крышкой, пар</span></div>
+          <div class="stat-item"><span class="stat-val">25'</span><span class="stat-key">без крышки, корочка</span></div>
+        </div>
+        <ol class="lst" style="margin-top:1.2rem">
+          <li>На дно раскалённой формы — несколько кубиков льда, сверху — пергамент с тестом. Накройте крышкой.</li>
+          <li>Выпекайте <strong>30 минут с крышкой</strong> — лёд тает, пар поднимается, хлеб раскрывается по надрезу.</li>
+          <li>Снимите крышку, пеките ещё <strong>25 минут</strong> до насыщенной золотистой корочки.</li>
+        </ol>
+        <div class="callout"><strong>Сколько буханок печь:</strong> хорошая идея — сразу минимум две: одну простую, вторую с добавкой (лук, оливки, семена). Лишний хлеб можно нарезать и заморозить — в тостере снова становится хрустящим.</div>
+      </div>
+    </div>
+
+    <!-- шаг: остужение -->
+    <div class="step-sec">
+      <div class="step-hdr" onclick="toggleStep(this)">
+        <span class="step-title">Остужение и результат</span>
+        <span class="step-toggle">+</span>
+      </div>
+      <div class="step-body">
+        <div class="stat-row">
+          <div class="stat-item"><span class="stat-val">60'</span><span class="stat-key">минимум на решётке</span></div>
+        </div>
+        <div class="prose" style="margin-top:1.2rem">
+          <p>Остужайте на решётке минимум час — мякиш ещё доходит внутри, структура формируется. Разрезать горячим — значит испортить мякиш.</p>
+        </div>
         <div class="note">Гребень и блистеры на корочке, воздушный мякиш с равномерными порами — всё это признаки того, что хлеб получился хорошо. Так и должно быть.</div>
-        <div class="callout"><strong>Сколько буханок печь:</strong> хорошая идея — сразу минимум две: одну простую, вторую с добавкой (лук, оливки, семена). Лишний хлеб можно нарезать кусочками и заморозить: разогретый в тостере, он снова становится хрустящим.</div>
       </div>
     </div>
 
