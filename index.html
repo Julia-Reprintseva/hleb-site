@@ -674,6 +674,99 @@ footer{
 }
 .footer-sub{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
 
+/* ═══ GALLERY ═══ */
+.gallery-section{
+  padding:5rem 2rem 4rem;
+  max-width:900px;margin:0 auto;
+}
+.gallery-eyebrow{
+  font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1rem;
+}
+.gallery-title{
+  font-family:var(--serif);font-size:2.4rem;font-weight:300;
+  color:var(--ink);letter-spacing:-.02em;line-height:1.25;
+  margin:0 0 .8rem;
+}
+.gallery-desc{
+  font-size:1rem;color:var(--ink2);line-height:1.7;
+  max-width:480px;margin:0 0 2.8rem;
+}
+.gallery-strip{
+  display:flex;gap:1.2rem;overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  padding-bottom:1.2rem;
+  cursor:grab;
+}
+.gallery-strip:active{cursor:grabbing;}
+.gallery-strip::-webkit-scrollbar{height:3px;}
+.gallery-strip::-webkit-scrollbar-track{background:var(--linelt);}
+.gallery-strip::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px;}
+.gallery-item{
+  flex-shrink:0;scroll-snap-align:start;
+  width:320px;
+}
+.gallery-item img{
+  width:100%;height:260px;object-fit:cover;
+  display:block;
+  transition:filter .3s;
+}
+.gallery-item:hover img{filter:brightness(1.04);}
+.gallery-caption{
+  font-size:.8rem;color:var(--ink3);
+  padding:.7rem 0 0;line-height:1.5;
+  font-style:italic;
+}
+.gallery-hint{
+  font-size:.78rem;color:var(--ink3);letter-spacing:.06em;
+  text-align:center;margin-top:1.6rem;opacity:.6;
+}
+.gallery-item img{cursor:zoom-in;}
+
+/* ═══ LIGHTBOX ═══ */
+.lb{
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(10,8,6,.92);
+  flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:1.2rem;
+}
+.lb.active{display:flex;}
+.lb-img{
+  max-width:90vw;max-height:82vh;
+  object-fit:contain;display:block;
+  border-radius:2px;
+  user-select:none;
+}
+.lb-close{
+  position:fixed;top:1.2rem;right:1.4rem;
+  background:none;border:none;color:#fff;
+  font-size:1.8rem;cursor:pointer;opacity:.7;
+  line-height:1;padding:.4rem;
+  transition:opacity .2s;
+}
+.lb-close:hover{opacity:1;}
+.lb-nav{
+  position:fixed;top:50%;transform:translateY(-50%);
+  background:none;border:none;color:#fff;
+  font-size:2rem;cursor:pointer;opacity:.5;
+  padding:.8rem 1.2rem;transition:opacity .2s;
+  user-select:none;
+}
+.lb-nav:hover{opacity:1;}
+.lb-prev{left:.5rem;}
+.lb-next{right:.5rem;}
+.lb-caption{
+  color:rgba(255,255,255,.75);font-size:1.1rem;font-style:italic;
+  text-align:center;max-width:560px;padding:0 2rem;
+  font-family:var(--serif);letter-spacing:.01em;line-height:1.6;
+}
+.lb-counter{
+  position:fixed;top:1.4rem;left:50%;transform:translateX(-50%);
+  color:rgba(255,255,255,.4);font-size:.75rem;letter-spacing:.1em;
+}
+
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:700px){
   .hero{grid-template-columns:1fr;padding:3rem 1.5rem 2rem;gap:2rem}
@@ -1733,6 +1826,32 @@ footer{
 </div><!-- /sections-wrap -->
 </main>
 
+<section class="gallery-section">
+  <div class="gallery-eyebrow">из моей кухни</div>
+  <h2 class="gallery-title">А теперь — к столу</h2>
+  <p class="gallery-desc">Это не идеальные фото из журнала. Это настоящее — силиконовый коврик, вафельное полотенце, три шарика теста, которые поднимаются на подоконнике. Именно так и выглядит домашний хлеб в процессе.</p>
+
+  <div class="gallery-strip" id="galleryStrip">
+    <div class="gallery-item">
+      <img src="photos/img_5754_w.jpg" alt="Тесто в миске" draggable="false"/>
+      <div class="gallery-caption">Тесто после первой ферментации — живое, пузырчатое, пахнет кисло и хорошо</div>
+    </div>
+    <div class="gallery-item">
+      <img src="photos/img_5743_w.jpg" alt="Раскатанное тесто с луком" draggable="false"/>
+      <div class="gallery-caption">Ламинирование с жареным луком из ВкусВилла — потому что можно</div>
+    </div>
+    <div class="gallery-item">
+      <img src="photos/img_5763_w.jpg" alt="Три шарика теста" draggable="false"/>
+      <div class="gallery-caption">Три заготовки после формовки — округлые, упругие, готовы к холодной расстойке</div>
+    </div>
+    <div class="gallery-item">
+      <img src="photos/img_5775_w.jpg" alt="Хлеб на полотенцах" draggable="false"/>
+      <div class="gallery-caption">На полотенцах из льна тесто дышит — и не прилипает. Главный лайфхак</div>
+    </div>
+  </div>
+  <div class="gallery-hint">← листайте →</div>
+</section>
+
 <footer>
   <div class="footer-logo">Левито Мадре</div>
   <div class="footer-sub">Памятка по хлебу на закваске</div>
@@ -1865,6 +1984,77 @@ function calcHB(){
   document.getElementById('hb-wt').textContent=Math.round(w-s/3)+' г (было '+w+' г)';
   document.getElementById('hb-res').classList.add('show');
 }
+
+// Gallery drag-to-scroll
+(function(){
+  const el = document.getElementById('galleryStrip');
+  if(!el) return;
+  let isDown=false, startX, scrollLeft;
+  el.addEventListener('mousedown', e=>{
+    isDown=true; startX=e.pageX-el.offsetLeft; scrollLeft=el.scrollLeft;
+  });
+  el.addEventListener('mouseleave', ()=>isDown=false);
+  el.addEventListener('mouseup', ()=>isDown=false);
+  el.addEventListener('mousemove', e=>{
+    if(!isDown) return;
+    e.preventDefault();
+    const x=e.pageX-el.offsetLeft;
+    el.scrollLeft=scrollLeft-(x-startX)*1.2;
+  });
+})();
+</script>
+
+<!-- Lightbox -->
+<div class="lb" id="lb" onclick="lbBgClick(event)">
+  <button class="lb-close" onclick="lbClose()" title="Закрыть">✕</button>
+  <button class="lb-nav lb-prev" onclick="lbNav(-1)">&#8249;</button>
+  <img class="lb-img" id="lbImg" src="" alt=""/>
+  <button class="lb-nav lb-next" onclick="lbNav(1)">&#8250;</button>
+  <div class="lb-caption" id="lbCaption"></div>
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
+
+<script>
+(function(){
+  const photos = [
+    { src:'photos/img_5754_w.jpg', cap:'Тесто после первой ферментации — живое, пузырчатое, пахнет кисло и хорошо' },
+    { src:'photos/img_5743_w.jpg', cap:'Ламинирование с жареным луком из ВкусВилла — потому что можно' },
+    { src:'photos/img_5763_w.jpg', cap:'Три заготовки после формовки — округлые, упругие, готовы к холодной расстойке' },
+    { src:'photos/img_5775_w.jpg', cap:'На полотенцах из льна тесто дышит — и не прилипает. Главный лайфхак' },
+  ];
+  let cur = 0;
+
+  function lbShow(i){
+    cur = (i + photos.length) % photos.length;
+    document.getElementById('lbImg').src = photos[cur].src;
+    document.getElementById('lbCaption').textContent = photos[cur].cap;
+    document.getElementById('lbCounter').textContent = (cur+1) + ' / ' + photos.length;
+    document.getElementById('lb').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  window.lbClose = function(){
+    document.getElementById('lb').classList.remove('active');
+    document.body.style.overflow = '';
+  };
+  window.lbNav = function(dir){ lbShow(cur + dir); };
+  window.lbBgClick = function(e){
+    if(e.target === document.getElementById('lb')) lbClose();
+  };
+
+  // Keyboard
+  document.addEventListener('keydown', e=>{
+    if(!document.getElementById('lb').classList.contains('active')) return;
+    if(e.key==='Escape') lbClose();
+    if(e.key==='ArrowLeft') lbNav(-1);
+    if(e.key==='ArrowRight') lbNav(1);
+  });
+
+  // Bind clicks on gallery images
+  document.querySelectorAll('.gallery-item img').forEach((img, i)=>{
+    img.addEventListener('click', ()=> lbShow(i));
+  });
+})();
 </script>
 </body>
 </html>
