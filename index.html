@@ -204,6 +204,32 @@ h4.sub{color:var(--accent-dark);font-size:.97rem;margin:1.2rem 0 .7rem}
   margin:1rem 0;
 }
 
+/* ── YT THUMBNAIL CARD ── */
+.yt-card{
+  display:block;position:relative;border-radius:var(--rsm);overflow:hidden;
+  box-shadow:var(--shadow);text-decoration:none;background:#000;
+  aspect-ratio:16/9;
+}
+.yt-thumb{
+  width:100%;height:100%;object-fit:cover;display:block;
+  opacity:.85;transition:opacity .2s;
+}
+.yt-card:hover .yt-thumb{opacity:.7}
+.yt-play{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:64px;height:64px;background:rgba(220,60,30,.9);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;color:#fff;padding-left:4px;
+  box-shadow:0 4px 20px rgba(0,0,0,.4);transition:transform .2s,background .2s;
+}
+.yt-card:hover .yt-play{transform:translate(-50%,-50%) scale(1.1);background:rgba(220,60,30,1)}
+.yt-label{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,rgba(0,0,0,.7),transparent);
+  color:#fff;font-family:Arial,sans-serif;font-size:.82rem;
+  padding:.7rem .9rem .5rem;
+}
+
 /* ── INSTAGRAM / SOCIAL CARDS ── */
 .soc-card{
   display:flex;align-items:flex-start;gap:.9rem;
@@ -1039,9 +1065,11 @@ footer{
     </div>
     <div class="video-block">
       <div class="video-label">📹 Видео: формовка и подготовка к расстойке</div>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/eS9S2ZWIS7c" allowfullscreen loading="lazy" title="Формовка хлеба"></iframe>
-      </div>
+      <a href="https://www.youtube.com/watch?v=eS9S2ZWIS7c" target="_blank" class="yt-card">
+        <img src="https://img.youtube.com/vi/eS9S2ZWIS7c/hqdefault.jpg" alt="Формовка хлеба" class="yt-thumb">
+        <div class="yt-play">▶</div>
+        <div class="yt-label">Смотреть на YouTube: формовка и подготовка к расстойке</div>
+      </a>
       <p class="video-desc">Как собрать тесто в заготовку, создать натяжение поверхности и уложить в корзину</p>
     </div>
 
