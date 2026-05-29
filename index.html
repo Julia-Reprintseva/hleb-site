@@ -633,7 +633,7 @@ footer{
   </div>
 </div>
 
-<button class="open-all" onclick="openAll()">Развернуть все разделы</button>
+<button class="open-all" id="toggleAllBtn" onclick="toggleAll()">Развернуть все разделы</button>
 
 <!-- ── 1. ЧТО ТАКОЕ ЛМ ── -->
 <div class="section" id="starter">
@@ -1276,11 +1276,20 @@ function toggleSec(hdr){
   hdr.classList.toggle('open');
   hdr.nextElementSibling.classList.toggle('open');
 }
-function openAll(){
+function toggleAll(){
+  const btn = document.getElementById('toggleAllBtn');
+  const allOpen = btn.dataset.state === 'open';
   document.querySelectorAll('.s-hdr').forEach(h=>{
-    h.classList.add('open');
-    h.nextElementSibling.classList.add('open');
+    if(allOpen){
+      h.classList.remove('open');
+      h.nextElementSibling.classList.remove('open');
+    } else {
+      h.classList.add('open');
+      h.nextElementSibling.classList.add('open');
+    }
   });
+  btn.dataset.state = allOpen ? '' : 'open';
+  btn.textContent = allOpen ? 'Развернуть все разделы' : 'Свернуть все разделы';
 }
 
 // ── NAV: scroll + open section ──
