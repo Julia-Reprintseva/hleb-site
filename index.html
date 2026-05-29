@@ -621,6 +621,7 @@ footer{
   .calc-row{flex-direction:column;align-items:flex-start;gap:.5rem}
   .calc-row input,.calc-row select{width:100%}
   .cl{margin-left:10%}
+  .step-body{padding-left:.8rem;}
   .video-grid{grid-template-columns:1fr}
   footer{padding:2rem 1.5rem}
   .s-title{font-size:1.3rem}
@@ -632,24 +633,67 @@ footer{
 }
 
 /* ═══ STEP SECTIONS ═══ */
+/* ── Дни ── */
 .day-label{
-  font-family:var(--display);font-size:.82rem;font-weight:700;
-  color:var(--gold);letter-spacing:.16em;text-transform:uppercase;
-  margin:2.4rem 0 .2rem;opacity:.75;
+  font-family:var(--serif);
+  font-size:1.4rem;font-weight:400;
+  color:var(--ink);letter-spacing:.01em;
+  margin:3rem 0 .6rem;
+  padding-bottom:.55rem;
+  border-bottom:2px solid var(--gold);
+  display:block;
 }
-.day-label:first-child{margin-top:.2rem}
-.step-sec{border-top:1px solid var(--linelt);}
+.day-label:first-child{margin-top:.5rem}
+
+/* ── Шаги внутри дня ── */
+.step-sec{
+  border-top:1px solid var(--linelt);
+}
 .step-hdr{
   display:flex;justify-content:space-between;align-items:center;
-  padding:.8rem 0;cursor:pointer;user-select:none;transition:opacity .2s;
+  padding:.9rem 0;cursor:pointer;user-select:none;transition:opacity .2s;
 }
-.step-hdr:hover{opacity:.7}
-.step-title{font-family:var(--serif);font-size:1.18rem;color:var(--ink);letter-spacing:-.01em;}
-.step-toggle{color:var(--ink3);transition:transform .3s;line-height:1;width:24px;text-align:right;font-size:1.1rem;}
+.step-hdr:hover{opacity:.65}
+.step-title{
+  font-family:var(--sans);font-size:.95rem;font-weight:500;
+  color:var(--ink2);letter-spacing:.02em;
+}
+.step-hdr.open .step-title{color:var(--ink);}
+.step-toggle{
+  color:var(--ink3);transition:transform .3s;
+  line-height:1;width:24px;text-align:right;font-size:1.1rem;flex-shrink:0;
+}
 .step-hdr.open .step-toggle{transform:rotate(45deg);color:var(--gold);}
-.step-body{display:none;padding:.4rem 0 1.4rem;}
+.step-body{
+  display:none;
+  padding:.2rem 0 1.8rem 1.4rem;
+  border-left:2px solid var(--linelt);
+  margin-left:.2rem;
+}
 .step-body.open{display:block;}
-.plan-cl-wrap{margin-top:1.8rem;padding-top:1.2rem;border-top:2px solid var(--gold);}
+/* внутри step-body убираем лишние отступы у чеклистов */
+.step-body .cl{margin-left:0;}
+.step-body .cl-day-hdr{margin-left:0;}
+
+/* ── Чеклист дня ── */
+.plan-cl-wrap{
+  margin:2rem 0 0;
+  padding:1.2rem 1.4rem 1.4rem;
+  background:var(--goldbg);
+  border-left:3px solid var(--gold);
+  border-radius:0 4px 4px 0;
+}
+.plan-cl-wrap .cl{margin-left:0;}
+.plan-cl-wrap .cl-day-hdr{margin-left:0;margin-top:.4rem;}
+.plan-cl-wrap .cl-prog{margin-top:.5rem;}
+
+/* ── Финальный заголовок чеклиста ── */
+.final-cl-title{
+  font-family:var(--serif);font-size:1.3rem;
+  font-weight:400;color:var(--ink);
+  margin-bottom:1.2rem;letter-spacing:-.01em;
+  padding-bottom:.5rem;border-bottom:1px solid var(--line);
+}
 </style>
 </head>
 <body>
@@ -1444,7 +1488,7 @@ footer{
 
     <!-- Финальный чеклист -->
     <div class="plan-cl-wrap">
-      <div style="font-family:var(--display);font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:1rem;letter-spacing:-.01em;">Финальный чеклист — все три дня</div>
+      <div class="final-cl-title">Финальный чеклист — все три дня</div>
 
       <div class="cl-day-hdr" id="clF1-hdr" onclick="chkDay('clF1',2)">
         <input type="checkbox" id="clF1-cb" onclick="event.stopPropagation()" onchange="chkDay('clF1',2)">
