@@ -19,6 +19,7 @@
   --goldbg: #FDF1EE;
   --serif:  'Cormorant Garamond', Georgia, serif;
   --sans:   'Inter', -apple-system, Helvetica, sans-serif;
+  --display:'Playfair Display', Georgia, serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -145,11 +146,11 @@ main{max-width:960px;margin:0 auto;padding:0 2rem 6rem}
 }
 .s-hdr:hover{opacity:.7}
 .s-num{
-  font-family:var(--serif);
+  font-family:var(--display);
   font-size:3rem;
-  font-weight:300;
+  font-weight:700;
   color:var(--gold);
-  opacity:.55;
+  opacity:.6;
   flex-shrink:0;
   width:4rem;
   line-height:1;
@@ -369,7 +370,7 @@ h4.sub{
   text-decoration:line-through;
   color:var(--ink3);
 }
-.cl{list-style:none;margin-bottom:.5rem}
+.cl{list-style:none;margin-bottom:.5rem;margin-left:5%}
 .cl li{
   display:flex;align-items:flex-start;gap:.9rem;
   padding:.7rem 0;border-bottom:1px solid var(--linelt);
@@ -383,6 +384,7 @@ h4.sub{
 }
 .cl li:last-child{border-bottom:none}
 .cl li:hover{color:var(--ink2)}
+.cl li span{}
 .cl li input[type=checkbox]{
   width:15px;height:15px;
   accent-color:var(--gold);
@@ -413,6 +415,17 @@ h4.sub{
   height:100%;background:var(--gold);
   transition:width .4s;border-radius:2px;
 }
+
+/* ═══ DAY DIVIDER ILLUSTRATIONS ═══ */
+.day-div{
+  margin:0 -2rem;
+  overflow:hidden;line-height:0;
+}
+/* inside .s-body (left padding 5.4rem) */
+.day-div-s{
+  margin:1.4rem 0 1.4rem -5.4rem;
+}
+.day-div svg{display:block;width:100%;}
 
 /* ═══ STEPS ═══ */
 .steps{list-style:none;counter-reset:step;margin:.5rem 0}
@@ -600,12 +613,14 @@ footer{
   .hdr{padding:0 1.2rem;gap:1.2rem}
   main{padding:0 1.2rem 4rem}
   .s-body{padding:.5rem 0 2rem 1rem}
+  .day-div-s{margin:1rem 0 1rem -1rem}
   .s-num{font-size:2rem;width:2.8rem}
   .stat-row{gap:1.5rem;padding:1rem 1rem}
   .tool-cols{grid-template-columns:1fr}
   .calc{padding:1.4rem}
   .calc-row{flex-direction:column;align-items:flex-start;gap:.5rem}
   .calc-row input,.calc-row select{width:100%}
+  .cl{margin-left:10%}
   .video-grid{grid-template-columns:1fr}
   footer{padding:2rem 1.5rem}
   .s-title{font-size:1.3rem}
@@ -615,6 +630,26 @@ footer{
   .flour-pct{font-size:1.6rem}
   .hero-h1{font-size:2.6rem}
 }
+
+/* ═══ STEP SECTIONS ═══ */
+.day-label{
+  font-family:var(--display);font-size:.82rem;font-weight:700;
+  color:var(--gold);letter-spacing:.16em;text-transform:uppercase;
+  margin:2.4rem 0 .2rem;opacity:.75;
+}
+.day-label:first-child{margin-top:.2rem}
+.step-sec{border-top:1px solid var(--linelt);}
+.step-hdr{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.8rem 0;cursor:pointer;user-select:none;transition:opacity .2s;
+}
+.step-hdr:hover{opacity:.7}
+.step-title{font-family:var(--serif);font-size:1.18rem;color:var(--ink);letter-spacing:-.01em;}
+.step-toggle{color:var(--ink3);transition:transform .3s;line-height:1;width:24px;text-align:right;font-size:1.1rem;}
+.step-hdr.open .step-toggle{transform:rotate(45deg);color:var(--gold);}
+.step-body{display:none;padding:.4rem 0 1.4rem;}
+.step-body.open{display:block;}
+.plan-cl-wrap{margin-top:1.8rem;padding-top:1.2rem;border-top:2px solid var(--gold);}
 </style>
 </head>
 <body>
@@ -625,12 +660,8 @@ footer{
     <span class="hdr-logo">Левито Мадре</span>
     <nav class="hdr-nav">
       <a href="#starter" onclick="navClick('starter')">Закваска</a>
-      <a href="#flour"   onclick="navClick('flour')">Мука</a>
-      <a href="#tools"   onclick="navClick('tools')">Инвентарь</a>
-      <a href="#calc"    onclick="navClick('calc')">Калькулятор</a>
-      <a href="#kneading" onclick="navClick('kneading')">Замес</a>
-      <a href="#baking"  onclick="navClick('baking')">Выпечка</a>
-      <a href="#checklist" onclick="navClick('checklist')">Чеклист</a>
+      <a href="#flour"   onclick="navClick('flour')">Что понадобится</a>
+      <a href="#plan"    onclick="navClick('plan')">План выпечки</a>
     </nav>
     <button class="btn-shop" onclick="openShop()">Список покупок</button>
   </div>
@@ -771,51 +802,11 @@ footer{
 <main>
 <div class="sections-wrap">
 
-<!-- ── ЧЕКЛИСТ: ЭТАПЫ 3 ДНЯ ── -->
 <div class="ctrl-row">
   <button class="ctrl-btn" id="toggleAllBtn" onclick="toggleAll()">Развернуть все разделы</button>
 </div>
 
-<div class="section" id="checklist-days">
-  <div class="s-hdr open" onclick="toggleSec(this)">
-    <div class="s-num">—</div>
-    <div class="s-titles">
-      <div class="s-title">Этапы выпечки — три дня</div>
-      <div class="s-sub">Общий план — отмечайте по ходу</div>
-    </div>
-    <div class="s-toggle">+</div>
-  </div>
-  <div class="s-body open">
-    <div class="cl-day">День первый — вечер</div>
-    <ul class="cl" id="clD">
-      <li onclick="chk(this,'clD',0)"><input type="checkbox"><span>Покормите закваску — 10 минут</span></li>
-      <li onclick="chk(this,'clD',1)"><input type="checkbox"><span>Отложите нужное количество для выпечки (110 г × буханок)</span></li>
-      <li onclick="chk(this,'clD',2)"><input type="checkbox"><span>Оставьте подниматься пару часов, затем уберите в холодильник на ночь</span></li>
-    </ul>
-    <div class="cl-day">День второй — весь день</div>
-    <ul class="cl" id="clD2">
-      <li onclick="chk(this,'clD2',0)"><input type="checkbox"><span>Закваска на пике — купол, пузыри, выросла в три раза</span></li>
-      <li onclick="chk(this,'clD2',1)"><input type="checkbox"><span>Замесите тесто — блендер, мука, соль</span></li>
-      <li onclick="chk(this,'clD2',2)"><input type="checkbox"><span>Автолиз 1 час — или замес в миксере 20 минут</span></li>
-      <li onclick="chk(this,'clD2',3)"><input type="checkbox"><span>Сделайте ламинирование</span></li>
-      <li onclick="chk(this,'clD2',4)"><input type="checkbox"><span>Три обминки катушкой — через каждые 40 минут</span></li>
-      <li onclick="chk(this,'clD2',5)"><input type="checkbox"><span>Предформовка — 15 минут отдыха</span></li>
-      <li onclick="chk(this,'clD2',6)"><input type="checkbox"><span>Финальная формовка</span></li>
-      <li onclick="chk(this,'clD2',7)"><input type="checkbox"><span>Уберите в холодильник на ночь</span></li>
-    </ul>
-    <div class="cl-day">День третий — утро</div>
-    <ul class="cl" id="clD3">
-      <li onclick="chk(this,'clD3',0)"><input type="checkbox"><span>Разогрейте духовку с формой до 250°С — 40–60 минут</span></li>
-      <li onclick="chk(this,'clD3',1)"><input type="checkbox"><span>Сделайте надрезы лезвием</span></li>
-      <li onclick="chk(this,'clD3',2)"><input type="checkbox"><span>Выпекайте 30 минут с паром, крышка закрыта</span></li>
-      <li onclick="chk(this,'clD3',3)"><input type="checkbox"><span>Снимите крышку, выпекайте ещё 25 минут</span></li>
-      <li onclick="chk(this,'clD3',4)"><input type="checkbox"><span>Остудите на решётке минимум час</span></li>
-    </ul>
-    <button class="cl-reset" onclick="resetCl('clD',3);resetCl('clD2',8);resetCl('clD3',5)">Сбросить</button>
-  </div>
-</div>
-
-<!-- ── 1. ЧТО ТАКОЕ ЛЕВИТО МАДРЕ ── -->
+<!-- ── 01. ЧТО ТАКОЕ ЛЕВИТО МАДРЕ ── -->
 <div class="section" id="starter">
   <div class="s-hdr" onclick="toggleSec(this)">
     <div class="s-num">01</div>
@@ -840,25 +831,15 @@ footer{
           <a href="https://www.hlebomoli.ru/blog/ob-italyanskoy-zakvaske-levito-madre" target="_blank" class="soc-btn">Подробная статья о Левито Мадре →</a>
         </div>
       </div>
-      <!-- SVG: банка с закваской -->
       <div style="flex-shrink:0;width:120px;opacity:.75">
         <svg viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg" width="120">
           <defs><style>.jl{fill:none;stroke:#1A1612;stroke-linecap:round}</style></defs>
-          <!-- Крышка -->
           <rect class="jl" stroke-width="1.2" x="28" y="18" width="44" height="10" rx="3"/>
           <rect class="jl" stroke-width=".8" x="35" y="14" width="30" height="6" rx="2"/>
-          <!-- Тело банки -->
-          <path class="jl" stroke-width="1.3"
-            d="M22,28 L22,135 Q22,148 50,148 Q78,148 78,135 L78,28 Z"/>
-          <!-- Горлышко -->
+          <path class="jl" stroke-width="1.3" d="M22,28 L22,135 Q22,148 50,148 Q78,148 78,135 L78,28 Z"/>
           <line class="jl" stroke-width=".7" x1="22" y1="38" x2="78" y2="38"/>
-          <!-- Закваска внутри -->
-          <path fill="rgba(184,150,76,.12)" stroke="none"
-            d="M23,70 Q30,60 50,58 Q70,60 77,70 L77,135 Q77,146 50,146 Q23,146 23,135 Z"/>
-          <!-- Поверхность закваски (купол) -->
-          <path class="jl" stroke-width="1.2"
-            d="M23,70 Q30,58 50,56 Q70,58 77,70"/>
-          <!-- Пузыри -->
+          <path fill="rgba(184,150,76,.12)" stroke="none" d="M23,70 Q30,60 50,58 Q70,60 77,70 L77,135 Q77,146 50,146 Q23,146 23,135 Z"/>
+          <path class="jl" stroke-width="1.2" d="M23,70 Q30,58 50,56 Q70,58 77,70"/>
           <circle class="jl" stroke-width=".8" cx="38" cy="82" r="5"/>
           <circle class="jl" stroke-width=".8" cx="56" cy="76" r="7"/>
           <circle class="jl" stroke-width=".8" cx="65" cy="90" r="4"/>
@@ -867,7 +848,6 @@ footer{
           <circle class="jl" stroke-width=".7" cx="66" cy="102" r="3"/>
           <circle class="jl" stroke-width=".6" cx="43" cy="118" r="3"/>
           <circle class="jl" stroke-width=".6" cx="60" cy="120" r="4"/>
-          <!-- Шкала (линия) -->
           <line class="jl" stroke-width=".6" opacity=".4" x1="25" y1="95" x2="30" y2="95"/>
           <line class="jl" stroke-width=".6" opacity=".4" x1="25" y1="115" x2="30" y2="115"/>
         </svg>
@@ -876,98 +856,18 @@ footer{
   </div>
 </div>
 
-<!-- ── ЧЕКЛИСТ ПОДГОТОВКИ ── -->
-<div class="section" id="checklist-prep">
-  <div class="s-hdr" onclick="toggleSec(this)">
-    <div class="s-num">—</div>
-    <div class="s-titles">
-      <div class="s-title">Готовы к замесу?</div>
-      <div class="s-sub">Чеклист подготовки — проверьте перед началом</div>
-    </div>
-    <div class="s-toggle">+</div>
-  </div>
-  <div class="s-body">
-    <ul class="cl" id="clS">
-      <li onclick="chk(this,'clS',0)"><input type="checkbox"><span>Закваска активная — поднялась куполом, пузырчатая, на пике</span></li>
-      <li onclick="chk(this,'clS',1)"><input type="checkbox"><span>Нужное количество закваски (110 г на каждую буханку)</span></li>
-      <li onclick="chk(this,'clS',2)"><input type="checkbox"><span>Вода взвешена — фильтрованная или бутилированная</span></li>
-      <li onclick="chk(this,'clS',3)"><input type="checkbox"><span>Мука взвешена: пшеничная и цельнозерновая</span></li>
-      <li onclick="chk(this,'clS',4)"><input type="checkbox"><span>Соль — 11 г на каждую буханку</span></li>
-      <li onclick="chk(this,'clS',5)"><input type="checkbox"><span>Форма для выпечки — утятница или казан с крышкой</span></li>
-      <li onclick="chk(this,'clS',6)"><input type="checkbox"><span>Пергамент нарезан</span></li>
-      <li onclick="chk(this,'clS',7)"><input type="checkbox"><span>Полотенце или расстоечная корзина с рисовой мукой</span></li>
-      <li onclick="chk(this,'clS',8)"><input type="checkbox"><span>Впереди около трёх часов дома — замес и обминки</span></li>
-      <li onclick="chk(this,'clS',9)"><input type="checkbox"><span>Температура кухни 23–28°С</span></li>
-    </ul>
-    <div class="cl-prog" id="clS-prog">0 из 10</div>
-    <div class="prog-bar"><div class="prog-fill" id="clS-bar" style="width:0%"></div></div>
-    <button class="cl-reset" onclick="resetCl('clS',10)">Сбросить</button>
-  </div>
-</div>
-
-<!-- ── 2. КАК КОРМИТЬ ЗАКВАСКУ ── -->
-<div class="section">
-  <div class="s-hdr open" onclick="toggleSec(this)">
-    <div class="s-num">02</div>
-    <div class="s-titles">
-      <div class="s-title">Как кормить закваску</div>
-      <div class="s-sub">Пропорции, частота, калькулятор, видео</div>
-    </div>
-    <div class="s-toggle">+</div>
-  </div>
-  <div class="s-body open">
-    <div class="stat-row">
-      <div class="stat-item"><span class="stat-val">1:1:½</span><span class="stat-key">Закваска — мука — вода</span></div>
-      <div class="stat-item"><span class="stat-val">1×</span><span class="stat-key">в неделю</span></div>
-      <div class="stat-item"><span class="stat-val">50%</span><span class="stat-key">влажность</span></div>
-      <div class="stat-item"><span class="stat-val">×3</span><span class="stat-key">вырастает</span></div>
-    </div>
-    <div class="prose">
-      <p>Влейте воду к закваске, разбейте блендером до жидкой сметаны, добавьте муку и замесите. Оставьте при комнатной температуре 4–8 часов, затем уберите в холодильник.</p>
-    </div>
-    <div class="note">Хранить в прозрачной стеклянной банке 1–1,5 л. Нужно видеть рост и пузыри через стенки.</div>
-
-    <h4 class="sub">Калькулятор кормления</h4>
-    <div class="calc">
-      <div class="calc-title">Сколько муки и воды нужно?</div>
-      <div class="calc-row">
-        <label>У меня есть закваски, г</label>
-        <input type="number" id="s-have" value="100" min="1" max="5000">
-      </div>
-      <button class="calc-btn" onclick="calcFeed()">Рассчитать</button>
-      <div class="calc-res" id="feed-res">
-        <div class="res-row"><span class="nm">Закваска</span><span class="am" id="f-s">—</span></div>
-        <div class="res-row"><span class="nm">Мука Макфа</span><span class="am" id="f-f">—</span></div>
-        <div class="res-row"><span class="nm">Вода фильтрованная</span><span class="am" id="f-w">—</span></div>
-        <div class="res-row"><span class="nm">Итого после кормления</span><span class="am" id="f-t">—</span></div>
-      </div>
-    </div>
-
-    <h4 class="sub">Время подъёма при разной температуре</h4>
-    <table class="tbl">
-      <thead><tr><th>Температура</th><th>Время</th></tr></thead>
-      <tbody>
-        <tr><td>28°С — тепло</td><td>~4 часа</td></tr>
-        <tr><td>25°С</td><td>~4–6 часов</td></tr>
-        <tr><td>23°С</td><td>~5–7 часов</td></tr>
-        <tr><td>21°С</td><td>~8 часов</td></tr>
-        <tr><td>5°С — холодильник</td><td>~16–18 часов</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- ── 3. МУКА ── -->
+<!-- ── 02. ЧТО ПОНАДОБИТСЯ ── -->
 <div class="section" id="flour">
   <div class="s-hdr" onclick="toggleSec(this)">
-    <div class="s-num">03</div>
+    <div class="s-num">02</div>
     <div class="s-titles">
-      <div class="s-title">Мука</div>
-      <div class="s-sub">Три типа и их пропорции</div>
+      <div class="s-title">Что понадобится</div>
+      <div class="s-sub">Мука, инвентарь и список покупок</div>
     </div>
     <div class="s-toggle">+</div>
   </div>
   <div class="s-body">
+    <h4 class="sub" style="margin-top:0">Мука</h4>
     <div style="display:flex;gap:3rem;align-items:flex-start;flex-wrap:wrap">
       <div style="flex:1;min-width:260px">
         <div class="flour-list">
@@ -997,18 +897,15 @@ footer{
           </div>
         </div>
       </div>
-      <!-- SVG: колоски пшеницы -->
       <div style="flex-shrink:0;width:100px;opacity:.6;padding-top:1rem">
         <svg viewBox="0 0 80 200" xmlns="http://www.w3.org/2000/svg" width="80">
           <defs><style>.wl{fill:none;stroke:#1A1612;stroke-linecap:round}</style></defs>
-          <!-- Стебель 1 -->
           <line class="wl" stroke-width="1" x1="25" y1="200" x2="25" y2="60"/>
           <line class="wl" stroke-width=".8" x1="25" y1="85"  x2="14" y2="72"/>
           <line class="wl" stroke-width=".8" x1="25" y1="96"  x2="36" y2="83"/>
           <line class="wl" stroke-width=".8" x1="25" y1="107" x2="14" y2="94"/>
           <line class="wl" stroke-width=".8" x1="25" y1="118" x2="36" y2="105"/>
           <ellipse class="wl" stroke-width="1" cx="25" cy="54" rx="6" ry="13" transform="rotate(-6,25,54)"/>
-          <!-- Стебель 2 -->
           <line class="wl" stroke-width="1" x1="55" y1="200" x2="55" y2="70"/>
           <line class="wl" stroke-width=".8" x1="55" y1="95"  x2="44" y2="82"/>
           <line class="wl" stroke-width=".8" x1="55" y1="106" x2="66" y2="93"/>
@@ -1018,23 +915,9 @@ footer{
         </svg>
       </div>
     </div>
-    <div class="callout">
-      Ищите на упаковке Макфы код с буквой А — это Челябинский завод, самая хорошая клейковина. Ведите закваску и пеките на одной муке.
-    </div>
-  </div>
-</div>
+    <div class="callout">Ищите на упаковке Макфы код с буквой А — это Челябинский завод, самая хорошая клейковина. Ведите закваску и пеките на одной муке.</div>
 
-<!-- ── 4. ИНВЕНТАРЬ ── -->
-<div class="section" id="tools">
-  <div class="s-hdr" onclick="toggleSec(this)">
-    <div class="s-num">04</div>
-    <div class="s-titles">
-      <div class="s-title">Инвентарь</div>
-      <div class="s-sub">Что нужно для выпечки</div>
-    </div>
-    <div class="s-toggle">+</div>
-  </div>
-  <div class="s-body">
+    <h4 class="sub">Инвентарь</h4>
     <div class="note">Начните с минимума. Ссылки на покупку — в списке покупок (кнопка в шапке).</div>
     <div class="tool-cols">
       <div>
@@ -1068,367 +951,553 @@ footer{
   </div>
 </div>
 
-<!-- ── 5. КАЛЬКУЛЯТОР ── -->
-<div class="section" id="calc">
-  <div class="s-hdr open" onclick="toggleSec(this)">
-    <div class="s-num">05</div>
-    <div class="s-titles">
-      <div class="s-title">Калькулятор рецепта</div>
-      <div class="s-sub">Ингредиенты на любое количество буханок</div>
-    </div>
-    <div class="s-toggle">+</div>
-  </div>
-  <div class="s-body open">
-    <div class="callout">
-      Базовый рецепт (~1056 г теста) — на <strong>две небольшие буханки</strong> или <strong>один большой каравай</strong> (готовый хлеб ~700 г).
-      <br>500 г пшеничной + 50 г цельнозерновой + 385 г воды + 110 г закваски + 11 г соли.
-    </div>
-
-    <div class="calc">
-      <div class="calc-title">Рецепт хлеба</div>
-      <div class="calc-row">
-        <label>Количество буханок</label>
-        <input type="number" id="loaves" value="2" min="1" max="20">
-      </div>
-      <div class="calc-row">
-        <label>Ржаная мука</label>
-        <select id="rye">
-          <option value="0">Без ржаной — первая попытка</option>
-          <option value="1">С ржаной, пропорция 70/20/10</option>
-        </select>
-      </div>
-      <button class="calc-btn" onclick="calcRecipe()">Рассчитать</button>
-      <div class="calc-res" id="r-res">
-        <div class="res-row"><span class="nm">Закваска — на пике!</span><span class="am" id="r-s">—</span></div>
-        <div class="res-row"><span class="nm">Пшеничная мука Макфа</span><span class="am" id="r-f1">—</span></div>
-        <div class="res-row"><span class="nm">Цельнозерновая мука</span><span class="am" id="r-f2">—</span></div>
-        <div class="res-row" id="rye-row" style="display:none"><span class="nm">Ржаная мука</span><span class="am" id="r-f3">—</span></div>
-        <div class="res-row"><span class="nm">Вода</span><span class="am" id="r-w">—</span></div>
-        <div class="res-row"><span class="nm">Соль</span><span class="am" id="r-salt">—</span></div>
-        <div class="res-row"><span class="nm">Итого теста</span><span class="am" id="r-tot">—</span></div>
-        <p class="res-note">Оставьте <span id="r-left">—</span> закваски — покормите её после выпечки.</p>
-      </div>
-    </div>
-
-    <h4 class="sub">Пересчёт для хлебопечки — с дрожжей на закваску</h4>
-    <div class="prose" style="margin-bottom:1rem">
-      <p>Закваска ЛМ влажностью 50% — две части муки и одна часть воды. Закваски берём <strong>25–30% от суммы муки и воды</strong>.</p>
-    </div>
-    <div class="calc">
-      <div class="calc-title">Рецепт для хлебопечки</div>
-      <div class="calc-row">
-        <label>Мука в рецепте, г</label>
-        <input type="number" id="hb-f" value="550" min="100">
-      </div>
-      <div class="calc-row">
-        <label>Вода в рецепте, г</label>
-        <input type="number" id="hb-w" value="385" min="50">
-      </div>
-      <div class="calc-row">
-        <label>Доля закваски</label>
-        <select id="hb-p">
-          <option value="25">25% — осторожный вариант</option>
-          <option value="30" selected>30% — максимум</option>
-        </select>
-      </div>
-      <button class="calc-btn" onclick="calcHB()">Рассчитать</button>
-      <div class="calc-res" id="hb-res">
-        <div class="res-row"><span class="nm">Закваска Левито Мадре</span><span class="am" id="hb-s">—</span></div>
-        <div class="res-row"><span class="nm">Мука — скорректировано</span><span class="am" id="hb-fl">—</span></div>
-        <div class="res-row"><span class="nm">Вода — скорректировано</span><span class="am" id="hb-wt">—</span></div>
-        <div class="res-row"><span class="nm">Соль</span><span class="am">оставьте из оригинала</span></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ── 6. КОГДА ЗАКВАСКА ГОТОВА ── -->
-<div class="section">
+<!-- ── 03. ПОШАГОВЫЙ ПЛАН ВЫПЕЧКИ ── -->
+<div class="section" id="plan">
   <div class="s-hdr" onclick="toggleSec(this)">
-    <div class="s-num">06</div>
-    <div class="s-titles">
-      <div class="s-title">Закваска на пике — как понять</div>
-      <div class="s-sub">Визуальные признаки и видео</div>
-    </div>
-    <div class="s-toggle">+</div>
-  </div>
-  <div class="s-body">
-    <div class="prose">
-      <p>Закваска готова к замесу когда поднялась куполом, вся в пузырях, увеличилась примерно в три раза. Выглядит активной и пышной.</p>
-      <p>Если стояла без кормления 2–4 дня — сначала покормите, дождитесь пика, только потом месите.</p>
-    </div>
-    <div class="callout"><strong>Тест float test:</strong> бросьте ложку закваски в стакан воды. Если всплыла — закваска готова к замесу.</div>
-  </div>
-</div>
-
-<!-- ── 7. ЗАМЕС ── -->
-<div class="section" id="kneading">
-  <div class="s-hdr" onclick="toggleSec(this)">
-    <div class="s-num">07</div>
-    <div class="s-titles">
-      <div class="s-title">Замес, ламинирование и обминки</div>
-      <div class="s-sub">Пошагово с видео каждого этапа</div>
-    </div>
-    <div class="s-toggle">+</div>
-  </div>
-  <div class="s-body">
-    <h4 class="sub" style="margin-top:0">Замес теста</h4>
-    <div class="prose">
-      <p>Разбейте закваску с водой блендером до однородной жижи. Добавьте муку и соль — замесите тесто.</p>
-      <p><strong>Руками:</strong> автолиз 1 час, затем 2–3 подхода по 10 «отбивок» с паузами 5 минут. Тесто становится гладким.</p>
-      <p><strong>Миксер:</strong> без автолиза — 20 минут с насадкой для теста.</p>
-    </div>
-    <div class="soc-card">
-      <div class="soc-platform">Instagram</div>
-      <div class="soc-info">
-        <div class="title">Замес на планетарном миксере</div>
-        <div class="desc">Как выглядит правильно развитая клейковина после 20 минут замеса.</div>
-        <a href="https://www.instagram.com/reel/DYB2A-aMJ3L/?igsh=MTk0dTRlbHpienFlbg==" target="_blank" class="soc-btn">Открыть в Instagram →</a>
-      </div>
-    </div>
-    <div class="note" style="margin-top:1rem"><strong>Глютеновое окно:</strong> растяните кусок теста — если тянется не рвясь и просвечивает, клейковина развита хорошо.</div>
-
-    <h4 class="sub">Ламинирование — через 40 минут после замеса</h4>
-    <div class="prose">
-      <p>Растяните тесто на столе в тонкий пласт. Можно добавить начинку: жареный лук из ВкусВилла, оливки, семена. Сложите и верните в миску. Делайте всегда — даже без начинок.</p>
-    </div>
-    <div class="soc-card">
-      <div class="soc-platform">Instagram</div>
-      <div class="soc-info">
-        <div class="title">Ламинирование теста</div>
-        <div class="desc">Техника растяжки теста в тонкий пласт перед обминками.</div>
-        <a href="https://www.instagram.com/reel/DYaFUqzMbLq/?igsh=aDFpdjN4NjZsNDZx" target="_blank" class="soc-btn">Открыть в Instagram →</a>
-      </div>
-    </div>
-
-    <h4 class="sub">Обминки катушкой — три раза через 40 минут</h4>
-    <div class="prose">
-      <p>Интервал не обязательно строго 30 минут — 40–50 тоже хорошо. Тесто должно стать пышным и насыщенным воздухом.</p>
-    </div>
-    <div class="soc-card">
-      <div class="soc-platform">Instagram</div>
-      <div class="soc-info">
-        <div class="title">Обминка катушкой (coil fold)</div>
-        <div class="desc">Основная техника обминки во время ферментации — мягко, без агрессии.</div>
-        <a href="https://www.instagram.com/reel/DXKbYxBDMG5/?igsh=eWNxcmVocTJvYTY5" target="_blank" class="soc-btn">Открыть в Instagram →</a>
-      </div>
-    </div>
-
-    <div class="soc-card">
-      <div class="soc-platform">Facebook</div>
-      <div class="soc-info">
-        <div class="title">Техника работы с тестом</div>
-        <div class="desc">Дополнительное видео о технике хлебного теста.</div>
-        <a href="https://www.facebook.com/share/r/1XvYti5bar/" target="_blank" class="soc-btn">Открыть в Facebook →</a>
-      </div>
-    </div>
-
-    <div class="callout" style="margin-top:1.5rem">
-      <strong>Примерный timeline:</strong> 0:00 Замес → 1:00 Ламинирование → 1:40 Обминка 1 → 2:20 Обминка 2 → 3:00 Обминка 3 → 3:40 Предформовка
-    </div>
-  </div>
-</div>
-
-<!-- ── 8. ФОРМОВКА ── -->
-<div class="section">
-  <div class="s-hdr" onclick="toggleSec(this)">
-    <div class="s-num">08</div>
-    <div class="s-titles">
-      <div class="s-title">Формовка и холодная ферментация</div>
-      <div class="s-sub">Предформовка, финал, ночь в холодильнике</div>
-    </div>
-    <div class="s-toggle">+</div>
-  </div>
-  <div class="s-body">
-    <h4 class="sub" style="margin-top:0">Предформовка</h4>
-    <div class="prose">
-      <p>Взвесьте тесто, разделите на порции — 600–700 г на буханку. Предформуйте, положите на стол швом вниз, накройте миской на <strong>15 минут</strong>.</p>
-    </div>
-    <div class="soc-card">
-      <div class="soc-platform">Instagram</div>
-      <div class="soc-info">
-        <div class="title">Предформовка теста</div>
-        <div class="desc">Как собрать тесто перед финальной формовкой.</div>
-        <a href="https://www.instagram.com/reel/DVLjhBGjL_4/?igsh=ODZiMml5OTJqYjI=" target="_blank" class="soc-btn">Открыть в Instagram →</a>
-      </div>
-    </div>
-
-    <h4 class="sub">Финальная формовка</h4>
-    <div class="prose">
-      <p>Важно создать натяжение поверхности — хлеб красиво раскроется в духовке. Для утятницы — батон, для круглого казана — шар.</p>
-    </div>
-    <h4 class="sub">Холодная ферментация</h4>
-    <div class="prose">
-      <p>Сложите сформованный хлеб в расстоечную корзину или миску с полотенцем, посыпанным рисовой мукой. Уберите в холодильник на <strong>ночь — 8–16 часов</strong>.</p>
-    </div>
-    <div class="callout">Медленный подъём в холоде развивает вкус и аромат. Надрезы получаются чёткими. Можно спокойно лечь спать.</div>
-  </div>
-</div>
-
-<!-- ── 9. ВЫПЕЧКА ── -->
-<div class="section" id="baking">
-  <div class="s-hdr" onclick="toggleSec(this)">
-    <div class="s-num">09</div>
-    <div class="s-titles">
-      <div class="s-title">Выпечка</div>
-      <div class="s-sub">Температура, пар, время</div>
-    </div>
-    <div class="s-toggle">+</div>
-  </div>
-  <div class="s-body">
-    <div class="stat-row">
-      <div class="stat-item"><span class="stat-val">250°</span><span class="stat-key">температура</span></div>
-      <div class="stat-item"><span class="stat-val">30'</span><span class="stat-key">с паром, крышка</span></div>
-      <div class="stat-item"><span class="stat-val">25'</span><span class="stat-key">без пара</span></div>
-      <div class="stat-item"><span class="stat-val">60'</span><span class="stat-key">разогрев формы</span></div>
-    </div>
-    <ol class="lst" style="margin-top:1.2rem">
-      <li>Разогрейте духовку вместе с формой до 250°С — не менее 40–60 минут. Форма должна быть раскалённой.</li>
-      <li>Достаньте тесто из холодильника. Сделайте надрезы лезвием глубиной ~1 см.</li>
-      <li>На дно формы — несколько кубиков льда, сверху — пергамент с тестом. Накройте крышкой.</li>
-      <li>Выпекайте <strong>30 минут с крышкой</strong> — лёд тает, пар поднимается, хлеб раскрывается.</li>
-      <li>Снимите крышку, пеките ещё <strong>25 минут</strong> до золотистой корочки.</li>
-      <li>Остужайте на решётке <strong>минимум 1 час</strong> — мякиш ещё доходит внутри.</li>
-    </ol>
-    <div class="note">Гребень и блистеры на корочке, красивый мякиш с равномерными порами — признаки отличного хлеба.</div>
-    <div class="callout"><strong>Сколько буханок печь:</strong> минимум две — одну простую, вторую с добавкой (лук, оливки, семена). Лишний хлеб режьте кусочками и замораживайте: кусочек в тостер — вернёт свежесть и хруст.</div>
-  </div>
-</div>
-
-<!-- ── 10. ПОШАГОВЫЙ ПЛАН ── -->
-<div class="section">
-  <div class="s-hdr open" onclick="toggleSec(this)">
-    <div class="s-num">10</div>
+    <div class="s-num">03</div>
     <div class="s-titles">
       <div class="s-title">Пошаговый план выпечки</div>
       <div class="s-sub">Три дня — от закваски до готового хлеба</div>
     </div>
     <div class="s-toggle">+</div>
   </div>
-  <div class="s-body open">
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-time">День первый — вечер</div>
-        <div class="tl-title">Покормите закваску</div>
-        <div class="tl-desc">10 минут. Отделите нужное количество для выпечки (110 г × буханок). Оставьте подниматься.</div>
+  <div class="s-body">
+
+    <!-- ══ ДЕНЬ ПЕРВЫЙ ══ -->
+    <div class="day-label">День первый — вечер</div>
+
+    <div class="step-sec">
+      <div class="step-hdr" onclick="toggleStep(this)">
+        <span class="step-title">Покормите закваску</span>
+        <span class="step-toggle">+</span>
       </div>
-      <div class="tl-item">
-        <div class="tl-time">+ 2 часа</div>
-        <div class="tl-title">В холодильник на ночь</div>
-        <div class="tl-desc">Пару часов на кухне, потом в холодильник — закваска будет медленно расти до утра.</div>
+      <div class="step-body">
+        <div class="stat-row">
+          <div class="stat-item"><span class="stat-val">1:1:½</span><span class="stat-key">Закваска — мука — вода</span></div>
+          <div class="stat-item"><span class="stat-val">1×</span><span class="stat-key">в неделю</span></div>
+          <div class="stat-item"><span class="stat-val">50%</span><span class="stat-key">влажность</span></div>
+          <div class="stat-item"><span class="stat-val">×3</span><span class="stat-key">вырастает</span></div>
+        </div>
+        <div class="prose">
+          <p>Влейте воду к закваске, разбейте блендером до консистенции жидкой сметаны, добавьте муку и замесите. Оставьте при комнатной температуре на 4–8 часов, затем уберите в холодильник.</p>
+        </div>
+        <div class="note">Удобнее всего хранить в прозрачной стеклянной банке 1–1,5 л — так хорошо видно рост и пузырьки.</div>
+
+        <div class="video-block" style="margin-top:1.5rem">
+          <div class="video-label">Видео — как кормить и хранить закваску</div>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/6vTwfiyXIM8" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="video-desc">Пошаговый показ: пропорции, консистенция, как выглядит закваска на пике</p>
+        </div>
+
+        <h4 class="sub">Калькулятор кормления</h4>
+        <div class="calc">
+          <div class="calc-title">Сколько муки и воды нужно?</div>
+          <div class="calc-row">
+            <label>У меня есть закваски, г</label>
+            <input type="number" id="s-have" value="100" min="1" max="5000">
+          </div>
+          <button class="calc-btn" onclick="calcFeed()">Рассчитать</button>
+          <div class="calc-res" id="feed-res">
+            <div class="res-row"><span class="nm">Закваска</span><span class="am" id="f-s">—</span></div>
+            <div class="res-row"><span class="nm">Мука Макфа</span><span class="am" id="f-f">—</span></div>
+            <div class="res-row"><span class="nm">Вода фильтрованная</span><span class="am" id="f-w">—</span></div>
+            <div class="res-row"><span class="nm">Итого после кормления</span><span class="am" id="f-t">—</span></div>
+          </div>
+        </div>
+
+        <h4 class="sub">Закваска на пике — как понять</h4>
+        <div class="prose">
+          <p>Закваска готова к замесу когда поднялась куполом, вся в пузырях, увеличилась примерно в три раза. Выглядит активной и пышной.</p>
+          <p>Если стояла без кормления 2–4 дня — сначала покормите, дождитесь пика, только потом месите.</p>
+        </div>
+        <div class="callout"><strong>Float test:</strong> опустите ложку закваски в стакан воды — если всплыла, закваска на пике и готова к замесу.</div>
+
+        <h4 class="sub">Время подъёма при разной температуре</h4>
+        <table class="tbl">
+          <thead><tr><th>Температура</th><th>Время</th></tr></thead>
+          <tbody>
+            <tr><td>28°С — тепло</td><td>~4 часа</td></tr>
+            <tr><td>25°С</td><td>~4–6 часов</td></tr>
+            <tr><td>23°С</td><td>~5–7 часов</td></tr>
+            <tr><td>21°С</td><td>~8 часов</td></tr>
+            <tr><td>5°С — холодильник</td><td>~16–18 часов</td></tr>
+          </tbody>
+        </table>
       </div>
-      <div class="tl-item">
-        <div class="tl-time">День второй — первая половина</div>
-        <div class="tl-title">Закваска на пике → замес</div>
-        <div class="tl-desc">Разбейте закваску с водой блендером. Добавьте муку и соль. Замесите. Автолиз 1 час или миксер 20 мин.</div>
+    </div><!-- /step-sec -->
+
+    <!-- Чеклист дня 1 -->
+    <div class="plan-cl-wrap">
+      <div class="cl-day-hdr" id="clD-hdr" onclick="chkDay('clD',3)">
+        <input type="checkbox" id="clD-cb" onclick="event.stopPropagation()" onchange="chkDay('clD',3)">
+        <span>Итого за первый день</span>
       </div>
-      <div class="tl-item">
-        <div class="tl-time">+ 1 час</div>
-        <div class="tl-title">Ламинирование</div>
-        <div class="tl-desc">Растяните тесто, при желании добавьте лук, оливки. Сложите, верните в миску.</div>
+      <ul class="cl cl-sm" id="clD" data-tot="3" data-hdr="clD-hdr">
+        <li onclick="chk(this,'clD',0)"><input type="checkbox"><span>Покормили закваску — 10 минут</span></li>
+        <li onclick="chk(this,'clD',1)"><input type="checkbox"><span>Отложили нужное количество для выпечки (110 г × буханок)</span></li>
+        <li onclick="chk(this,'clD',2)"><input type="checkbox"><span>Оставили подниматься, затем убрали в холодильник на ночь</span></li>
+      </ul>
+      <div class="cl-prog" id="clD-prog">0 из 3</div>
+      <div class="prog-bar"><div class="prog-fill" id="clD-bar" style="width:0%"></div></div>
+    </div>
+
+    <!-- Иллюстрация 1 -->
+    <div class="day-div day-div-s">
+      <svg viewBox="0 0 900 148" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="hst1b" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+            <rect width="6" height="6" fill="#C4503A"/>
+            <line x1="0" y1="0" x2="6" y2="0" stroke="#F5EDE0" stroke-width="1.8"/>
+          </pattern>
+          <clipPath id="cp-Ib">
+            <rect x="38" y="14" width="108" height="16"/>
+            <rect x="74" y="14" width="36" height="120"/>
+            <rect x="38" y="118" width="108" height="16"/>
+          </clipPath>
+        </defs>
+        <rect width="900" height="148" fill="#F5EDE0"/>
+        <rect x="38" y="14" width="108" height="16" fill="#DDD0C0"/>
+        <rect x="74" y="14" width="36" height="120" fill="#DDD0C0"/>
+        <rect x="38" y="118" width="108" height="16" fill="#DDD0C0"/>
+        <rect x="0" y="0" width="200" height="148" fill="url(#hst1b)" clip-path="url(#cp-Ib)"/>
+        <path d="M 198,136 Q 262,58 326,136" stroke="#C4503A" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <path d="M 215,136 Q 279,38 343,136" stroke="#C4503A" stroke-width="2.5" fill="none" opacity=".55" stroke-linecap="round"/>
+        <path d="M 232,136 Q 296,18 360,136" stroke="#C4503A" stroke-width="1.4" fill="none" opacity=".3" stroke-linecap="round"/>
+        <circle cx="430" cy="56" r="15" fill="#C4503A" opacity=".9"/>
+        <circle cx="468" cy="36" r="9.5" fill="#C4503A" opacity=".65"/>
+        <circle cx="404" cy="84" r="7" fill="#C4503A" opacity=".5"/>
+        <circle cx="455" cy="90" r="5" fill="#C4503A" opacity=".45"/>
+        <circle cx="488" cy="65" r="4" fill="#C4503A" opacity=".35"/>
+        <circle cx="415" cy="108" r="3" fill="#C4503A" opacity=".25"/>
+        <line x1="554" y1="24" x2="820" y2="24" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
+        <line x1="554" y1="30" x2="820" y2="30" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
+        <line x1="554" y1="36" x2="820" y2="36" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
+        <line x1="554" y1="42" x2="820" y2="42" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
+        <line x1="554" y1="48" x2="820" y2="48" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
+        <line x1="554" y1="54" x2="820" y2="54" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
+        <line x1="554" y1="60" x2="820" y2="60" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
+        <line x1="554" y1="66" x2="820" y2="66" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
+        <line x1="554" y1="72" x2="820" y2="72" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
+        <line x1="554" y1="78" x2="820" y2="78" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
+        <line x1="554" y1="84" x2="820" y2="84" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
+        <line x1="554" y1="90" x2="820" y2="90" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
+        <line x1="554" y1="96" x2="820" y2="96" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
+        <line x1="554" y1="102" x2="820" y2="102" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
+        <line x1="554" y1="108" x2="820" y2="108" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
+        <line x1="554" y1="114" x2="820" y2="114" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
+        <line x1="554" y1="120" x2="820" y2="120" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
+        <line x1="554" y1="126" x2="820" y2="126" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
+        <text x="848" y="118" font-family="'Playfair Display', serif" font-size="9.5" letter-spacing="3" fill="#C4503A" opacity=".6" transform="rotate(-90,848,118)">ДЕНЬ ПЕРВЫЙ</text>
+        <rect x="0" y="143" width="900" height="5" fill="#C4503A"/>
+      </svg>
+    </div>
+
+    <!-- ══ ДЕНЬ ВТОРОЙ ══ -->
+    <div class="day-label">День второй</div>
+
+    <div class="step-sec">
+      <div class="step-hdr" onclick="toggleStep(this)">
+        <span class="step-title">Чеклист перед замесом</span>
+        <span class="step-toggle">+</span>
       </div>
-      <div class="tl-item">
-        <div class="tl-time">+ 40 мин × 3</div>
-        <div class="tl-title">Три обминки катушкой</div>
-        <div class="tl-desc">Каждые 40 минут — быстро обомните и уходите. Тесто становится пышным.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">+ 40 мин</div>
-        <div class="tl-title">Предформовка — 15 минут отдыха</div>
-        <div class="tl-desc">Взвесьте по 600–700 г на буханку. Предформуйте. Накройте миской на 15 минут.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">+ 15 мин</div>
-        <div class="tl-title">Финальная формовка → холодильник</div>
-        <div class="tl-desc">Сформуйте, создайте натяжение. В корзину с полотенцем и рисовой мукой. Уберите в холодильник на ночь.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">День третий — утром</div>
-        <div class="tl-title">Разогреть духовку 250°С — 40–60 минут</div>
-        <div class="tl-desc">Форму оставьте внутри — она должна быть раскалённой.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">+ 40–60 мин</div>
-        <div class="tl-title">Надрезы → выпечка с паром 30 минут</div>
-        <div class="tl-desc">Лёд на дно, пергамент с тестом, надрезы, крышка закрыта.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">+ 30 мин</div>
-        <div class="tl-title">Снять крышку → ещё 25 минут</div>
-        <div class="tl-desc">До золотисто-коричневой хрустящей корочки.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-time">+ 25 мин</div>
-        <div class="tl-title">Остужать на решётке минимум 1 час</div>
-        <div class="tl-desc">Не режь горячий — мякиш ещё доходит внутри.</div>
+      <div class="step-body">
+        <ul class="cl cl-sm" id="clS">
+          <li onclick="chk(this,'clS',0)"><input type="checkbox"><span>Закваска активная — поднялась куполом, пузырчатая, на пике</span></li>
+          <li onclick="chk(this,'clS',1)"><input type="checkbox"><span>Нужное количество закваски (110 г на каждую буханку)</span></li>
+          <li onclick="chk(this,'clS',2)"><input type="checkbox"><span>Вода взвешена — фильтрованная или бутилированная</span></li>
+          <li onclick="chk(this,'clS',3)"><input type="checkbox"><span>Мука взвешена: пшеничная и цельнозерновая</span></li>
+          <li onclick="chk(this,'clS',4)"><input type="checkbox"><span>Соль — 11 г на каждую буханку</span></li>
+          <li onclick="chk(this,'clS',5)"><input type="checkbox"><span>Форма для выпечки — утятница или казан с крышкой</span></li>
+          <li onclick="chk(this,'clS',6)"><input type="checkbox"><span>Пергамент нарезан</span></li>
+          <li onclick="chk(this,'clS',7)"><input type="checkbox"><span>Полотенце или расстоечная корзина с рисовой мукой</span></li>
+          <li onclick="chk(this,'clS',8)"><input type="checkbox"><span>Впереди около трёх часов дома — замес и обминки</span></li>
+          <li onclick="chk(this,'clS',9)"><input type="checkbox"><span>Температура кухни 23–28°С</span></li>
+        </ul>
+        <div class="cl-prog" id="clS-prog">0 из 10</div>
+        <div class="prog-bar"><div class="prog-fill" id="clS-bar" style="width:0%"></div></div>
+        <button class="cl-reset" onclick="resetCl('clS',10)">Сбросить</button>
       </div>
     </div>
+
+    <div class="step-sec">
+      <div class="step-hdr" onclick="toggleStep(this)">
+        <span class="step-title">Калькулятор рецепта</span>
+        <span class="step-toggle">+</span>
+      </div>
+      <div class="step-body">
+        <div class="callout">
+          Базовый рецепт (~1056 г теста) — на <strong>две небольшие буханки</strong> или <strong>один большой каравай</strong> (готовый хлеб ~700 г).
+          <br>500 г пшеничной + 50 г цельнозерновой + 385 г воды + 110 г закваски + 11 г соли.
+        </div>
+        <div class="calc">
+          <div class="calc-title">Рецепт хлеба</div>
+          <div class="calc-row">
+            <label>Количество буханок</label>
+            <input type="number" id="loaves" value="2" min="1" max="20">
+          </div>
+          <div class="calc-row">
+            <label>Ржаная мука</label>
+            <select id="rye">
+              <option value="0">Без ржаной — первая попытка</option>
+              <option value="1">С ржаной, пропорция 70/20/10</option>
+            </select>
+          </div>
+          <button class="calc-btn" onclick="calcRecipe()">Рассчитать</button>
+          <div class="calc-res" id="r-res">
+            <div class="res-row"><span class="nm">Закваска — на пике!</span><span class="am" id="r-s">—</span></div>
+            <div class="res-row"><span class="nm">Пшеничная мука Макфа</span><span class="am" id="r-f1">—</span></div>
+            <div class="res-row"><span class="nm">Цельнозерновая мука</span><span class="am" id="r-f2">—</span></div>
+            <div class="res-row" id="rye-row" style="display:none"><span class="nm">Ржаная мука</span><span class="am" id="r-f3">—</span></div>
+            <div class="res-row"><span class="nm">Вода</span><span class="am" id="r-w">—</span></div>
+            <div class="res-row"><span class="nm">Соль</span><span class="am" id="r-salt">—</span></div>
+            <div class="res-row"><span class="nm">Итого теста</span><span class="am" id="r-tot">—</span></div>
+            <p class="res-note">Оставьте <span id="r-left">—</span> закваски — покормите её после выпечки.</p>
+          </div>
+        </div>
+        <h4 class="sub">Пересчёт для хлебопечки — с дрожжей на закваску</h4>
+        <div class="prose" style="margin-bottom:1rem">
+          <p>Закваска ЛМ влажностью 50% — две части муки и одна часть воды. Закваски берём <strong>25–30% от суммы муки и воды</strong>.</p>
+        </div>
+        <div class="calc">
+          <div class="calc-title">Рецепт для хлебопечки</div>
+          <div class="calc-row">
+            <label>Мука в рецепте, г</label>
+            <input type="number" id="hb-f" value="550" min="100">
+          </div>
+          <div class="calc-row">
+            <label>Вода в рецепте, г</label>
+            <input type="number" id="hb-w" value="385" min="50">
+          </div>
+          <div class="calc-row">
+            <label>Доля закваски</label>
+            <select id="hb-p">
+              <option value="25">25% — осторожный вариант</option>
+              <option value="30" selected>30% — максимум</option>
+            </select>
+          </div>
+          <button class="calc-btn" onclick="calcHB()">Рассчитать</button>
+          <div class="calc-res" id="hb-res">
+            <div class="res-row"><span class="nm">Закваска Левито Мадре</span><span class="am" id="hb-s">—</span></div>
+            <div class="res-row"><span class="nm">Мука — скорректировано</span><span class="am" id="hb-fl">—</span></div>
+            <div class="res-row"><span class="nm">Вода — скорректировано</span><span class="am" id="hb-wt">—</span></div>
+            <div class="res-row"><span class="nm">Соль</span><span class="am">оставьте из оригинала</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-sec">
+      <div class="step-hdr" onclick="toggleStep(this)">
+        <span class="step-title">Замес теста</span>
+        <span class="step-toggle">+</span>
+      </div>
+      <div class="step-body">
+        <div class="video-block" style="margin-bottom:1.5rem">
+          <div class="video-label">Видео — полный рецепт хлеба на Левито Мадре</div>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/eS9S2ZWIS7c" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="video-desc">Весь процесс от замеса до выпечки — хороший ориентир перед первым разом</p>
+        </div>
+        <div class="prose">
+          <p>Разбейте закваску с водой блендером до однородной консистенции. Добавьте муку и соль — замесите тесто.</p>
+          <p><strong>Руками:</strong> автолиз 1 час, затем 2–3 подхода по 10 «отбивок» с паузами 5 минут. Тесто постепенно становится гладким и эластичным.</p>
+          <p><strong>Миксер:</strong> без автолиза — около 20 минут с насадкой для теста.</p>
+        </div>
+        <div class="soc-card">
+          <div class="soc-platform">Instagram</div>
+          <div class="soc-info">
+            <div class="title">Замес на планетарном миксере</div>
+            <div class="desc">Как выглядит правильно развитая клейковина после 20 минут замеса.</div>
+            <a href="https://www.instagram.com/reel/DYB2A-aMJ3L/?igsh=MTk0dTRlbHpienFlbg==" target="_blank" class="soc-btn">Открыть в Instagram →</a>
+          </div>
+        </div>
+        <div class="note" style="margin-top:1rem"><strong>Глютеновое окно:</strong> аккуратно растяните кусок теста — если тянется не рвясь и слегка просвечивает, клейковина развита хорошо. Можно двигаться дальше.</div>
+      </div>
+    </div>
+
+    <div class="step-sec">
+      <div class="step-hdr" onclick="toggleStep(this)">
+        <span class="step-title">Ламинирование — через 40 минут после замеса</span>
+        <span class="step-toggle">+</span>
+      </div>
+      <div class="step-body">
+        <div class="prose">
+          <p>Растяните тесто на столе в тонкий пласт. Можно добавить начинку: жареный лук из ВкусВилла, оливки, семена — это хорошая возможность для экспериментов. Сложите и верните в миску. Рекомендуется делать всегда — даже без начинок.</p>
+        </div>
+        <div class="soc-card">
+          <div class="soc-platform">Instagram</div>
+          <div class="soc-info">
+            <div class="title">Ламинирование теста</div>
+            <div class="desc">Техника растяжки теста в тонкий пласт перед обминками.</div>
+            <a href="https://www.instagram.com/reel/DYaFUqzMbLq/?igsh=aDFpdjN4NjZsNDZx" target="_blank" class="soc-btn">Открыть в Instagram →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-sec">
+      <div class="step-hdr" onclick="toggleStep(this)">
+        <span class="step-title">Обминки катушкой — три раза через 40 минут</span>
+        <span class="step-toggle">+</span>
+      </div>
+      <div class="step-body">
+        <div class="prose">
+          <p>Интервал не обязательно строго 30 минут — 40–50 тоже хорошо. Тесто должно стать пышным и насыщенным воздухом.</p>
+        </div>
+        <div class="soc-card">
+          <div class="soc-platform">Instagram</div>
+          <div class="soc-info">
+            <div class="title">Обминка катушкой (coil fold)</div>
+            <div class="desc">Основная техника обминки во время ферментации — мягко, без агрессии.</div>
+            <a href="https://www.instagram.com/reel/DXKbYxBDMG5/?igsh=eWNxcmVocTJvYTY5" target="_blank" class="soc-btn">Открыть в Instagram →</a>
+          </div>
+        </div>
+        <div class="soc-card">
+          <div class="soc-platform">Facebook</div>
+          <div class="soc-info">
+            <div class="title">Техника работы с тестом</div>
+            <div class="desc">Дополнительное видео о технике хлебного теста.</div>
+            <a href="https://www.facebook.com/share/r/1XvYti5bar/" target="_blank" class="soc-btn">Открыть в Facebook →</a>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:1.5rem">
+          <strong>Примерный timeline:</strong> 0:00 Замес → 1:00 Ламинирование → 1:40 Обминка 1 → 2:20 Обминка 2 → 3:00 Обминка 3 → 3:40 Предформовка
+        </div>
+      </div>
+    </div>
+
+    <div class="step-sec">
+      <div class="step-hdr" onclick="toggleStep(this)">
+        <span class="step-title">Формовка и холодная ферментация</span>
+        <span class="step-toggle">+</span>
+      </div>
+      <div class="step-body">
+        <h4 class="sub" style="margin-top:0">Предформовка</h4>
+        <div class="prose">
+          <p>Взвесьте тесто и разделите на порции — 600–700 г на буханку. Сделайте предформовку, положите на стол швом вниз и накройте миской на <strong>15 минут</strong>, чтобы тесто расслабилось.</p>
+        </div>
+        <div class="soc-card">
+          <div class="soc-platform">Instagram</div>
+          <div class="soc-info">
+            <div class="title">Предформовка теста</div>
+            <div class="desc">Как собрать тесто перед финальной формовкой.</div>
+            <a href="https://www.instagram.com/reel/DVLjhBGjL_4/?igsh=ODZiMml5OTJqYjI=" target="_blank" class="soc-btn">Открыть в Instagram →</a>
+          </div>
+        </div>
+        <h4 class="sub">Финальная формовка</h4>
+        <div class="prose">
+          <p>Постарайтесь создать хорошее натяжение поверхности — тогда хлеб красиво раскроется в духовке. Для утятницы подойдёт форма батона, для круглого казана — шар.</p>
+        </div>
+        <h4 class="sub">Холодная ферментация</h4>
+        <div class="prose">
+          <p>Переложите сформованный хлеб в расстоечную корзину или миску с полотенцем, присыпанным рисовой мукой. Уберите в холодильник на <strong>ночь — 8–16 часов</strong>.</p>
+        </div>
+        <div class="callout">Медленный подъём в холоде развивает вкус и аромат. Надрезы получаются чёткими. Можно спокойно лечь спать.</div>
+      </div>
+    </div>
+
+    <!-- Чеклист дня 2 -->
+    <div class="plan-cl-wrap">
+      <div class="cl-day-hdr" id="clD2-hdr" onclick="chkDay('clD2',8)">
+        <input type="checkbox" id="clD2-cb" onclick="event.stopPropagation()" onchange="chkDay('clD2',8)">
+        <span>Итого за второй день</span>
+      </div>
+      <ul class="cl cl-sm" id="clD2" data-tot="8" data-hdr="clD2-hdr">
+        <li onclick="chk(this,'clD2',0)"><input type="checkbox"><span>Закваска на пике — купол, пузыри, выросла в три раза</span></li>
+        <li onclick="chk(this,'clD2',1)"><input type="checkbox"><span>Замесили тесто — блендер, мука, соль</span></li>
+        <li onclick="chk(this,'clD2',2)"><input type="checkbox"><span>Автолиз 1 час — или замес в миксере 20 минут</span></li>
+        <li onclick="chk(this,'clD2',3)"><input type="checkbox"><span>Сделали ламинирование</span></li>
+        <li onclick="chk(this,'clD2',4)"><input type="checkbox"><span>Три обминки катушкой — через каждые 40 минут</span></li>
+        <li onclick="chk(this,'clD2',5)"><input type="checkbox"><span>Предформовка — 15 минут отдыха</span></li>
+        <li onclick="chk(this,'clD2',6)"><input type="checkbox"><span>Финальная формовка</span></li>
+        <li onclick="chk(this,'clD2',7)"><input type="checkbox"><span>Убрали в холодильник на ночь</span></li>
+      </ul>
+      <div class="cl-prog" id="clD2-prog">0 из 8</div>
+      <div class="prog-bar"><div class="prog-fill" id="clD2-bar" style="width:0%"></div></div>
+    </div>
+
+    <!-- Иллюстрация 2 -->
+    <div class="day-div day-div-s">
+      <svg viewBox="0 0 900 148" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="hst2b" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+            <rect width="6" height="6" fill="#C4503A"/>
+            <line x1="0" y1="0" x2="6" y2="0" stroke="#F5EDE0" stroke-width="1.8"/>
+          </pattern>
+          <clipPath id="cp-IIb">
+            <rect x="28" y="14" width="34" height="120"/>
+            <rect x="28" y="14" width="112" height="15"/>
+            <rect x="28" y="119" width="112" height="15"/>
+            <rect x="106" y="14" width="34" height="120"/>
+          </clipPath>
+        </defs>
+        <rect width="900" height="148" fill="#F5EDE0"/>
+        <rect x="28" y="14" width="34" height="120" fill="#DDD0C0"/>
+        <rect x="28" y="14" width="112" height="15" fill="#DDD0C0"/>
+        <rect x="28" y="119" width="112" height="15" fill="#DDD0C0"/>
+        <rect x="106" y="14" width="34" height="120" fill="#DDD0C0"/>
+        <rect x="0" y="0" width="200" height="148" fill="url(#hst2b)" clip-path="url(#cp-IIb)"/>
+        <path d="M 190,134 Q 380,14 560,80 Q 660,114 740,46" stroke="#C4503A" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 210,134 Q 400,20 580,80 Q 680,112 760,46" stroke="#C4503A" stroke-width="2" fill="none" opacity=".35" stroke-linecap="round"/>
+        <rect x="790" y="14" width="72" height="120" fill="#C4503A"/>
+        <line x1="790" y1="28" x2="862" y2="28" stroke="#F5EDE0" stroke-width="2"/>
+        <line x1="790" y1="40" x2="862" y2="40" stroke="#F5EDE0" stroke-width="2"/>
+        <line x1="790" y1="52" x2="862" y2="52" stroke="#F5EDE0" stroke-width="2"/>
+        <line x1="790" y1="64" x2="862" y2="64" stroke="#F5EDE0" stroke-width="2"/>
+        <line x1="790" y1="76" x2="862" y2="76" stroke="#F5EDE0" stroke-width="2"/>
+        <line x1="790" y1="88" x2="862" y2="88" stroke="#F5EDE0" stroke-width="2"/>
+        <line x1="790" y1="100" x2="862" y2="100" stroke="#F5EDE0" stroke-width="2"/>
+        <line x1="790" y1="112" x2="862" y2="112" stroke="#F5EDE0" stroke-width="2"/>
+        <circle cx="618" cy="52" r="13" fill="#C4503A" opacity=".85"/>
+        <circle cx="652" cy="76" r="8" fill="#C4503A" opacity=".6"/>
+        <circle cx="636" cy="104" r="5.5" fill="#C4503A" opacity=".45"/>
+        <circle cx="670" cy="42" r="4" fill="#C4503A" opacity=".35"/>
+        <text x="776" y="118" font-family="'Playfair Display', serif" font-size="9.5" letter-spacing="3" fill="#C4503A" opacity=".55" transform="rotate(-90,776,118)">ДЕНЬ ВТОРОЙ</text>
+        <rect x="0" y="143" width="900" height="5" fill="#C4503A"/>
+      </svg>
+    </div>
+
+    <!-- ══ ДЕНЬ ТРЕТИЙ ══ -->
+    <div class="day-label">День третий — утро</div>
+
+    <div class="step-sec">
+      <div class="step-hdr" onclick="toggleStep(this)">
+        <span class="step-title">Выпечка</span>
+        <span class="step-toggle">+</span>
+      </div>
+      <div class="step-body">
+        <div class="stat-row">
+          <div class="stat-item"><span class="stat-val">250°</span><span class="stat-key">температура</span></div>
+          <div class="stat-item"><span class="stat-val">30'</span><span class="stat-key">с паром, крышка</span></div>
+          <div class="stat-item"><span class="stat-val">25'</span><span class="stat-key">без пара</span></div>
+          <div class="stat-item"><span class="stat-val">60'</span><span class="stat-key">разогрев формы</span></div>
+        </div>
+        <ol class="lst" style="margin-top:1.2rem">
+          <li>Разогрейте духовку вместе с формой до 250°С — не менее 40–60 минут. Форма должна быть раскалённой.</li>
+          <li>Достаньте тесто из холодильника. Сделайте надрезы лезвием глубиной ~1 см.</li>
+          <li>На дно формы — несколько кубиков льда, сверху — пергамент с тестом. Накройте крышкой.</li>
+          <li>Выпекайте <strong>30 минут с крышкой</strong> — лёд тает, пар поднимается, хлеб раскрывается.</li>
+          <li>Снимите крышку, пеките ещё <strong>25 минут</strong> до золотистой корочки.</li>
+          <li>Остужайте на решётке <strong>минимум 1 час</strong> — мякиш ещё доходит внутри.</li>
+        </ol>
+        <div class="note">Гребень и блистеры на корочке, воздушный мякиш с равномерными порами — всё это признаки того, что хлеб получился хорошо. Так и должно быть.</div>
+        <div class="callout"><strong>Сколько буханок печь:</strong> хорошая идея — сразу минимум две: одну простую, вторую с добавкой (лук, оливки, семена). Лишний хлеб можно нарезать кусочками и заморозить: разогретый в тостере, он снова становится хрустящим.</div>
+      </div>
+    </div>
+
+    <!-- Чеклист дня 3 -->
+    <div class="plan-cl-wrap">
+      <div class="cl-day-hdr" id="clD3-hdr" onclick="chkDay('clD3',5)">
+        <input type="checkbox" id="clD3-cb" onclick="event.stopPropagation()" onchange="chkDay('clD3',5)">
+        <span>Итого за третий день</span>
+      </div>
+      <ul class="cl cl-sm" id="clD3" data-tot="5" data-hdr="clD3-hdr">
+        <li onclick="chk(this,'clD3',0)"><input type="checkbox"><span>Разогрели духовку с формой до 250°С — 40–60 минут</span></li>
+        <li onclick="chk(this,'clD3',1)"><input type="checkbox"><span>Сделали надрезы лезвием</span></li>
+        <li onclick="chk(this,'clD3',2)"><input type="checkbox"><span>Выпекали 30 минут с паром, крышка закрыта</span></li>
+        <li onclick="chk(this,'clD3',3)"><input type="checkbox"><span>Сняли крышку, выпекали ещё 25 минут</span></li>
+        <li onclick="chk(this,'clD3',4)"><input type="checkbox"><span>Остудили на решётке минимум час</span></li>
+      </ul>
+      <div class="cl-prog" id="clD3-prog">0 из 5</div>
+      <div class="prog-bar"><div class="prog-fill" id="clD3-bar" style="width:0%"></div></div>
+    </div>
+
+    <!-- Иллюстрация 3 -->
+    <div class="day-div day-div-s">
+      <svg viewBox="0 0 900 180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="900" height="180" fill="#C4503A"/>
+        <line x1="0" y1="18" x2="900" y2="18" stroke="#B8432E" stroke-width="1.2"/>
+        <line x1="0" y1="30" x2="900" y2="30" stroke="#B8432E" stroke-width="1.2"/>
+        <line x1="0" y1="42" x2="900" y2="42" stroke="#B8432E" stroke-width="1.2"/>
+        <line x1="0" y1="54" x2="900" y2="54" stroke="#B8432E" stroke-width="1.2"/>
+        <line x1="0" y1="66" x2="900" y2="66" stroke="#B8432E" stroke-width="1.2"/>
+        <line x1="0" y1="78" x2="900" y2="78" stroke="#B8432E" stroke-width="1.2"/>
+        <line x1="0" y1="90" x2="900" y2="90" stroke="#B8432E" stroke-width="1.2"/>
+        <line x1="0" y1="102" x2="900" y2="102" stroke="#B8432E" stroke-width="1.2"/>
+        <line x1="0" y1="114" x2="900" y2="114" stroke="#B8432E" stroke-width="1.2"/>
+        <line x1="0" y1="126" x2="900" y2="126" stroke="#B8432E" stroke-width="1.2"/>
+        <line x1="0" y1="138" x2="900" y2="138" stroke="#B8432E" stroke-width="1.2"/>
+        <line x1="0" y1="150" x2="900" y2="150" stroke="#B8432E" stroke-width="1.2"/>
+        <line x1="0" y1="162" x2="900" y2="162" stroke="#B8432E" stroke-width="1.2"/>
+        <ellipse cx="450" cy="178" rx="284" ry="172" fill="#FAF7F0"/>
+        <ellipse cx="450" cy="178" rx="260" ry="155" fill="#F5EEDE"/>
+        <path d="M 348,70 Q 400,52 452,66" stroke="#1A1612" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".7"/>
+        <path d="M 388,57 Q 446,40 500,56" stroke="#1A1612" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".5"/>
+        <circle cx="390" cy="112" r="18" fill="none" stroke="#C4503A" stroke-width="1.8" opacity=".65"/>
+        <circle cx="438" cy="96" r="12" fill="none" stroke="#C4503A" stroke-width="1.5" opacity=".6"/>
+        <circle cx="482" cy="118" r="22" fill="none" stroke="#C4503A" stroke-width="1.8" opacity=".65"/>
+        <circle cx="420" cy="140" r="9" fill="none" stroke="#C4503A" stroke-width="1.2" opacity=".45"/>
+        <circle cx="462" cy="148" r="14" fill="none" stroke="#C4503A" stroke-width="1.5" opacity=".5"/>
+        <circle cx="510" cy="132" r="10" fill="none" stroke="#C4503A" stroke-width="1.2" opacity=".45"/>
+        <circle cx="360" cy="130" r="8" fill="none" stroke="#C4503A" stroke-width="1.2" opacity=".4"/>
+        <circle cx="502" cy="96" r="8" fill="none" stroke="#C4503A" stroke-width="1.2" opacity=".45"/>
+        <text x="70" y="104" font-family="'Playfair Display', serif" font-size="78" font-weight="900" fill="#FAF7F0" opacity=".15" letter-spacing="-4">III</text>
+        <text x="70" y="104" font-family="'Playfair Display', serif" font-size="78" font-weight="900" fill="none" stroke="#FAF7F0" stroke-width="1" opacity=".4" letter-spacing="-4">III</text>
+        <text x="70" y="30" font-family="'Playfair Display', serif" font-size="9.5" letter-spacing="4.5" fill="#FAF7F0" opacity=".65">ДЕНЬ ТРЕТИЙ</text>
+        <rect x="70" y="112" width="13" height="13" fill="#FAF7F0" opacity=".5"/>
+        <rect x="0" y="0" width="900" height="5" fill="#FAF7F0" opacity=".25"/>
+      </svg>
+    </div>
+
+    <!-- Финальный чеклист -->
+    <div class="plan-cl-wrap">
+      <div style="font-family:var(--display);font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:1rem;letter-spacing:-.01em;">Финальный чеклист — все три дня</div>
+
+      <div class="cl-day-hdr" id="clF1-hdr" onclick="chkDay('clF1',2)">
+        <input type="checkbox" id="clF1-cb" onclick="event.stopPropagation()" onchange="chkDay('clF1',2)">
+        <span>День первый — вечер</span>
+      </div>
+      <ul class="cl cl-sm" id="clF1" data-tot="2" data-hdr="clF1-hdr">
+        <li onclick="chk(this,'clF1',0)"><input type="checkbox"><span>Покормите закваску</span></li>
+        <li onclick="chk(this,'clF1',1)"><input type="checkbox"><span>Отложите нужное количество для выпечки — 110 г × кол-во буханок</span></li>
+      </ul>
+      <div class="cl-prog" id="clF1-prog">0 из 2</div>
+      <div class="prog-bar"><div class="prog-fill" id="clF1-bar" style="width:0%"></div></div>
+
+      <div class="cl-day-hdr" id="clF2-hdr" style="margin-top:1.8rem" onclick="chkDay('clF2',11)">
+        <input type="checkbox" id="clF2-cb" onclick="event.stopPropagation()" onchange="chkDay('clF2',11)">
+        <span>День второй — весь день</span>
+      </div>
+      <ul class="cl cl-sm" id="clF2" data-tot="11" data-hdr="clF2-hdr">
+        <li onclick="chk(this,'clF2',0)"><input type="checkbox"><span>Закваска на пике — купол, пузыри, выросла в три раза</span></li>
+        <li onclick="chk(this,'clF2',1)"><input type="checkbox"><span>Разбейте закваску с водой блендером</span></li>
+        <li onclick="chk(this,'clF2',2)"><input type="checkbox"><span>Добавьте муку и соль, замесите тесто</span></li>
+        <li onclick="chk(this,'clF2',3)"><input type="checkbox"><span>Автолиз 1 час — или замес в миксере 20 минут</span></li>
+        <li onclick="chk(this,'clF2',4)"><input type="checkbox"><span>Сделайте ламинирование</span></li>
+        <li onclick="chk(this,'clF2',5)"><input type="checkbox"><span>Обминка катушкой — первая</span></li>
+        <li onclick="chk(this,'clF2',6)"><input type="checkbox"><span>Обминка катушкой — вторая</span></li>
+        <li onclick="chk(this,'clF2',7)"><input type="checkbox"><span>Обминка катушкой — третья</span></li>
+        <li onclick="chk(this,'clF2',8)"><input type="checkbox"><span>Предформовка — 15 минут отдыха</span></li>
+        <li onclick="chk(this,'clF2',9)"><input type="checkbox"><span>Финальная формовка</span></li>
+        <li onclick="chk(this,'clF2',10)"><input type="checkbox"><span>Уберите тесто в холодильник на ночь</span></li>
+      </ul>
+      <div class="cl-prog" id="clF2-prog">0 из 11</div>
+      <div class="prog-bar"><div class="prog-fill" id="clF2-bar" style="width:0%"></div></div>
+
+      <div class="cl-day-hdr" id="clF3-hdr" style="margin-top:1.8rem" onclick="chkDay('clF3',6)">
+        <input type="checkbox" id="clF3-cb" onclick="event.stopPropagation()" onchange="chkDay('clF3',6)">
+        <span>День третий — утро</span>
+      </div>
+      <ul class="cl cl-sm" id="clF3" data-tot="6" data-hdr="clF3-hdr">
+        <li onclick="chk(this,'clF3',0)"><input type="checkbox"><span>Разогрейте духовку и форму до 250°С — 40–60 минут</span></li>
+        <li onclick="chk(this,'clF3',1)"><input type="checkbox"><span>Сделайте надрезы лезвием</span></li>
+        <li onclick="chk(this,'clF3',2)"><input type="checkbox"><span>Выпекайте 30 минут с паром, крышка закрыта</span></li>
+        <li onclick="chk(this,'clF3',3)"><input type="checkbox"><span>Снимите крышку, выпекайте ещё 25 минут</span></li>
+        <li onclick="chk(this,'clF3',4)"><input type="checkbox"><span>Остудите на решётке минимум час</span></li>
+        <li onclick="chk(this,'clF3',5)"><input type="checkbox"><span>Оставьте 80–100 г закваски — покормите после</span></li>
+      </ul>
+      <div class="cl-prog" id="clF3-prog">0 из 6</div>
+      <div class="prog-bar"><div class="prog-fill" id="clF3-bar" style="width:0%"></div></div>
+
+      <button class="cl-reset" style="margin-top:1.2rem"
+        onclick="resetCl('clD',3);resetCl('clD2',8);resetCl('clD3',5);resetCl('clF1',2);resetCl('clF2',11);resetCl('clF3',6)">Сбросить всё</button>
+    </div>
+
   </div>
 </div>
-
-<!-- ── 11. ФИНАЛЬНЫЙ ЧЕКЛИСТ ── -->
-<div class="section" id="checklist">
-  <div class="s-hdr open" onclick="toggleSec(this)">
-    <div class="s-num">11</div>
-    <div class="s-titles">
-      <div class="s-title">Финальный чеклист</div>
-      <div class="s-sub">Все шаги выпечки по порядку</div>
-    </div>
-    <div class="s-toggle">+</div>
-  </div>
-  <div class="s-body open">
-
-    <div class="cl-day-hdr" id="clF1-hdr" onclick="chkDay('clF1',2)">
-      <input type="checkbox" id="clF1-cb" onclick="event.stopPropagation()">
-      <span>День первый — вечер</span>
-    </div>
-    <ul class="cl cl-sm" id="clF1" data-tot="2" data-hdr="clF1-hdr">
-      <li onclick="chk(this,'clF1',0)"><input type="checkbox"><span>Покормите закваску</span></li>
-      <li onclick="chk(this,'clF1',1)"><input type="checkbox"><span>Отложите нужное количество для выпечки — 110 г × кол-во буханок</span></li>
-    </ul>
-    <div class="cl-prog" id="clF1-prog">0 из 2</div>
-    <div class="prog-bar"><div class="prog-fill" id="clF1-bar" style="width:0%"></div></div>
-
-    <div class="cl-day-hdr" id="clF2-hdr" style="margin-top:1.8rem" onclick="chkDay('clF2',11)">
-      <input type="checkbox" id="clF2-cb" onclick="event.stopPropagation()">
-      <span>День второй — весь день</span>
-    </div>
-    <ul class="cl cl-sm" id="clF2" data-tot="11" data-hdr="clF2-hdr">
-      <li onclick="chk(this,'clF2',0)"><input type="checkbox"><span>Закваска на пике — купол, пузыри, выросла в три раза</span></li>
-      <li onclick="chk(this,'clF2',1)"><input type="checkbox"><span>Разбейте закваску с водой блендером</span></li>
-      <li onclick="chk(this,'clF2',2)"><input type="checkbox"><span>Добавьте муку и соль, замесите тесто</span></li>
-      <li onclick="chk(this,'clF2',3)"><input type="checkbox"><span>Автолиз 1 час — или замес в миксере 20 минут</span></li>
-      <li onclick="chk(this,'clF2',4)"><input type="checkbox"><span>Сделайте ламинирование</span></li>
-      <li onclick="chk(this,'clF2',5)"><input type="checkbox"><span>Обминка катушкой — первая</span></li>
-      <li onclick="chk(this,'clF2',6)"><input type="checkbox"><span>Обминка катушкой — вторая</span></li>
-      <li onclick="chk(this,'clF2',7)"><input type="checkbox"><span>Обминка катушкой — третья</span></li>
-      <li onclick="chk(this,'clF2',8)"><input type="checkbox"><span>Предформовка — 15 минут отдыха</span></li>
-      <li onclick="chk(this,'clF2',9)"><input type="checkbox"><span>Финальная формовка</span></li>
-      <li onclick="chk(this,'clF2',10)"><input type="checkbox"><span>Уберите тесто в холодильник на ночь</span></li>
-    </ul>
-    <div class="cl-prog" id="clF2-prog">0 из 11</div>
-    <div class="prog-bar"><div class="prog-fill" id="clF2-bar" style="width:0%"></div></div>
-
-    <div class="cl-day-hdr" id="clF3-hdr" style="margin-top:1.8rem" onclick="chkDay('clF3',6)">
-      <input type="checkbox" id="clF3-cb" onclick="event.stopPropagation()">
-      <span>День третий — утро</span>
-    </div>
-    <ul class="cl cl-sm" id="clF3" data-tot="6" data-hdr="clF3-hdr">
-      <li onclick="chk(this,'clF3',0)"><input type="checkbox"><span>Разогрейте духовку и форму до 250°С — 40–60 минут</span></li>
-      <li onclick="chk(this,'clF3',1)"><input type="checkbox"><span>Сделайте надрезы лезвием</span></li>
-      <li onclick="chk(this,'clF3',2)"><input type="checkbox"><span>Выпекайте 30 минут с паром, крышка закрыта</span></li>
-      <li onclick="chk(this,'clF3',3)"><input type="checkbox"><span>Снимите крышку, выпекайте ещё 25 минут</span></li>
-      <li onclick="chk(this,'clF3',4)"><input type="checkbox"><span>Остудите на решётке минимум час</span></li>
-      <li onclick="chk(this,'clF3',5)"><input type="checkbox"><span>Оставьте 80–100 г закваски — покормите после</span></li>
-    </ul>
-    <div class="cl-prog" id="clF3-prog">0 из 6</div>
-    <div class="prog-bar"><div class="prog-fill" id="clF3-bar" style="width:0%"></div></div>
-
-    <button class="cl-reset" style="margin-top:1.2rem"
-      onclick="resetCl('clF1',2);resetCl('clF2',11);resetCl('clF3',6)">Сбросить всё</button>
-  </div>
-</div>
-
 
 </div><!-- /sections-wrap -->
 </main>
@@ -1441,6 +1510,7 @@ footer{
 <script>
 // ── SECTIONS ──
 function toggleSec(h){h.classList.toggle('open');h.nextElementSibling.classList.toggle('open')}
+function toggleStep(h){h.classList.toggle('open');h.nextElementSibling.classList.toggle('open')}
 function toggleAll(){
   const btn=document.getElementById('toggleAllBtn');
   const open=btn.dataset.state==='open';
@@ -1457,7 +1527,7 @@ function navClick(id){
   if(h&&!h.classList.contains('open')){h.classList.add('open');h.nextElementSibling.classList.add('open')}
 }
 // ── ACTIVE NAV ──
-const NAV_IDS=['starter','flour','tools','calc','kneading','baking','checklist'];
+const NAV_IDS=['starter','flour','plan'];
 window.addEventListener('scroll',()=>{
   let cur='';
   NAV_IDS.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=80)cur=id;});
@@ -1519,7 +1589,9 @@ function loadCl(id,tot){
   updP(id,tot);
   updDayHdr(id,tot);
 }
-loadCl('clS',10);loadCl('clF1',2);loadCl('clF2',11);loadCl('clF3',6);loadCl('clD',3);loadCl('clD2',8);loadCl('clD3',5);
+loadCl('clS',10);
+loadCl('clF1',2);loadCl('clF2',11);loadCl('clF3',6);
+loadCl('clD',3);loadCl('clD2',8);loadCl('clD3',5);
 // ── CALC: FEEDING ──
 function calcFeed(){
   const h=parseFloat(document.getElementById('s-have').value)||0;if(!h)return;
