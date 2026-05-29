@@ -188,11 +188,17 @@ main{max-width:960px;margin:0 auto;padding:0 2rem 6rem}
 ul.lst,ol.lst{padding-left:1.4rem;margin:.8rem 0}
 ul.lst li,ol.lst li{margin-bottom:.5rem;font-size:1rem;color:var(--ink2)}
 h4.sub{
-  font-family:var(--serif);font-size:1.25rem;
+  font-family:var(--serif);font-size:1.2rem;
   font-weight:400;color:var(--ink);
-  margin:2rem 0 .8rem;letter-spacing:-.01em;
-  padding-left:.8rem;
-  border-left:2px solid var(--gold);
+  margin:2.4rem 0 1rem;letter-spacing:-.01em;
+}
+h4.sub::before{
+  content:'✦';
+  font-size:.65rem;
+  color:var(--gold);
+  margin-right:.55rem;
+  vertical-align:middle;
+  position:relative;top:-.1em;
 }
 
 /* ═══ CALLOUT ═══ */
@@ -252,38 +258,61 @@ h4.sub{
   font-family:var(--serif);font-size:1.05rem;color:var(--ink);
 }
 
+/* ═══ FLOUR CARD ═══ */
+.flour-card{
+  background:var(--goldbg);
+  border:1px solid #E8D8D2;
+  padding:1.6rem 1.8rem 1.4rem;
+  margin-bottom:2.5rem;
+}
+.flour-card .callout{
+  background:#F0E8E4;
+  margin-bottom:0;
+}
+
 /* ═══ FLOUR LIST ═══ */
-.flour-list{margin:1.5rem 0}
+.flour-list{margin:.8rem 0}
 .flour-item{
-  display:flex;gap:2rem;align-items:baseline;
-  padding:1.3rem 0;border-bottom:1px solid var(--linelt);
+  display:flex;gap:1.4rem;align-items:baseline;
+  padding:.8rem 0;border-bottom:1px solid var(--linelt);
 }
 .flour-pct{
-  font-family:var(--serif);font-size:2.6rem;
+  font-family:var(--serif);font-size:2rem;
   font-weight:300;color:var(--gold);
-  min-width:3.5rem;line-height:1;flex-shrink:0;
+  min-width:3rem;line-height:1;flex-shrink:0;
 }
-.flour-name{font-size:1rem;color:var(--ink);margin-bottom:.25rem;font-weight:500}
+.flour-name{font-size:1rem;color:var(--ink);margin-bottom:.15rem;font-weight:500}
 .flour-brand{font-size:.82rem;color:var(--ink3);letter-spacing:.02em}
-.flour-note{font-size:.88rem;color:var(--ink2);margin-top:.3rem;font-style:italic}
+.flour-note{font-size:.88rem;color:var(--ink2);margin-top:.2rem;font-style:italic}
 
-/* ═══ TOOL LIST ═══ */
-.tool-cols{
-  display:grid;grid-template-columns:1fr 1fr;gap:2rem;
-  margin:1.2rem 0;
+/* ═══ NEED LIST ═══ */
+.need-list{
+  list-style:none;
+  counter-reset:need;
+  margin:0;padding:0;
 }
-.tool-col-title{
-  font-size:.72rem;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--ink3);
-  padding-bottom:.7rem;border-bottom:1px solid var(--line);
-  margin-bottom:.8rem;font-weight:500;
+.need-list li{
+  counter-increment:need;
+  display:flex;align-items:baseline;gap:1rem;
+  padding:.7rem 0;
+  border-bottom:1px solid var(--linelt);
 }
-.tool-list{list-style:none}
-.tool-list li{
-  font-size:.97rem;color:var(--ink2);
-  padding:.45rem 0;border-bottom:1px solid var(--linelt);
+.need-list li:last-child{border-bottom:none}
+.need-list li::before{
+  content:counter(need);
+  font-family:var(--serif);font-size:1.1rem;
+  color:var(--gold);opacity:.7;
+  flex-shrink:0;width:1.4rem;text-align:right;
+  line-height:1.5;
 }
-.tool-list li:last-child{border-bottom:none}
+.nl-name{
+  font-size:1rem;color:var(--ink);font-weight:500;
+  flex-shrink:0;
+}
+.nl-note{
+  font-size:.88rem;color:var(--ink3);
+  font-style:italic;
+}
 
 /* ═══ CALCULATOR ═══ */
 .calc{
@@ -421,7 +450,6 @@ h4.sub{
   margin:0 -2rem;
   overflow:hidden;line-height:0;
 }
-/* inside .s-body (left padding 5.4rem) */
 .day-div-s{
   margin:1.4rem 0 1.4rem -5.4rem;
 }
@@ -620,8 +648,10 @@ footer{
   .calc{padding:1.4rem}
   .calc-row{flex-direction:column;align-items:flex-start;gap:.5rem}
   .calc-row input,.calc-row select{width:100%}
-  .cl{margin-left:10%}
-  .step-body{padding-left:.8rem;}
+  .cl{margin-left:5%}
+  .plan-cl-wrap{margin-left:-1rem;margin-right:-1rem;padding-left:1rem;padding-right:1rem;}
+  .day-label{font-size:1.3rem;}
+  .step-title{font-size:1.05rem;}
   .video-grid{grid-template-columns:1fr}
   footer{padding:2rem 1.5rem}
   .s-title{font-size:1.3rem}
@@ -632,67 +662,73 @@ footer{
   .hero-h1{font-size:2.6rem}
 }
 
+/* ═══ PLAN TITLE ═══ */
+.plan-title-wrap{
+  padding:3.5rem 0 1.2rem;
+}
+.plan-main-title{
+  font-family:var(--serif);
+  font-size:2rem;font-weight:400;
+  color:var(--ink);letter-spacing:-.02em;
+  line-height:1.15;
+}
+#plan .s-body{padding-left:0;}
+#plan .day-div-s{margin:2rem 0;}
+
 /* ═══ STEP SECTIONS ═══ */
-/* ── Дни ── */
+
+/* ── Заголовок дня ── */
 .day-label{
   font-family:var(--serif);
-  font-size:1.4rem;font-weight:400;
-  color:var(--ink);letter-spacing:.01em;
-  margin:3rem 0 .6rem;
-  padding-bottom:.55rem;
-  border-bottom:2px solid var(--gold);
+  font-size:1.3rem;font-weight:400;
+  color:var(--ink);letter-spacing:-.01em;
+  margin:3rem 0 0;
+  padding:.7rem 0 .6rem;
+  border-top:2px solid var(--gold);
   display:block;
 }
-.day-label:first-child{margin-top:.5rem}
+.day-label:first-child{margin-top:1rem}
 
-/* ── Шаги внутри дня ── */
-.step-sec{
-  border-top:1px solid var(--linelt);
-}
+/* ── Шаг ── */
+.step-sec{border-top:1px solid var(--linelt);}
 .step-hdr{
   display:flex;justify-content:space-between;align-items:center;
-  padding:.9rem 0;cursor:pointer;user-select:none;transition:opacity .2s;
+  padding:1rem 0;cursor:pointer;user-select:none;
+  transition:color .15s;
 }
-.step-hdr:hover{opacity:.65}
+.step-hdr:hover .step-title{color:var(--ink);}
 .step-title{
-  font-family:var(--sans);font-size:.95rem;font-weight:500;
-  color:var(--ink2);letter-spacing:.02em;
+  font-family:var(--serif);font-size:1.05rem;font-weight:400;
+  color:var(--ink2);letter-spacing:-.01em;line-height:1.3;
+  transition:color .15s;
 }
-.step-hdr.open .step-title{color:var(--ink);}
+.step-hdr.open .step-title{color:var(--gold);}
 .step-toggle{
   color:var(--ink3);transition:transform .3s;
   line-height:1;width:24px;text-align:right;font-size:1.1rem;flex-shrink:0;
 }
 .step-hdr.open .step-toggle{transform:rotate(45deg);color:var(--gold);}
-.step-body{
-  display:none;
-  padding:.2rem 0 1.8rem 1.4rem;
-  border-left:2px solid var(--linelt);
-  margin-left:.2rem;
-}
+.step-body{display:none;padding:.2rem 0 2rem;}
 .step-body.open{display:block;}
-/* внутри step-body убираем лишние отступы у чеклистов */
 .step-body .cl{margin-left:0;}
 .step-body .cl-day-hdr{margin-left:0;}
 
 /* ── Чеклист дня ── */
 .plan-cl-wrap{
-  margin:2rem 0 0;
-  padding:1.2rem 1.4rem 1.4rem;
+  margin:2.5rem -1.4rem 0;
+  padding:1.4rem 1.8rem 1.6rem;
   background:var(--goldbg);
-  border-left:3px solid var(--gold);
-  border-radius:0 4px 4px 0;
+  border-top:2px solid var(--gold);
+  border-bottom:1px solid #E0C8C2;
 }
 .plan-cl-wrap .cl{margin-left:0;}
-.plan-cl-wrap .cl-day-hdr{margin-left:0;margin-top:.4rem;}
+.plan-cl-wrap .cl-day-hdr{margin-left:0;margin-top:.2rem;}
 .plan-cl-wrap .cl-prog{margin-top:.5rem;}
-
-/* ── Финальный заголовок чеклиста ── */
+.plan-cl-wrap.final{margin-top:3rem;border-top:2px solid var(--ink);}
 .final-cl-title{
-  font-family:var(--serif);font-size:1.3rem;
+  font-family:var(--serif);font-size:1.35rem;
   font-weight:400;color:var(--ink);
-  margin-bottom:1.2rem;letter-spacing:-.01em;
-  padding-bottom:.5rem;border-bottom:1px solid var(--line);
+  margin-bottom:1.4rem;letter-spacing:-.01em;
 }
 </style>
 </head>
@@ -706,6 +742,7 @@ footer{
       <a href="#starter" onclick="navClick('starter')">Закваска</a>
       <a href="#flour"   onclick="navClick('flour')">Что понадобится</a>
       <a href="#plan"    onclick="navClick('plan')">План выпечки</a>
+      <a href="#discard" onclick="navClick('discard')">Остатки закваски</a>
     </nav>
     <button class="btn-shop" onclick="openShop()">Список покупок</button>
   </div>
@@ -911,6 +948,7 @@ footer{
     <div class="s-toggle">+</div>
   </div>
   <div class="s-body">
+    <div class="flour-card">
     <h4 class="sub" style="margin-top:0">Мука</h4>
     <div style="display:flex;gap:3rem;align-items:flex-start;flex-wrap:wrap">
       <div style="flex:1;min-width:260px">
@@ -936,7 +974,7 @@ footer{
             <div>
               <div class="flour-name">Ржаная</div>
               <div class="flour-brand">«Увелка» — маленький пакет</div>
-              <div class="flour-note">В первую выпечку не класть — делает тесто липким и сложным.</div>
+              <div class="flour-note">В первую выпечку лучше не добавлять — делает тесто липким и сложным.</div>
             </div>
           </div>
         </div>
@@ -960,36 +998,25 @@ footer{
       </div>
     </div>
     <div class="callout">Ищите на упаковке Макфы код с буквой А — это Челябинский завод, самая хорошая клейковина. Ведите закваску и пеките на одной муке.</div>
+    </div><!-- /flour-card -->
 
     <h4 class="sub">Инвентарь</h4>
-    <div class="note">Начните с минимума. Ссылки на покупку — в списке покупок (кнопка в шапке).</div>
-    <div class="tool-cols">
-      <div>
-        <div class="tool-col-title">Обязательно</div>
-        <ul class="tool-list">
-          <li>Кухонные весы</li>
-          <li>Большая миска для замеса</li>
-          <li>Утятница или казан с крышкой</li>
-          <li>Пергамент силиконизированный</li>
-          <li>Льняное или хлопковое полотенце</li>
-          <li>Рисовая мука для присыпки</li>
-          <li>Лёд в формочках для пара</li>
-          <li>Пекарский нож — лезвие</li>
-        </ul>
-      </div>
-      <div>
-        <div class="tool-col-title">Позже докупить</div>
-        <ul class="tool-list">
-          <li>Корзина для расстойки хлеба</li>
-          <li>Металлический шпатель</li>
-          <li>Прямой шпатель</li>
-          <li>Силиконовые коврики</li>
-          <li>Термометр-гигрометр</li>
-          <li>Высокая банка 1,5 л для закваски</li>
-        </ul>
-      </div>
-    </div>
-    <div class="callout">
+    <button class="btn-shop" onclick="openShop()" style="margin-bottom:1.4rem">Открыть список покупок со ссылками →</button>
+    <ol class="need-list">
+      <li><span class="nl-name">Утятница или казан с крышкой</span><span class="nl-note">алюминий или чугун, крышка куполом — главный инструмент выпечки</span></li>
+      <li><span class="nl-name">Кухонные весы</span><span class="nl-note">без них точный рецепт невозможен</span></li>
+      <li><span class="nl-name">Пекарский нож — лезвие</span><span class="nl-note">для надрезов перед посадкой в печь</span></li>
+      <li><span class="nl-name">Пергамент силиконизированный</span><span class="nl-note">чтобы переложить хлеб в раскалённую форму</span></li>
+      <li><span class="nl-name">Большая миска для замеса</span><span class="nl-note">в ней тесто проходит автолиз и все обминки — нужен запас объёма</span></li>
+      <li><span class="nl-name">Льняное или хлопковое полотенце</span><span class="nl-note">для расстойки хлеба в холодильнике, если нет корзины</span></li>
+      <li><span class="nl-name">Лёд в формочках</span><span class="nl-note">кладётся на дно формы — тает и создаёт пар, хлеб раскрывается</span></li>
+      <li><span class="nl-name">Корзина для расстойки хлеба 23 см</span><span class="nl-note">держит форму буханки при расстойке, оставляет рисунок</span></li>
+      <li><span class="nl-name">Высокая банка 1,5 л для закваски</span><span class="nl-note">прозрачная и узкая — видно как растёт, закваска не разливается</span></li>
+      <li><span class="nl-name">Металлический и прямой шпатели</span><span class="nl-note">для переноса и деления теста, предформовки без прилипания</span></li>
+      <li><span class="nl-name">Силиконовые коврики</span><span class="nl-note">удобны для ламинирования — тесто не прилипает к поверхности</span></li>
+      <li><span class="nl-name">Термометр-гигрометр</span><span class="nl-note">для контроля температуры на кухне</span></li>
+    </ol>
+    <div class="callout" style="margin-top:1.8rem">
       <strong>Форма для выпечки:</strong> алюминий или чугун — лучший жар. Керамика хуже. Нужна крышка куполом, дно плоское. Алюминиевая утятница и казан — отличный выбор.
     </div>
   </div>
@@ -997,97 +1024,13 @@ footer{
 
 <!-- ── 03. ПОШАГОВЫЙ ПЛАН ВЫПЕЧКИ ── -->
 <div class="section" id="plan">
-  <div class="s-hdr" onclick="toggleSec(this)">
-    <div class="s-num">03</div>
-    <div class="s-titles">
-      <div class="s-title">Пошаговый план выпечки</div>
-      <div class="s-sub">Три дня — от закваски до готового хлеба</div>
-    </div>
-    <div class="s-toggle">+</div>
+  <div class="plan-title-wrap">
+    <div class="plan-main-title">Пошаговый план выпечки</div>
+    <div class="s-sub" style="margin-top:.35rem">Три дня — от закваски до готового хлеба</div>
   </div>
-  <div class="s-body">
+  <div class="s-body open">
 
     <!-- ══ ДЕНЬ ПЕРВЫЙ ══ -->
-    <div class="day-label">День первый — вечер</div>
-
-    <div class="step-sec">
-      <div class="step-hdr" onclick="toggleStep(this)">
-        <span class="step-title">Покормите закваску</span>
-        <span class="step-toggle">+</span>
-      </div>
-      <div class="step-body">
-        <div class="stat-row">
-          <div class="stat-item"><span class="stat-val">1:1:½</span><span class="stat-key">Закваска — мука — вода</span></div>
-          <div class="stat-item"><span class="stat-val">1×</span><span class="stat-key">в неделю</span></div>
-          <div class="stat-item"><span class="stat-val">50%</span><span class="stat-key">влажность</span></div>
-          <div class="stat-item"><span class="stat-val">×3</span><span class="stat-key">вырастает</span></div>
-        </div>
-        <div class="prose">
-          <p>Влейте воду к закваске, разбейте блендером до консистенции жидкой сметаны, добавьте муку и замесите. Оставьте при комнатной температуре на 4–8 часов, затем уберите в холодильник.</p>
-        </div>
-        <div class="note">Удобнее всего хранить в прозрачной стеклянной банке 1–1,5 л — так хорошо видно рост и пузырьки.</div>
-
-        <div class="video-block" style="margin-top:1.5rem">
-          <div class="video-label">Видео — как кормить и хранить закваску</div>
-          <div class="video-wrap">
-            <iframe src="https://www.youtube.com/embed/6vTwfiyXIM8" allowfullscreen loading="lazy"></iframe>
-          </div>
-          <p class="video-desc">Пошаговый показ: пропорции, консистенция, как выглядит закваска на пике</p>
-        </div>
-
-        <h4 class="sub">Калькулятор кормления</h4>
-        <div class="calc">
-          <div class="calc-title">Сколько муки и воды нужно?</div>
-          <div class="calc-row">
-            <label>У меня есть закваски, г</label>
-            <input type="number" id="s-have" value="100" min="1" max="5000">
-          </div>
-          <button class="calc-btn" onclick="calcFeed()">Рассчитать</button>
-          <div class="calc-res" id="feed-res">
-            <div class="res-row"><span class="nm">Закваска</span><span class="am" id="f-s">—</span></div>
-            <div class="res-row"><span class="nm">Мука Макфа</span><span class="am" id="f-f">—</span></div>
-            <div class="res-row"><span class="nm">Вода фильтрованная</span><span class="am" id="f-w">—</span></div>
-            <div class="res-row"><span class="nm">Итого после кормления</span><span class="am" id="f-t">—</span></div>
-          </div>
-        </div>
-
-        <h4 class="sub">Закваска на пике — как понять</h4>
-        <div class="prose">
-          <p>Закваска готова к замесу когда поднялась куполом, вся в пузырях, увеличилась примерно в три раза. Выглядит активной и пышной.</p>
-          <p>Если стояла без кормления 2–4 дня — сначала покормите, дождитесь пика, только потом месите.</p>
-        </div>
-        <div class="callout"><strong>Float test:</strong> опустите ложку закваски в стакан воды — если всплыла, закваска на пике и готова к замесу.</div>
-
-        <h4 class="sub">Время подъёма при разной температуре</h4>
-        <table class="tbl">
-          <thead><tr><th>Температура</th><th>Время</th></tr></thead>
-          <tbody>
-            <tr><td>28°С — тепло</td><td>~4 часа</td></tr>
-            <tr><td>25°С</td><td>~4–6 часов</td></tr>
-            <tr><td>23°С</td><td>~5–7 часов</td></tr>
-            <tr><td>21°С</td><td>~8 часов</td></tr>
-            <tr><td>5°С — холодильник</td><td>~16–18 часов</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div><!-- /step-sec -->
-
-    <!-- Чеклист дня 1 -->
-    <div class="plan-cl-wrap">
-      <div class="cl-day-hdr" id="clD-hdr" onclick="chkDay('clD',3)">
-        <input type="checkbox" id="clD-cb" onclick="event.stopPropagation()" onchange="chkDay('clD',3)">
-        <span>Итого за первый день</span>
-      </div>
-      <ul class="cl cl-sm" id="clD" data-tot="3" data-hdr="clD-hdr">
-        <li onclick="chk(this,'clD',0)"><input type="checkbox"><span>Покормили закваску — 10 минут</span></li>
-        <li onclick="chk(this,'clD',1)"><input type="checkbox"><span>Отложили нужное количество для выпечки (110 г × буханок)</span></li>
-        <li onclick="chk(this,'clD',2)"><input type="checkbox"><span>Оставили подниматься, затем убрали в холодильник на ночь</span></li>
-      </ul>
-      <div class="cl-prog" id="clD-prog">0 из 3</div>
-      <div class="prog-bar"><div class="prog-fill" id="clD-bar" style="width:0%"></div></div>
-    </div>
-
-    <!-- Иллюстрация 1 -->
     <div class="day-div day-div-s">
       <svg viewBox="0 0 900 148" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
         <defs>
@@ -1135,11 +1078,118 @@ footer{
         <line x1="554" y1="126" x2="820" y2="126" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
         <text x="848" y="118" font-family="'Playfair Display', serif" font-size="9.5" letter-spacing="3" fill="#C4503A" opacity=".6" transform="rotate(-90,848,118)">ДЕНЬ ПЕРВЫЙ</text>
         <rect x="0" y="143" width="900" height="5" fill="#C4503A"/>
+        <text x="220" y="82" font-family="'Cormorant Garamond', Georgia, serif" font-size="42" font-weight="400" fill="#1A1612" letter-spacing="-0.5" opacity=".85">День первый — вечер</text>
       </svg>
     </div>
 
+    <div class="step-sec">
+      <div class="step-hdr" onclick="toggleStep(this)">
+        <span class="step-title">Покормите закваску</span>
+        <span class="step-toggle">+</span>
+      </div>
+      <div class="step-body">
+        <div class="stat-row">
+          <div class="stat-item"><span class="stat-val">1:1:½</span><span class="stat-key">Закваска — мука — вода</span></div>
+          <div class="stat-item"><span class="stat-val">1×</span><span class="stat-key">в неделю</span></div>
+          <div class="stat-item"><span class="stat-val">50%</span><span class="stat-key">влажность</span></div>
+          <div class="stat-item"><span class="stat-val">×3</span><span class="stat-key">вырастает</span></div>
+        </div>
+        <div class="prose">
+          <p>Влейте воду к закваске, разбейте блендером до консистенции жидкой сметаны — блендер нужен только на этом этапе, дальше убирается. Добавьте муку и замесите руками до однородного густого теста.</p>
+          <p>Кормить раз в неделю. Если пропустили — ничего страшного, можно раз в две недели. Если закваска пахнет спиртом или кислотой — просто голодная, не испорченная. Покормите, и всё пройдёт.</p>
+        </div>
+        <div class="note">Хранить в высокой прозрачной банке с неплотно закрытой крышкой: закваска растёт в три раза и должна иметь доступ к воздуху. Прозрачность важна — нужно видеть рост и пузырьки через стенки. Хорошо подходят высокие банки-колбы с бамбуковой крышкой (1–1,5 л).</div>
+
+        <h4 class="sub">Как ускорить рост</h4>
+        <div class="prose">
+          <p>Если нужно быстро: накройте банку пакетом неплотно (нужен кислород, но не заветривание) и поставьте в выключенную духовку. При 25–28°С закваска выйдет на пик за 4 часа вместо 6–8.</p>
+          <p><strong>Два рабочих варианта тайминга:</strong></p>
+          <ul class="lst">
+            <li><strong>Утром покормили</strong> → через 4–6 часов на пике → замес в тот же день вечером → ночь в холодильнике → утром выпечка</li>
+            <li><strong>Вечером покормили</strong> → на пару часов в духовку → убрали в холодильник → на следующий день во второй половине дня замес</li>
+          </ul>
+        </div>
+
+        <h4 class="sub">Если закваска перекисла — реанимация</h4>
+        <div class="prose">
+          <p>Если закваска долго стояла и стала очень кислой (резкий кислотный запах, кисловатая на вкус) — попробуйте купание. Растворите 1 ч.л. сахара или мёда в 50 мл тёплой воды, опустите закваску на 20–30 минут, затем покормите по обычной схеме. Этого обычно достаточно, чтобы вернуть активность.</p>
+        </div>
+
+        <div class="video-block" style="margin-top:1.5rem">
+          <div class="video-label">Видео — как кормить и хранить закваску</div>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/6vTwfiyXIM8" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="video-desc">Пошаговый показ: пропорции, консистенция, как выглядит закваска на пике</p>
+        </div>
+
+        <h4 class="sub">Калькулятор кормления</h4>
+        <div class="calc">
+          <div class="calc-title">Сколько муки и воды нужно?</div>
+          <div class="calc-row">
+            <label>У меня есть закваски, г</label>
+            <input type="number" id="s-have" value="100" min="1" max="5000">
+          </div>
+          <button class="calc-btn" onclick="calcFeed()">Рассчитать</button>
+          <div class="calc-res" id="feed-res">
+            <div class="res-row"><span class="nm">Закваска</span><span class="am" id="f-s">—</span></div>
+            <div class="res-row"><span class="nm">Мука Макфа</span><span class="am" id="f-f">—</span></div>
+            <div class="res-row"><span class="nm">Вода фильтрованная</span><span class="am" id="f-w">—</span></div>
+            <div class="res-row"><span class="nm">Итого после кормления</span><span class="am" id="f-t">—</span></div>
+          </div>
+        </div>
+
+        <h4 class="sub">Закваска на пике — как понять</h4>
+        <div class="prose">
+          <p>Закваска готова к замесу когда поднялась куполом, вся в пузырях, увеличилась примерно в три раза. Выглядит активной и пышной.</p>
+          <p>Если стояла без кормления 2–4 дня — сначала покормите, дождитесь пика, только потом месите.</p>
+        </div>
+        <div class="callout"><strong>Float test:</strong> опустите ложку закваски в стакан воды — если всплыла, закваска на пике и готова к замесу.</div>
+
+        <h4 class="sub">Время подъёма при разной температуре</h4>
+        <table class="tbl">
+          <thead><tr><th>Температура</th><th>Время</th></tr></thead>
+          <tbody>
+            <tr><td>28°С — тепло</td><td>~4 часа</td></tr>
+            <tr><td>25°С</td><td>~4–6 часов</td></tr>
+            <tr><td>23°С</td><td>~5–7 часов</td></tr>
+            <tr><td>21°С</td><td>~8 часов</td></tr>
+            <tr><td>5°С — холодильник</td><td>~16–18 часов</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /step-sec -->
+
     <!-- ══ ДЕНЬ ВТОРОЙ ══ -->
-    <div class="day-label">День второй</div>
+    <div class="day-div day-div-s">
+      <svg viewBox="0 0 900 148" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="hst2b-dots" x="0" y="0" width="18" height="18" patternUnits="userSpaceOnUse">
+            <circle cx="9" cy="9" r="1.4" fill="#C4503A" opacity=".22"/>
+          </pattern>
+        </defs>
+        <!-- cream background -->
+        <rect width="900" height="148" fill="#F5EDE0"/>
+        <!-- dot field across whole canvas -->
+        <rect width="900" height="148" fill="url(#hst2b-dots)"/>
+        <!-- ghost "II" — two tall vertical bars -->
+        <rect x="30" y="8" width="46" height="132" fill="#C4503A" opacity=".07" rx="2"/>
+        <rect x="96" y="8" width="46" height="132" fill="#C4503A" opacity=".07" rx="2"/>
+        <!-- thin horizontal rule at 1/3 height -->
+        <line x1="0" y1="49" x2="900" y2="49" stroke="#C4503A" stroke-width="1" opacity=".15"/>
+        <!-- wave in lower third, well below text -->
+        <path d="M 0,110 Q 150,90 300,112 Q 450,134 600,108 Q 750,84 900,106" stroke="#C4503A" stroke-width="4" fill="none" stroke-linecap="round" opacity=".55"/>
+        <path d="M 0,118 Q 150,98 300,120 Q 450,142 600,116 Q 750,92 900,114" stroke="#C4503A" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".25"/>
+        <!-- terracotta accent bar on right -->
+        <rect x="840" y="0" width="60" height="148" fill="#C4503A" opacity=".12"/>
+        <!-- vertical label -->
+        <text x="862" y="118" font-family="'Playfair Display', serif" font-size="9.5" letter-spacing="3" fill="#C4503A" opacity=".5" transform="rotate(-90,862,118)">ДЕНЬ ВТОРОЙ</text>
+        <!-- bottom rule -->
+        <rect x="0" y="143" width="900" height="5" fill="#C4503A"/>
+        <!-- title text -->
+        <text x="170" y="82" font-family="'Cormorant Garamond', Georgia, serif" font-size="42" font-weight="400" fill="#1A1612" letter-spacing="-0.5" opacity=".85">День второй</text>
+      </svg>
+    </div>
 
     <div class="step-sec">
       <div class="step-hdr" onclick="toggleStep(this)">
@@ -1188,6 +1238,7 @@ footer{
               <option value="1">С ржаной, пропорция 70/20/10</option>
             </select>
           </div>
+          <div class="note" style="margin-top:.8rem;margin-bottom:.5rem;font-size:.88rem">Ржаная мука сильно меняет консистенцию и скорость ферментации — тесто становится более липким и быстрее кислеет. Рекомендуем сначала испечь без неё, освоить процесс, и только потом экспериментировать со ржью.</div>
           <button class="calc-btn" onclick="calcRecipe()">Рассчитать</button>
           <div class="calc-res" id="r-res">
             <div class="res-row"><span class="nm">Закваска — на пике!</span><span class="am" id="r-s">—</span></div>
@@ -1284,12 +1335,13 @@ footer{
 
     <div class="step-sec">
       <div class="step-hdr" onclick="toggleStep(this)">
-        <span class="step-title">Обминки катушкой — три раза через 40 минут</span>
+        <span class="step-title">Обминки катушкой — 3–5 раз через 30–50 минут</span>
         <span class="step-toggle">+</span>
       </div>
       <div class="step-body">
         <div class="prose">
-          <p>Интервал не обязательно строго 30 минут — 40–50 тоже хорошо. Тесто должно стать пышным и насыщенным воздухом.</p>
+          <p>Классическая схема — три обминки с интервалом 40 минут. Но если делаете 4 или 5 — ничего плохого. Интервал тоже гибкий: 30–50 минут — всё нормально. Ориентируйтесь на тесто: оно должно становиться всё более упругим, пышным, насыщенным воздухом после каждой обминки.</p>
+          <p>Если пропустили одну обминку или сделали перерыв длиннее — просто продолжайте. Хлеб не испортится.</p>
         </div>
         <div class="soc-card">
           <div class="soc-platform">Instagram</div>
@@ -1343,69 +1395,41 @@ footer{
       </div>
     </div>
 
-    <!-- Чеклист дня 2 -->
-    <div class="plan-cl-wrap">
-      <div class="cl-day-hdr" id="clD2-hdr" onclick="chkDay('clD2',8)">
-        <input type="checkbox" id="clD2-cb" onclick="event.stopPropagation()" onchange="chkDay('clD2',8)">
-        <span>Итого за второй день</span>
-      </div>
-      <ul class="cl cl-sm" id="clD2" data-tot="8" data-hdr="clD2-hdr">
-        <li onclick="chk(this,'clD2',0)"><input type="checkbox"><span>Закваска на пике — купол, пузыри, выросла в три раза</span></li>
-        <li onclick="chk(this,'clD2',1)"><input type="checkbox"><span>Замесили тесто — блендер, мука, соль</span></li>
-        <li onclick="chk(this,'clD2',2)"><input type="checkbox"><span>Автолиз 1 час — или замес в миксере 20 минут</span></li>
-        <li onclick="chk(this,'clD2',3)"><input type="checkbox"><span>Сделали ламинирование</span></li>
-        <li onclick="chk(this,'clD2',4)"><input type="checkbox"><span>Три обминки катушкой — через каждые 40 минут</span></li>
-        <li onclick="chk(this,'clD2',5)"><input type="checkbox"><span>Предформовка — 15 минут отдыха</span></li>
-        <li onclick="chk(this,'clD2',6)"><input type="checkbox"><span>Финальная формовка</span></li>
-        <li onclick="chk(this,'clD2',7)"><input type="checkbox"><span>Убрали в холодильник на ночь</span></li>
-      </ul>
-      <div class="cl-prog" id="clD2-prog">0 из 8</div>
-      <div class="prog-bar"><div class="prog-fill" id="clD2-bar" style="width:0%"></div></div>
-    </div>
-
-    <!-- Иллюстрация 2 -->
+    <!-- ══ ДЕНЬ ТРЕТИЙ ══ -->
     <div class="day-div day-div-s">
       <svg viewBox="0 0 900 148" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-        <defs>
-          <pattern id="hst2b" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
-            <rect width="6" height="6" fill="#C4503A"/>
-            <line x1="0" y1="0" x2="6" y2="0" stroke="#F5EDE0" stroke-width="1.8"/>
-          </pattern>
-          <clipPath id="cp-IIb">
-            <rect x="28" y="14" width="34" height="120"/>
-            <rect x="28" y="14" width="112" height="15"/>
-            <rect x="28" y="119" width="112" height="15"/>
-            <rect x="106" y="14" width="34" height="120"/>
-          </clipPath>
-        </defs>
-        <rect width="900" height="148" fill="#F5EDE0"/>
-        <rect x="28" y="14" width="34" height="120" fill="#DDD0C0"/>
-        <rect x="28" y="14" width="112" height="15" fill="#DDD0C0"/>
-        <rect x="28" y="119" width="112" height="15" fill="#DDD0C0"/>
-        <rect x="106" y="14" width="34" height="120" fill="#DDD0C0"/>
-        <rect x="0" y="0" width="200" height="148" fill="url(#hst2b)" clip-path="url(#cp-IIb)"/>
-        <path d="M 190,134 Q 380,14 560,80 Q 660,114 740,46" stroke="#C4503A" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M 210,134 Q 400,20 580,80 Q 680,112 760,46" stroke="#C4503A" stroke-width="2" fill="none" opacity=".35" stroke-linecap="round"/>
-        <rect x="790" y="14" width="72" height="120" fill="#C4503A"/>
-        <line x1="790" y1="28" x2="862" y2="28" stroke="#F5EDE0" stroke-width="2"/>
-        <line x1="790" y1="40" x2="862" y2="40" stroke="#F5EDE0" stroke-width="2"/>
-        <line x1="790" y1="52" x2="862" y2="52" stroke="#F5EDE0" stroke-width="2"/>
-        <line x1="790" y1="64" x2="862" y2="64" stroke="#F5EDE0" stroke-width="2"/>
-        <line x1="790" y1="76" x2="862" y2="76" stroke="#F5EDE0" stroke-width="2"/>
-        <line x1="790" y1="88" x2="862" y2="88" stroke="#F5EDE0" stroke-width="2"/>
-        <line x1="790" y1="100" x2="862" y2="100" stroke="#F5EDE0" stroke-width="2"/>
-        <line x1="790" y1="112" x2="862" y2="112" stroke="#F5EDE0" stroke-width="2"/>
-        <circle cx="618" cy="52" r="13" fill="#C4503A" opacity=".85"/>
-        <circle cx="652" cy="76" r="8" fill="#C4503A" opacity=".6"/>
-        <circle cx="636" cy="104" r="5.5" fill="#C4503A" opacity=".45"/>
-        <circle cx="670" cy="42" r="4" fill="#C4503A" opacity=".35"/>
-        <text x="776" y="118" font-family="'Playfair Display', serif" font-size="9.5" letter-spacing="3" fill="#C4503A" opacity=".55" transform="rotate(-90,776,118)">ДЕНЬ ВТОРОЙ</text>
-        <rect x="0" y="143" width="900" height="5" fill="#C4503A"/>
+        <rect width="900" height="148" fill="#C4503A"/>
+        <line x1="0" y1="18" x2="900" y2="18" stroke="#B8432E" stroke-width="1.2"/>
+        <line x1="0" y1="30" x2="900" y2="30" stroke="#B8432E" stroke-width="1.2"/>
+        <line x1="0" y1="42" x2="900" y2="42" stroke="#B8432E" stroke-width="1.2"/>
+        <line x1="0" y1="54" x2="900" y2="54" stroke="#B8432E" stroke-width="1.2"/>
+        <line x1="0" y1="66" x2="900" y2="66" stroke="#B8432E" stroke-width="1.2"/>
+        <line x1="0" y1="78" x2="900" y2="78" stroke="#B8432E" stroke-width="1.2"/>
+        <line x1="0" y1="90" x2="900" y2="90" stroke="#B8432E" stroke-width="1.2"/>
+        <line x1="0" y1="102" x2="900" y2="102" stroke="#B8432E" stroke-width="1.2"/>
+        <line x1="0" y1="114" x2="900" y2="114" stroke="#B8432E" stroke-width="1.2"/>
+        <line x1="0" y1="126" x2="900" y2="126" stroke="#B8432E" stroke-width="1.2"/>
+        <line x1="0" y1="138" x2="900" y2="138" stroke="#B8432E" stroke-width="1.2"/>
+        <ellipse cx="450" cy="148" rx="284" ry="148" fill="#FAF7F0"/>
+        <ellipse cx="450" cy="148" rx="260" ry="130" fill="#F5EEDE"/>
+        <path d="M 348,70 Q 400,52 452,66" stroke="#1A1612" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".7"/>
+        <path d="M 388,57 Q 446,40 500,56" stroke="#1A1612" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".5"/>
+        <circle cx="390" cy="112" r="18" fill="none" stroke="#C4503A" stroke-width="1.8" opacity=".65"/>
+        <circle cx="438" cy="96" r="12" fill="none" stroke="#C4503A" stroke-width="1.5" opacity=".6"/>
+        <circle cx="482" cy="118" r="22" fill="none" stroke="#C4503A" stroke-width="1.8" opacity=".65"/>
+        <circle cx="420" cy="140" r="9" fill="none" stroke="#C4503A" stroke-width="1.2" opacity=".45"/>
+        <circle cx="462" cy="148" r="14" fill="none" stroke="#C4503A" stroke-width="1.5" opacity=".5"/>
+        <circle cx="510" cy="132" r="10" fill="none" stroke="#C4503A" stroke-width="1.2" opacity=".45"/>
+        <circle cx="360" cy="130" r="8" fill="none" stroke="#C4503A" stroke-width="1.2" opacity=".4"/>
+        <circle cx="502" cy="96" r="8" fill="none" stroke="#C4503A" stroke-width="1.2" opacity=".45"/>
+        <text x="70" y="104" font-family="'Playfair Display', serif" font-size="78" font-weight="900" fill="#FAF7F0" opacity=".15" letter-spacing="-4">III</text>
+        <text x="70" y="104" font-family="'Playfair Display', serif" font-size="78" font-weight="900" fill="none" stroke="#FAF7F0" stroke-width="1" opacity=".4" letter-spacing="-4">III</text>
+        <text x="70" y="30" font-family="'Playfair Display', serif" font-size="9.5" letter-spacing="4.5" fill="#FAF7F0" opacity=".65">ДЕНЬ ТРЕТИЙ</text>
+        <rect x="70" y="112" width="13" height="13" fill="#FAF7F0" opacity=".5"/>
+        <rect x="0" y="0" width="900" height="5" fill="#FAF7F0" opacity=".25"/>
+        <text x="310" y="82" font-family="'Cormorant Garamond', Georgia, serif" font-size="42" font-weight="400" fill="#1A1612" letter-spacing="-0.5" opacity=".85">День третий — утро</text>
       </svg>
     </div>
-
-    <!-- ══ ДЕНЬ ТРЕТИЙ ══ -->
-    <div class="day-label">День третий — утро</div>
 
     <div class="step-sec">
       <div class="step-hdr" onclick="toggleStep(this)">
@@ -1432,62 +1456,8 @@ footer{
       </div>
     </div>
 
-    <!-- Чеклист дня 3 -->
-    <div class="plan-cl-wrap">
-      <div class="cl-day-hdr" id="clD3-hdr" onclick="chkDay('clD3',5)">
-        <input type="checkbox" id="clD3-cb" onclick="event.stopPropagation()" onchange="chkDay('clD3',5)">
-        <span>Итого за третий день</span>
-      </div>
-      <ul class="cl cl-sm" id="clD3" data-tot="5" data-hdr="clD3-hdr">
-        <li onclick="chk(this,'clD3',0)"><input type="checkbox"><span>Разогрели духовку с формой до 250°С — 40–60 минут</span></li>
-        <li onclick="chk(this,'clD3',1)"><input type="checkbox"><span>Сделали надрезы лезвием</span></li>
-        <li onclick="chk(this,'clD3',2)"><input type="checkbox"><span>Выпекали 30 минут с паром, крышка закрыта</span></li>
-        <li onclick="chk(this,'clD3',3)"><input type="checkbox"><span>Сняли крышку, выпекали ещё 25 минут</span></li>
-        <li onclick="chk(this,'clD3',4)"><input type="checkbox"><span>Остудили на решётке минимум час</span></li>
-      </ul>
-      <div class="cl-prog" id="clD3-prog">0 из 5</div>
-      <div class="prog-bar"><div class="prog-fill" id="clD3-bar" style="width:0%"></div></div>
-    </div>
-
-    <!-- Иллюстрация 3 -->
-    <div class="day-div day-div-s">
-      <svg viewBox="0 0 900 180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-        <rect width="900" height="180" fill="#C4503A"/>
-        <line x1="0" y1="18" x2="900" y2="18" stroke="#B8432E" stroke-width="1.2"/>
-        <line x1="0" y1="30" x2="900" y2="30" stroke="#B8432E" stroke-width="1.2"/>
-        <line x1="0" y1="42" x2="900" y2="42" stroke="#B8432E" stroke-width="1.2"/>
-        <line x1="0" y1="54" x2="900" y2="54" stroke="#B8432E" stroke-width="1.2"/>
-        <line x1="0" y1="66" x2="900" y2="66" stroke="#B8432E" stroke-width="1.2"/>
-        <line x1="0" y1="78" x2="900" y2="78" stroke="#B8432E" stroke-width="1.2"/>
-        <line x1="0" y1="90" x2="900" y2="90" stroke="#B8432E" stroke-width="1.2"/>
-        <line x1="0" y1="102" x2="900" y2="102" stroke="#B8432E" stroke-width="1.2"/>
-        <line x1="0" y1="114" x2="900" y2="114" stroke="#B8432E" stroke-width="1.2"/>
-        <line x1="0" y1="126" x2="900" y2="126" stroke="#B8432E" stroke-width="1.2"/>
-        <line x1="0" y1="138" x2="900" y2="138" stroke="#B8432E" stroke-width="1.2"/>
-        <line x1="0" y1="150" x2="900" y2="150" stroke="#B8432E" stroke-width="1.2"/>
-        <line x1="0" y1="162" x2="900" y2="162" stroke="#B8432E" stroke-width="1.2"/>
-        <ellipse cx="450" cy="178" rx="284" ry="172" fill="#FAF7F0"/>
-        <ellipse cx="450" cy="178" rx="260" ry="155" fill="#F5EEDE"/>
-        <path d="M 348,70 Q 400,52 452,66" stroke="#1A1612" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".7"/>
-        <path d="M 388,57 Q 446,40 500,56" stroke="#1A1612" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".5"/>
-        <circle cx="390" cy="112" r="18" fill="none" stroke="#C4503A" stroke-width="1.8" opacity=".65"/>
-        <circle cx="438" cy="96" r="12" fill="none" stroke="#C4503A" stroke-width="1.5" opacity=".6"/>
-        <circle cx="482" cy="118" r="22" fill="none" stroke="#C4503A" stroke-width="1.8" opacity=".65"/>
-        <circle cx="420" cy="140" r="9" fill="none" stroke="#C4503A" stroke-width="1.2" opacity=".45"/>
-        <circle cx="462" cy="148" r="14" fill="none" stroke="#C4503A" stroke-width="1.5" opacity=".5"/>
-        <circle cx="510" cy="132" r="10" fill="none" stroke="#C4503A" stroke-width="1.2" opacity=".45"/>
-        <circle cx="360" cy="130" r="8" fill="none" stroke="#C4503A" stroke-width="1.2" opacity=".4"/>
-        <circle cx="502" cy="96" r="8" fill="none" stroke="#C4503A" stroke-width="1.2" opacity=".45"/>
-        <text x="70" y="104" font-family="'Playfair Display', serif" font-size="78" font-weight="900" fill="#FAF7F0" opacity=".15" letter-spacing="-4">III</text>
-        <text x="70" y="104" font-family="'Playfair Display', serif" font-size="78" font-weight="900" fill="none" stroke="#FAF7F0" stroke-width="1" opacity=".4" letter-spacing="-4">III</text>
-        <text x="70" y="30" font-family="'Playfair Display', serif" font-size="9.5" letter-spacing="4.5" fill="#FAF7F0" opacity=".65">ДЕНЬ ТРЕТИЙ</text>
-        <rect x="70" y="112" width="13" height="13" fill="#FAF7F0" opacity=".5"/>
-        <rect x="0" y="0" width="900" height="5" fill="#FAF7F0" opacity=".25"/>
-      </svg>
-    </div>
-
     <!-- Финальный чеклист -->
-    <div class="plan-cl-wrap">
+    <div class="plan-cl-wrap final">
       <div class="final-cl-title">Финальный чеклист — все три дня</div>
 
       <div class="cl-day-hdr" id="clF1-hdr" onclick="chkDay('clF1',2)">
@@ -1537,9 +1507,34 @@ footer{
       <div class="prog-bar"><div class="prog-fill" id="clF3-bar" style="width:0%"></div></div>
 
       <button class="cl-reset" style="margin-top:1.2rem"
-        onclick="resetCl('clD',3);resetCl('clD2',8);resetCl('clD3',5);resetCl('clF1',2);resetCl('clF2',11);resetCl('clF3',6)">Сбросить всё</button>
+        onclick="resetCl('clF1',2);resetCl('clF2',11);resetCl('clF3',6)">Сбросить всё</button>
     </div>
 
+  </div>
+</div>
+
+<!-- ── 04. ЧТО ДЕЛАТЬ С ОСТАТКАМИ ── -->
+<div class="section" id="discard">
+  <div class="s-hdr" onclick="toggleSec(this)">
+    <div class="s-num">04</div>
+    <div class="s-titles">
+      <div class="s-title">Что делать с остатками закваски</div>
+      <div class="s-sub">Не выбрасывать — использовать</div>
+    </div>
+    <div class="s-toggle">+</div>
+  </div>
+  <div class="s-body">
+    <div class="prose">
+      <p>После кормления у вас остаётся лишняя закваска — не выбрасывайте. Остатки Левито Мадре отлично идут в выпечку: они дают кислинку и пышность без дрожжей.</p>
+      <p><strong>Что можно приготовить из остатков:</strong></p>
+      <ul class="lst">
+        <li><strong>Блины или оладьи</strong> — добавьте остатки в тесто вместо части муки и воды. Получаются пышные, с лёгкой кислинкой.</li>
+        <li><strong>Пирожки и лепёшки</strong> — закваска заменяет часть муки, даёт мягкую текстуру и аромат.</li>
+        <li><strong>Вафли, маффины, быстрый хлеб</strong> — любая выпечка, где важна воздушность, а не точный подъём.</li>
+      </ul>
+      <p>Остатки хранятся в холодильнике в отдельной банке до двух недель. Перед использованием не нужно кормить — просто добавьте в тесто.</p>
+    </div>
+    <div class="callout">Оставьте 80–100 г закваски для следующего раза — это и есть ваш «стартер» на следующую неделю. Всё остальное можно использовать в готовку.</div>
   </div>
 </div>
 
@@ -1569,9 +1564,10 @@ function navClick(id){
   const s=document.getElementById(id);if(!s)return;
   const h=s.querySelector('.s-hdr');
   if(h&&!h.classList.contains('open')){h.classList.add('open');h.nextElementSibling.classList.add('open')}
+  if(!h){s.scrollIntoView({behavior:'smooth',block:'start'})}
 }
 // ── ACTIVE NAV ──
-const NAV_IDS=['starter','flour','plan'];
+const NAV_IDS=['starter','flour','plan','discard'];
 window.addEventListener('scroll',()=>{
   let cur='';
   NAV_IDS.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=80)cur=id;});
