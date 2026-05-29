@@ -316,51 +316,76 @@ h4.sub::before{
 
 /* ═══ CALCULATOR ═══ */
 .calc{
-  margin:2rem 0;padding:2rem;
-  border:1px solid var(--line);
-  background:var(--linelt);
+  margin:2rem 0;
+  border-top:2px solid var(--gold);
+  padding-top:1.4rem;
 }
 .calc-title{
-  font-family:var(--serif);font-size:1.3rem;
+  font-family:var(--serif);font-size:1.4rem;
   font-weight:400;color:var(--ink);
-  margin-bottom:1.6rem;letter-spacing:-.01em;
+  margin:0 0 1.6rem;letter-spacing:-.02em;
+}
+.calc-fields{
+  display:table;width:100%;border-collapse:separate;border-spacing:0 2px;
 }
 .calc-row{
-  display:flex;align-items:center;
-  gap:1.5rem;margin-bottom:1rem;flex-wrap:wrap;
+  display:table-row;
+}
+.calc-row label,
+.calc-row .calc-field{
+  display:table-cell;
+  padding:.7rem 0;
+  border-bottom:1px solid var(--linelt);
+  vertical-align:middle;
 }
 .calc-row label{
-  font-size:.9rem;letter-spacing:.02em;
-  color:var(--ink2);min-width:200px;
+  font-size:.9rem;color:var(--ink2);
+  white-space:nowrap;padding-right:2.5rem;
+  width:1%;
 }
-.calc-row input,.calc-row select{
-  border:none;border-bottom:1px solid var(--line);
-  background:transparent;padding:6px 0;
-  font-size:.95rem;color:var(--ink);
-  font-family:var(--sans);width:130px;outline:none;
-  transition:border-color .2s;
+.calc-row .calc-field{
+  width:99%;
+}
+.calc-row input{
+  border:none;border-bottom:1.5px solid var(--line);
+  background:transparent;padding:3px 0;
+  font-size:1.05rem;color:var(--ink);
+  font-family:var(--sans);width:72px;
+  outline:none;transition:border-color .2s;
+}
+.calc-row select{
+  border:none;border-bottom:1.5px solid var(--line);
+  background:transparent;padding:3px 0;
+  font-size:1rem;color:var(--ink);
+  font-family:var(--sans);
+  outline:none;transition:border-color .2s;
+  max-width:280px;width:100%;
 }
 .calc-row input:focus,.calc-row select:focus{
   border-bottom-color:var(--gold);
 }
+.calc-hint{
+  font-size:.83rem;color:var(--ink3);
+  line-height:1.5;margin:.6rem 0 1.2rem;
+}
 .calc-btn{
   background:var(--gold);color:#fff;
-  border:none;padding:11px 28px;
-  font-size:.7rem;letter-spacing:.12em;
+  border:none;padding:11px 32px;
+  font-size:.78rem;letter-spacing:.12em;
   text-transform:uppercase;cursor:pointer;
-  font-family:var(--sans);margin-top:.5rem;
+  font-family:var(--sans);margin-top:1.4rem;
   transition:opacity .2s;
-  border-radius:2px;
+  border-radius:2px;display:block;
 }
 .calc-btn:hover{opacity:.82}
 .calc-res{
-  display:none;margin-top:1.8rem;
-  border-top:1px solid var(--line);padding-top:1.4rem;
+  display:none;margin-top:2rem;
+  border-top:1px solid var(--line);padding-top:1.6rem;
 }
 .calc-res.show{display:block}
 .res-row{
   display:flex;justify-content:space-between;
-  align-items:baseline;padding:.5rem 0;
+  align-items:baseline;padding:.6rem 0;
   border-bottom:1px solid var(--linelt);
   gap:1rem;
 }
@@ -646,12 +671,15 @@ footer{
   .stat-row{gap:1.5rem;padding:1rem 1rem}
   .tool-cols{grid-template-columns:1fr}
   .calc{padding:1.4rem}
-  .calc-row{flex-direction:column;align-items:flex-start;gap:.5rem}
-  .calc-row input,.calc-row select{width:100%}
+  .calc-fields{display:block}
+  .calc-row{display:block;padding:.6rem 0}
+  .calc-row label,.calc-row .calc-field{display:block;padding:0;border:none;width:100%}
+  .calc-row label{margin-bottom:.4rem}
+  .calc-row input,.calc-row select{width:100%;max-width:100%}
   .cl{margin-left:5%}
   .plan-cl-wrap{margin-left:-1rem;margin-right:-1rem;padding-left:1rem;padding-right:1rem;}
   .day-label{font-size:1.3rem;}
-  .step-title{font-size:1.05rem;}
+  .step-title{font-size:1.2rem;}
   .video-grid{grid-template-columns:1fr}
   footer{padding:2rem 1.5rem}
   .s-title{font-size:1.3rem}
@@ -663,9 +691,6 @@ footer{
 }
 
 /* ═══ PLAN TITLE ═══ */
-.plan-title-wrap{
-  padding:3.5rem 0 1.2rem;
-}
 .plan-main-title{
   font-family:var(--serif);
   font-size:2rem;font-weight:400;
@@ -673,7 +698,15 @@ footer{
   line-height:1.15;
 }
 #plan .s-body{padding-left:0;}
+#plan{margin-top:3rem;border:1.5px solid #C4503A;padding:0 2rem 2rem;}
 #plan .day-div-s{margin:2rem 0;}
+#plan .day-div-s + .step-sec,
+#plan .step-sec + .step-sec{margin-top:0;}
+#plan .day-sep{
+  margin:4rem 0 0;
+  border:none;border-top:1px solid var(--line);
+  opacity:.5;
+}
 
 /* ═══ STEP SECTIONS ═══ */
 
@@ -724,6 +757,8 @@ footer{
 .plan-cl-wrap .cl{margin-left:0;}
 .plan-cl-wrap .cl-day-hdr{margin-left:0;margin-top:.2rem;}
 .plan-cl-wrap .cl-prog{margin-top:.5rem;}
+#checklist .cl{margin-left:5%;}
+#checklist .cl-prog{margin-left:5%;}
 .plan-cl-wrap.final{margin-top:3rem;border-top:2px solid var(--ink);}
 .final-cl-title{
   font-family:var(--serif);font-size:1.35rem;
@@ -739,10 +774,11 @@ footer{
   <div class="hdr">
     <span class="hdr-logo">Левито Мадре</span>
     <nav class="hdr-nav">
-      <a href="#starter" onclick="navClick('starter')">Закваска</a>
-      <a href="#flour"   onclick="navClick('flour')">Что понадобится</a>
-      <a href="#plan"    onclick="navClick('plan')">План выпечки</a>
-      <a href="#discard" onclick="navClick('discard')">Остатки закваски</a>
+      <a href="#starter"   onclick="navClick('starter')">Закваска</a>
+      <a href="#flour"     onclick="navClick('flour')">Что понадобится</a>
+      <a href="#plan"      onclick="navClick('plan')">План выпечки</a>
+      <a href="#checklist" onclick="navClick('checklist')">Чеклист</a>
+      <a href="#discard"   onclick="navClick('discard')">Остатки закваски</a>
     </nav>
     <button class="btn-shop" onclick="openShop()">Список покупок</button>
   </div>
@@ -1024,9 +1060,12 @@ footer{
 
 <!-- ── 03. ПОШАГОВЫЙ ПЛАН ВЫПЕЧКИ ── -->
 <div class="section" id="plan">
-  <div class="plan-title-wrap">
-    <div class="plan-main-title">Пошаговый план выпечки</div>
-    <div class="s-sub" style="margin-top:.35rem">Три дня — от закваски до готового хлеба</div>
+  <div class="s-hdr" style="cursor:default" onclick="">
+    <div class="s-num">03</div>
+    <div class="s-titles">
+      <div class="plan-main-title">Пошаговый план выпечки</div>
+      <div class="s-sub">Три дня — от закваски до готового хлеба</div>
+    </div>
   </div>
   <div class="s-body open">
 
@@ -1182,6 +1221,7 @@ footer{
       </div>
     </div><!-- /step-sec -->
 
+    <hr class="day-sep">
     <!-- ══ ДЕНЬ ВТОРОЙ ══ -->
     <div class="day-div day-div-s">
       <svg viewBox="0 0 900 148" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
@@ -1272,18 +1312,22 @@ footer{
         </div>
         <div class="calc">
           <div class="calc-title">Рецепт хлеба</div>
-          <div class="calc-row">
-            <label>Количество буханок</label>
-            <input type="number" id="loaves" value="2" min="1" max="20">
+          <div class="calc-fields">
+            <div class="calc-row">
+              <label>Количество буханок</label>
+              <div class="calc-field"><input type="number" id="loaves" value="1" min="1" max="20"></div>
+            </div>
+            <div class="calc-row">
+              <label>Ржаная мука</label>
+              <div class="calc-field">
+                <select id="rye">
+                  <option value="0">Без ржаной — первая попытка</option>
+                  <option value="1">С ржаной, пропорция 70/20/10</option>
+                </select>
+              </div>
+            </div>
           </div>
-          <div class="calc-row">
-            <label>Ржаная мука</label>
-            <select id="rye">
-              <option value="0">Без ржаной — первая попытка</option>
-              <option value="1">С ржаной, пропорция 70/20/10</option>
-            </select>
-          </div>
-          <div class="note" style="margin-top:.8rem;margin-bottom:.5rem;font-size:.88rem">Ржаная мука сильно меняет консистенцию и скорость ферментации — тесто становится более липким и быстрее кислеет. Рекомендуем сначала испечь без неё, освоить процесс, и только потом экспериментировать со ржью.</div>
+          <p class="calc-hint">Ржаная мука меняет консистенцию и ускоряет ферментацию — тесто липнет и быстрее кислеет. Сначала испеките без неё.</p>
           <button class="calc-btn" onclick="calcRecipe()">Рассчитать</button>
           <div class="calc-res" id="r-res">
             <div class="res-row"><span class="nm">Закваска — на пике!</span><span class="am" id="r-s">—</span></div>
@@ -1296,26 +1340,25 @@ footer{
             <p class="res-note">Оставьте <span id="r-left">—</span> закваски — покормите её после выпечки.</p>
           </div>
         </div>
-        <h4 class="sub">Пересчёт для хлебопечки — с дрожжей на закваску</h4>
-        <div class="prose" style="margin-bottom:1rem">
-          <p>Закваска ЛМ влажностью 50% — две части муки и одна часть воды. Закваски берём <strong>25–30% от суммы муки и воды</strong>.</p>
-        </div>
         <div class="calc">
-          <div class="calc-title">Рецепт для хлебопечки</div>
-          <div class="calc-row">
-            <label>Мука в рецепте, г</label>
-            <input type="number" id="hb-f" value="550" min="100">
-          </div>
-          <div class="calc-row">
-            <label>Вода в рецепте, г</label>
-            <input type="number" id="hb-w" value="385" min="50">
-          </div>
-          <div class="calc-row">
-            <label>Доля закваски</label>
-            <select id="hb-p">
-              <option value="25">25% — осторожный вариант</option>
-              <option value="30" selected>30% — максимум</option>
-            </select>
+          <div class="calc-title">Пересчёт для хлебопечки — с дрожжей на закваску</div>
+          <p class="calc-hint" style="margin-bottom:1.4rem">Закваска ЛМ влажностью 50% — две части муки и одна часть воды. Закваски берём <strong>25–30% от суммы муки и воды</strong>.</p>
+          <div class="calc-fields">
+            <div class="calc-row">
+              <label>Мука в рецепте, г</label>
+              <div class="calc-field"><input type="number" id="hb-f" value="550" min="100"></div>
+            </div>
+            <div class="calc-row">
+              <label>Вода в рецепте, г</label>
+              <div class="calc-field"><input type="number" id="hb-w" value="385" min="50"></div>
+            </div>
+            <div class="calc-row">
+              <label>Доля закваски</label>
+              <div class="calc-field"><select id="hb-p">
+                <option value="25">25% — осторожный вариант</option>
+                <option value="30" selected>30% — максимум</option>
+              </select></div>
+            </div>
           </div>
           <button class="calc-btn" onclick="calcHB()">Рассчитать</button>
           <div class="calc-res" id="hb-res">
@@ -1440,6 +1483,7 @@ footer{
       </div>
     </div>
 
+    <hr class="day-sep">
     <!-- ══ ДЕНЬ ТРЕТИЙ ══ -->
     <div class="day-div day-div-s">
       <svg viewBox="0 0 900 148" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
@@ -1522,9 +1566,21 @@ footer{
       </div>
     </div>
 
-    <!-- Финальный чеклист -->
-    <div class="plan-cl-wrap final">
-      <div class="final-cl-title">Финальный чеклист — все три дня</div>
+  </div>
+</div>
+
+<!-- ── 04. ФИНАЛЬНЫЙ ЧЕКЛИСТ ── -->
+<div class="section" id="checklist">
+  <div class="s-hdr" onclick="toggleSec(this)">
+    <div class="s-num">04</div>
+    <div class="s-titles">
+      <div class="s-title">Финальный чеклист — все три дня</div>
+      <div class="s-sub">Пройдите по всем шагам перед выпечкой</div>
+    </div>
+    <div class="s-toggle">+</div>
+  </div>
+  <div class="s-body">
+    <div class="plan-cl-wrap">
 
       <div class="cl-day-hdr" id="clF1-hdr" onclick="chkDay('clF1',2)">
         <input type="checkbox" id="clF1-cb" onclick="event.stopPropagation()" onchange="chkDay('clF1',2)">
@@ -1575,14 +1631,13 @@ footer{
       <button class="cl-reset" style="margin-top:1.2rem"
         onclick="resetCl('clF1',2);resetCl('clF2',11);resetCl('clF3',6)">Сбросить всё</button>
     </div>
-
   </div>
 </div>
 
-<!-- ── 04. ЧТО ДЕЛАТЬ С ОСТАТКАМИ ── -->
+<!-- ── 05. ЧТО ДЕЛАТЬ С ОСТАТКАМИ ── -->
 <div class="section" id="discard">
   <div class="s-hdr" onclick="toggleSec(this)">
-    <div class="s-num">04</div>
+    <div class="s-num">05</div>
     <div class="s-titles">
       <div class="s-title">Что делать с остатками закваски</div>
       <div class="s-sub">Не выбрасывать — использовать</div>
