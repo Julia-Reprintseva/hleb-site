@@ -4,476 +4,593 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Хлеб на закваске Левито Мадре</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:          #FDFAF6;
-  --bg2:         #FFF4EE;
-  --card:        #FFFFFF;
-  --border:      #EEE0D0;
-  --accent:      #E08060;
-  --accent-dark: #C05A3E;
-  --accent-light:#FDEEE9;
-  --sage:        #7FB27A;
-  --sage-bg:     #EDF5EB;
-  --sky:         #70A8C4;
-  --sky-bg:      #E8F3FA;
-  --honey:       #D0A445;
-  --honey-bg:    #FEF4DC;
-  --lavender:    #9A88BC;
-  --lavender-bg: #F0EBF9;
-  --rose:        #D47E98;
-  --rose-bg:     #FDEEF4;
-  --text:        #3C2A1E;
-  --text2:       #7A5840;
-  --text3:       #A88A72;
-  --shadow:      0 3px 20px rgba(200,120,70,.08);
-  --radius:      18px;
-  --rsm:         12px;
+  --bg:     #FAF9F6;
+  --ink:    #1A1612;
+  --ink2:   #3E3830;
+  --ink3:   #8C837A;
+  --line:   #DED8D0;
+  --linelt: #EDE9E2;
+  --gold:   #C4503A;
+  --goldbg: #FDF1EE;
+  --serif:  'Cormorant Garamond', Georgia, serif;
+  --sans:   'Inter', -apple-system, Helvetica, sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:Georgia,serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:16px}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.8;
+  font-size:16px;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+}
 
-/* ── HEADER ── */
+/* ═══ HEADER ═══ */
 header{
   position:sticky;top:0;z-index:100;
-  background:rgba(253,250,246,.96);backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--border);padding:0 1rem;
+  background:rgba(250,249,246,.96);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
 }
 .hdr{
-  max-width:900px;margin:0 auto;
-  display:flex;align-items:center;gap:.8rem;height:58px;
+  max-width:960px;margin:0 auto;
+  display:flex;align-items:center;gap:2rem;
+  height:52px;padding:0 2rem;
 }
-.hdr-logo{font-size:1.5rem;flex-shrink:0}
-.hdr-title{
-  font-size:.95rem;font-weight:bold;color:var(--accent-dark);
-  white-space:nowrap;flex-shrink:0;
-  display:none;
+.hdr-logo{
+  font-family:var(--serif);font-size:1rem;
+  font-weight:400;letter-spacing:.08em;
+  color:var(--ink);text-decoration:none;white-space:nowrap;
 }
-@media(min-width:600px){.hdr-title{display:block}}
 .hdr-nav{
-  display:flex;gap:.3rem;overflow-x:auto;scrollbar-width:none;flex:1;
-  -webkit-overflow-scrolling:touch;
+  display:flex;gap:1.8rem;overflow-x:auto;
+  scrollbar-width:none;flex:1;
 }
 .hdr-nav::-webkit-scrollbar{display:none}
 .hdr-nav a{
-  font-family:Arial,sans-serif;font-size:.72rem;
-  color:var(--text2);text-decoration:none;
-  padding:5px 11px;border-radius:20px;white-space:nowrap;
-  border:1.5px solid transparent;transition:all .2s;
+  font-size:.72rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink3);
+  text-decoration:none;transition:color .2s;white-space:nowrap;
 }
-.hdr-nav a:hover,.hdr-nav a.active{
-  background:var(--accent);color:#fff;border-color:var(--accent);
-}
+.hdr-nav a:hover,.hdr-nav a.active{color:var(--ink)}
 .btn-shop{
-  font-family:Arial,sans-serif;font-size:.8rem;
-  background:var(--accent);color:#fff;border:none;
-  border-radius:20px;padding:7px 14px;cursor:pointer;
-  white-space:nowrap;flex-shrink:0;transition:background .2s;
+  font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;color:#fff;
+  background:var(--gold);border:1px solid var(--gold);
+  padding:7px 18px;cursor:pointer;white-space:nowrap;
+  transition:all .2s;flex-shrink:0;border-radius:2px;
 }
-.btn-shop:hover{background:var(--accent-dark)}
+.btn-shop:hover{opacity:.82}
 
-/* ── HERO ── */
+/* ═══ HERO ═══ */
 .hero{
-  background:linear-gradient(135deg,#F9D9C0 0%,#F8D0D8 50%,#DDD0F5 100%);
-  padding:3rem 1.5rem 2.5rem;text-align:center;position:relative;overflow:hidden;
+  max-width:960px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:center;
+  padding:4rem 2rem 3.5rem;
 }
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='20' cy='20' r='40' fill='rgba(255,255,255,.15)'/%3E%3Ccircle cx='180' cy='160' r='60' fill='rgba(255,255,255,.1)'/%3E%3Ccircle cx='160' cy='30' r='25' fill='rgba(255,255,255,.12)'/%3E%3C/svg%3E");
-  background-size:400px;
+.hero-eyebrow{
+  font-size:.72rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink3);
+  margin-bottom:1.8rem;
 }
-.hero-inner{position:relative;max-width:620px;margin:0 auto}
-.hero-art{margin-bottom:1.2rem}
-.hero h1{
-  font-size:clamp(1.8rem,5vw,3rem);color:var(--accent-dark);
-  letter-spacing:-.5px;margin-bottom:.7rem;line-height:1.2;
+.hero-h1{
+  font-family:var(--serif);
+  font-size:clamp(2.8rem,5vw,4.8rem);
+  font-weight:300;line-height:1.05;
+  color:var(--ink);margin-bottom:1.8rem;
+  letter-spacing:-.02em;
 }
-.hero p{font-size:1.05rem;color:var(--text2);max-width:480px;margin:0 auto 1.5rem}
-.hero-badges{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap}
-.hero-badge{
-  background:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.9);
-  color:var(--text2);font-family:Arial,sans-serif;font-size:.78rem;
-  padding:5px 12px;border-radius:20px;backdrop-filter:blur(4px);
+.hero-desc{
+  font-size:1rem;color:var(--ink2);
+  line-height:1.85;max-width:360px;
+}
+.hero-meta{
+  display:flex;gap:2rem;margin-top:2.5rem;flex-wrap:wrap;
+}
+.hero-meta-item{
+  display:flex;flex-direction:column;gap:.15rem;
+}
+.hero-meta-val{
+  font-family:var(--serif);font-size:1.6rem;
+  font-weight:300;color:var(--ink);line-height:1;
+}
+.hero-meta-key{
+  font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink3);
+}
+.hero-art{display:flex;align-items:center;justify-content:center}
+
+/* ═══ DIVIDER ═══ */
+.page-rule{
+  max-width:960px;margin:0 auto;
+  border:none;border-top:1px solid var(--line);
 }
 
-/* ── PHOTO STRIP ── */
-.photo-strip{
-  padding:1.4rem 1rem;background:var(--card);border-bottom:1px solid var(--border);
-}
-.photo-strip-inner{
-  max-width:900px;margin:0 auto;
-  display:flex;gap:1rem;overflow-x:auto;scrollbar-width:thin;
-  scrollbar-color:var(--border) transparent;
-  padding-bottom:.5rem;
-}
-.photo-card{
-  flex-shrink:0;width:200px;border-radius:var(--rsm);overflow:hidden;
-  box-shadow:var(--shadow);position:relative;
-}
-.photo-card img{
-  width:100%;height:140px;object-fit:cover;display:block;
-  background:var(--accent-light);
-}
-.photo-card-label{
-  position:absolute;bottom:0;left:0;right:0;
-  background:linear-gradient(to top,rgba(60,42,30,.65),transparent);
-  color:#fff;font-family:Arial,sans-serif;font-size:.72rem;
-  padding:.5rem .6rem .4rem;
-}
+/* ═══ MAIN ═══ */
+main{max-width:960px;margin:0 auto;padding:0 2rem 6rem}
 
-/* ── MAIN ── */
-main{max-width:900px;margin:0 auto;padding:1.5rem 1rem 4rem}
+/* ═══ OPEN-ALL ═══ */
+.ctrl-row{
+  display:flex;align-items:center;justify-content:flex-end;
+  padding:.8rem 0 .5rem;
+}
+.ctrl-btn{
+  font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink3);
+  background:none;border:none;cursor:pointer;
+  transition:color .2s;padding:4px 0;
+  border-bottom:1px solid transparent;
+}
+.ctrl-btn:hover{color:var(--ink);border-bottom-color:var(--line)}
 
-/* ── SECTION ── */
-.section{margin-bottom:1.4rem;scroll-margin-top:72px}
+/* ═══ SECTION ═══ */
+.section{
+  border-top:1px solid var(--line);
+  scroll-margin-top:65px;
+}
+.sections-wrap > .section:last-child{border-bottom:1px solid var(--line)}
 .s-hdr{
-  display:flex;align-items:center;justify-content:space-between;gap:.8rem;
-  background:var(--card);border:1.5px solid var(--border);
-  border-radius:var(--radius);padding:.9rem 1.2rem;
-  cursor:pointer;user-select:none;transition:all .2s;
+  display:flex;align-items:center;
+  gap:1.4rem;padding:1.2rem 0;
+  cursor:pointer;user-select:none;
+  transition:opacity .2s;
 }
-.s-hdr:hover{box-shadow:var(--shadow)}
-.s-hdr.open{border-radius:var(--radius) var(--radius) 0 0;border-bottom-color:transparent}
-.s-hdr-left{display:flex;align-items:center;gap:.7rem;flex:1;min-width:0}
-.s-icon{
-  font-size:1.5rem;flex-shrink:0;
-  width:42px;height:42px;display:flex;align-items:center;justify-content:center;
-  border-radius:12px;
+.s-hdr:hover{opacity:.7}
+.s-num{
+  font-family:var(--serif);
+  font-size:3rem;
+  font-weight:300;
+  color:var(--gold);
+  opacity:.55;
+  flex-shrink:0;
+  width:4rem;
+  line-height:1;
+  text-align:right;
 }
-.s-icon-orange{background:#FDEBD8}
-.s-icon-green{background:var(--sage-bg)}
-.s-icon-blue{background:var(--sky-bg)}
-.s-icon-purple{background:var(--lavender-bg)}
-.s-icon-rose{background:var(--rose-bg)}
-.s-icon-honey{background:var(--honey-bg)}
-.s-title{font-size:1rem;font-weight:bold;color:var(--accent-dark);line-height:1.3}
-.s-sub{font-family:Arial,sans-serif;font-size:.75rem;color:var(--text3);margin-top:1px}
+.s-titles{flex:1;min-width:0}
+.s-title{
+  font-family:var(--serif);font-size:1.55rem;
+  font-weight:400;color:var(--ink);
+  letter-spacing:-.01em;line-height:1.2;
+}
+.s-sub{
+  font-size:.75rem;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink3);margin-top:.35rem;
+}
 .s-toggle{
-  font-size:1.3rem;color:var(--accent);flex-shrink:0;
-  transition:transform .3s;line-height:1;width:28px;text-align:center;
+  font-size:1.1rem;color:var(--ink3);
+  flex-shrink:0;transition:transform .3s;
+  line-height:1;width:24px;text-align:right;
 }
-.s-hdr.open .s-toggle{transform:rotate(45deg)}
+.s-hdr.open .s-toggle{transform:rotate(45deg);color:var(--gold)}
 .s-body{
   display:none;
-  background:var(--card);border:1.5px solid var(--border);
-  border-top:none;border-radius:0 0 var(--radius) var(--radius);
-  padding:1.4rem 1.4rem 1.8rem;
+  padding:.5rem 0 2.5rem 5.4rem;
 }
 .s-body.open{display:block}
 
-/* ── PROSE ── */
-.prose p{margin-bottom:1rem;color:var(--text)}
+/* ═══ PROSE ═══ */
+.prose{color:var(--ink2);font-size:1rem;line-height:1.85}
+.prose p{margin-bottom:1.1rem}
 .prose p:last-child{margin-bottom:0}
-.prose strong{color:var(--accent-dark)}
-.prose a{color:var(--sky)}
-ul.list,ol.list{padding-left:1.4rem;margin-bottom:1rem}
-ul.list li,ol.list li{margin-bottom:.45rem}
-h4.sub{color:var(--accent-dark);font-size:.97rem;margin:1.2rem 0 .7rem}
-
-/* ── BOXES ── */
-.box{border-radius:var(--rsm);padding:1rem 1.1rem;margin:1rem 0;font-size:.93rem}
-.box-sage{background:var(--sage-bg);border-left:4px solid var(--sage);color:#2D4E28}
-.box-orange{background:var(--accent-light);border-left:4px solid var(--accent)}
-.box-sky{background:var(--sky-bg);border-left:4px solid var(--sky);color:#1E4060}
-.box-honey{background:var(--honey-bg);border-left:4px solid var(--honey)}
-.box-lavender{background:var(--lavender-bg);border-left:4px solid var(--lavender)}
-.box strong{font-weight:bold}
-
-/* ── VIDEO ── */
-.video-block{margin:1.2rem 0}
-.video-label{
-  font-family:Arial,sans-serif;font-size:.75rem;color:var(--text3);
-  text-transform:uppercase;letter-spacing:.6px;margin-bottom:.5rem;
-}
-.video-wrap{
-  position:relative;padding-bottom:56.25%;height:0;
-  border-radius:var(--rsm);overflow:hidden;
-  background:#1a1a1a;box-shadow:var(--shadow);
-}
-.video-wrap iframe{
-  position:absolute;top:0;left:0;width:100%;height:100%;border:none;
-}
-.video-desc{
-  font-family:Arial,sans-serif;font-size:.84rem;
-  color:var(--text2);margin-top:.5rem;font-style:italic;
-}
-.video-grid{
-  display:grid;gap:1.2rem;
-  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-  margin:1rem 0;
+.prose strong{color:var(--ink);font-weight:600}
+.prose em{font-style:italic}
+.prose a{color:var(--gold);text-underline-offset:3px}
+ul.lst,ol.lst{padding-left:1.4rem;margin:.8rem 0}
+ul.lst li,ol.lst li{margin-bottom:.5rem;font-size:1rem;color:var(--ink2)}
+h4.sub{
+  font-family:var(--serif);font-size:1.25rem;
+  font-weight:400;color:var(--ink);
+  margin:2rem 0 .8rem;letter-spacing:-.01em;
+  padding-left:.8rem;
+  border-left:2px solid var(--gold);
 }
 
-/* ── YT THUMBNAIL CARD ── */
-.yt-card{
-  display:block;position:relative;border-radius:var(--rsm);overflow:hidden;
-  box-shadow:var(--shadow);text-decoration:none;background:#000;
-  aspect-ratio:16/9;
+/* ═══ CALLOUT ═══ */
+.callout{
+  border-left:2px solid var(--gold);
+  background:var(--goldbg);
+  padding:.9rem 1.4rem;margin:1.6rem 0;
+  font-size:.97rem;color:var(--ink2);line-height:1.85;
+  border-radius:0 4px 4px 0;
 }
-.yt-thumb{
-  width:100%;height:100%;object-fit:cover;display:block;
-  opacity:.85;transition:opacity .2s;
-}
-.yt-card:hover .yt-thumb{opacity:.7}
-.yt-play{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:64px;height:64px;background:rgba(220,60,30,.9);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.4rem;color:#fff;padding-left:4px;
-  box-shadow:0 4px 20px rgba(0,0,0,.4);transition:transform .2s,background .2s;
-}
-.yt-card:hover .yt-play{transform:translate(-50%,-50%) scale(1.1);background:rgba(220,60,30,1)}
-.yt-label{
-  position:absolute;bottom:0;left:0;right:0;
-  background:linear-gradient(to top,rgba(0,0,0,.7),transparent);
-  color:#fff;font-family:Arial,sans-serif;font-size:.82rem;
-  padding:.7rem .9rem .5rem;
+.callout strong{color:var(--ink);font-weight:600}
+.note{
+  border-left:2px solid var(--line);
+  background:var(--linelt);
+  padding:.75rem 1.4rem;margin:1.2rem 0;
+  font-size:.93rem;color:var(--ink2);
+  font-style:italic;line-height:1.8;
+  border-radius:0 4px 4px 0;
 }
 
-/* ── INSTAGRAM / SOCIAL CARDS ── */
-.soc-card{
-  display:flex;align-items:flex-start;gap:.9rem;
-  background:var(--bg2);border:1.5px solid var(--border);
-  border-radius:var(--rsm);padding:1rem 1.1rem;margin:.7rem 0;
+/* ═══ STAT ROW ═══ */
+.stat-row{
+  display:flex;gap:3rem;margin:1.8rem 0;flex-wrap:wrap;
+  padding:1.4rem 1.6rem;
+  background:var(--goldbg);
+  border-left:3px solid var(--gold);
+  border-radius:0 4px 4px 0;
 }
-.soc-icon-wrap{
-  width:44px;height:44px;border-radius:12px;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;font-size:1.4rem;
+.stat-item{display:flex;flex-direction:column;gap:.25rem}
+.stat-val{
+  font-family:var(--serif);font-size:2.4rem;
+  font-weight:300;color:var(--gold);line-height:1;
 }
-.soc-icon-ig{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
-.soc-icon-fb{background:#1877F2}
-.soc-info .title{font-family:Arial,sans-serif;font-size:.88rem;font-weight:bold;margin-bottom:.2rem}
-.soc-info .desc{font-family:Arial,sans-serif;font-size:.8rem;color:var(--text2);margin-bottom:.5rem}
-.soc-btn{
-  display:inline-block;color:#fff;font-family:Arial,sans-serif;
-  font-size:.76rem;padding:5px 13px;border-radius:20px;text-decoration:none;
-  transition:opacity .2s;
+.stat-key{
+  font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink3);
 }
-.soc-btn:hover{opacity:.85}
-.btn-ig{background:linear-gradient(135deg,#f09433,#dc2743,#bc1888)}
-.btn-fb{background:#1877F2}
 
-/* ── QUICK STATS ── */
-.stats{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));margin:1rem 0}
-.stat{
-  background:var(--bg2);border:1.5px solid var(--border);
-  border-radius:var(--rsm);padding:.9rem;text-align:center;
+/* ═══ TABLE ═══ */
+.tbl{
+  width:100%;border-collapse:collapse;
+  font-size:.97rem;margin:1.5rem 0;
 }
-.stat .val{
-  font-size:1.35rem;font-weight:bold;color:var(--accent-dark);display:block;
+.tbl th{
+  text-align:left;font-weight:500;
+  font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink3);
+  padding:0 1rem .9rem 0;
+  border-bottom:1px solid var(--line);
 }
-.stat .key{font-family:Arial,sans-serif;font-size:.73rem;color:var(--text3);margin-top:.2rem}
+.tbl td{
+  padding:.7rem 1rem .7rem 0;
+  border-bottom:1px solid var(--linelt);
+  color:var(--ink2);vertical-align:top;
+}
+.tbl td:last-child{
+  font-family:var(--serif);font-size:1.05rem;color:var(--ink);
+}
 
-/* ── TABLE ── */
-.tbl{width:100%;border-collapse:collapse;font-family:Arial,sans-serif;font-size:.88rem;margin:1rem 0}
-.tbl th{background:var(--accent);color:#fff;padding:9px 12px;text-align:left}
-.tbl th:first-child{border-radius:var(--rsm) 0 0 0}
-.tbl th:last-child{border-radius:0 var(--rsm) 0 0}
-.tbl td{padding:8px 12px;border-bottom:1px solid var(--border)}
-.tbl tr:nth-child(even) td{background:var(--bg2)}
-.tbl.green th{background:var(--sage)}
-.tbl.blue th{background:var(--sky)}
+/* ═══ FLOUR LIST ═══ */
+.flour-list{margin:1.5rem 0}
+.flour-item{
+  display:flex;gap:2rem;align-items:baseline;
+  padding:1.3rem 0;border-bottom:1px solid var(--linelt);
+}
+.flour-pct{
+  font-family:var(--serif);font-size:2.6rem;
+  font-weight:300;color:var(--gold);
+  min-width:3.5rem;line-height:1;flex-shrink:0;
+}
+.flour-name{font-size:1rem;color:var(--ink);margin-bottom:.25rem;font-weight:500}
+.flour-brand{font-size:.82rem;color:var(--ink3);letter-spacing:.02em}
+.flour-note{font-size:.88rem;color:var(--ink2);margin-top:.3rem;font-style:italic}
 
-/* ── CALCULATOR ── */
+/* ═══ TOOL LIST ═══ */
+.tool-cols{
+  display:grid;grid-template-columns:1fr 1fr;gap:2rem;
+  margin:1.2rem 0;
+}
+.tool-col-title{
+  font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink3);
+  padding-bottom:.7rem;border-bottom:1px solid var(--line);
+  margin-bottom:.8rem;font-weight:500;
+}
+.tool-list{list-style:none}
+.tool-list li{
+  font-size:.97rem;color:var(--ink2);
+  padding:.45rem 0;border-bottom:1px solid var(--linelt);
+}
+.tool-list li:last-child{border-bottom:none}
+
+/* ═══ CALCULATOR ═══ */
 .calc{
-  background:var(--bg2);border:2px solid var(--accent);
-  border-radius:var(--radius);padding:1.4rem;margin:1.2rem 0;
+  margin:2rem 0;padding:2rem;
+  border:1px solid var(--line);
+  background:var(--linelt);
 }
 .calc-title{
-  font-size:.97rem;font-weight:bold;color:var(--accent-dark);
-  margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;
+  font-family:var(--serif);font-size:1.3rem;
+  font-weight:400;color:var(--ink);
+  margin-bottom:1.6rem;letter-spacing:-.01em;
 }
-.calc-row{display:flex;align-items:center;gap:.7rem;margin-bottom:.8rem;flex-wrap:wrap}
+.calc-row{
+  display:flex;align-items:center;
+  gap:1.5rem;margin-bottom:1rem;flex-wrap:wrap;
+}
 .calc-row label{
-  font-family:Arial,sans-serif;font-size:.86rem;color:var(--text2);min-width:170px;
+  font-size:.9rem;letter-spacing:.02em;
+  color:var(--ink2);min-width:200px;
 }
 .calc-row input,.calc-row select{
-  font-family:Arial,sans-serif;font-size:.97rem;
-  padding:8px 12px;border:1.5px solid var(--border);
-  border-radius:var(--rsm);background:#fff;width:130px;color:var(--text);
+  border:none;border-bottom:1px solid var(--line);
+  background:transparent;padding:6px 0;
+  font-size:.95rem;color:var(--ink);
+  font-family:var(--sans);width:130px;outline:none;
   transition:border-color .2s;
 }
-.calc-row input:focus,.calc-row select:focus{outline:none;border-color:var(--accent)}
-.calc-btn{
-  background:var(--accent);color:#fff;border:none;
-  border-radius:var(--rsm);padding:9px 22px;font-size:.9rem;
-  cursor:pointer;font-family:Arial,sans-serif;transition:background .2s;margin-top:.3rem;
+.calc-row input:focus,.calc-row select:focus{
+  border-bottom-color:var(--gold);
 }
-.calc-btn:hover{background:var(--accent-dark)}
+.calc-btn{
+  background:var(--gold);color:#fff;
+  border:none;padding:11px 28px;
+  font-size:.7rem;letter-spacing:.12em;
+  text-transform:uppercase;cursor:pointer;
+  font-family:var(--sans);margin-top:.5rem;
+  transition:opacity .2s;
+  border-radius:2px;
+}
+.calc-btn:hover{opacity:.82}
 .calc-res{
-  display:none;background:#fff;border-radius:var(--rsm);
-  padding:1rem 1.2rem;margin-top:1rem;border:1.5px solid var(--border);
+  display:none;margin-top:1.8rem;
+  border-top:1px solid var(--line);padding-top:1.4rem;
 }
 .calc-res.show{display:block}
 .res-row{
-  display:flex;justify-content:space-between;padding:6px 0;
-  border-bottom:1px solid var(--border);font-family:Arial,sans-serif;font-size:.9rem;
+  display:flex;justify-content:space-between;
+  align-items:baseline;padding:.5rem 0;
+  border-bottom:1px solid var(--linelt);
+  gap:1rem;
 }
 .res-row:last-child{border-bottom:none}
-.res-row .nm{color:var(--text2)}
-.res-row .am{font-weight:bold;color:var(--accent-dark)}
+.res-row .nm{font-size:.95rem;color:var(--ink2)}
+.res-row .am{
+  font-family:var(--serif);font-size:1.25rem;
+  color:var(--ink);font-weight:400;white-space:nowrap;
+}
+.res-note{
+  font-size:.88rem;color:var(--ink3);
+  margin-top:1rem;font-style:italic;
+}
 
-/* ── CHECKLIST ── */
-.cl{list-style:none}
+/* ═══ CHECKLIST ═══ */
+.cl-day{
+  font-size:.75rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--gold);
+  margin:1.6rem 0 .5rem;font-weight:500;
+}
+.cl{list-style:none;margin-bottom:.5rem}
 .cl li{
-  display:flex;align-items:flex-start;gap:.7rem;
-  padding:.55rem 6px;border-bottom:1px solid var(--border);
-  cursor:pointer;border-radius:8px;transition:background .15s;font-size:.93rem;
+  display:flex;align-items:flex-start;gap:.9rem;
+  padding:.7rem 0;border-bottom:1px solid var(--linelt);
+  cursor:pointer;font-size:.97rem;
+  transition:color .15s;line-height:1.65;
 }
 .cl li:last-child{border-bottom:none}
-.cl li:hover{background:var(--accent-light)}
+.cl li:hover{color:var(--ink2)}
 .cl li input[type=checkbox]{
-  width:20px;height:20px;cursor:pointer;accent-color:var(--accent);
-  flex-shrink:0;margin-top:2px;
+  width:15px;height:15px;
+  accent-color:var(--gold);
+  flex-shrink:0;margin-top:3px;cursor:pointer;
 }
-.cl li.done span{text-decoration:line-through;color:var(--text3)}
+.cl li.done span{
+  text-decoration:line-through;color:var(--ink3);
+}
+.cl li span strong{color:var(--ink);font-weight:600}
 .cl-reset{
-  font-family:Arial,sans-serif;font-size:.77rem;color:var(--text3);
-  background:none;border:1.5px solid var(--border);border-radius:20px;
-  padding:4px 13px;cursor:pointer;margin-top:.7rem;transition:all .2s;
+  font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink3);
+  background:none;border:none;cursor:pointer;
+  border-bottom:1px solid var(--line);
+  padding-bottom:1px;margin-top:1rem;
+  transition:color .2s,border-color .2s;
 }
-.cl-reset:hover{border-color:var(--accent);color:var(--accent)}
-.cl-prog{font-family:Arial,sans-serif;font-size:.79rem;color:var(--text3);margin-top:.4rem}
-.prog-bar{height:7px;background:var(--border);border-radius:4px;margin-top:4px;overflow:hidden}
-.prog-fill{height:100%;background:var(--sage);border-radius:4px;transition:width .3s}
+.cl-reset:hover{color:var(--ink);border-color:var(--ink)}
+.cl-prog{
+  font-size:.82rem;color:var(--ink3);
+  margin-top:.6rem;font-family:var(--serif);
+}
+.prog-bar{
+  height:3px;background:var(--line);
+  margin-top:.5rem;overflow:hidden;border-radius:2px;
+}
+.prog-fill{
+  height:100%;background:var(--gold);
+  transition:width .4s;border-radius:2px;
+}
 
-/* ── STEPS ── */
-.steps{list-style:none;counter-reset:step}
+/* ═══ STEPS ═══ */
+.steps{list-style:none;counter-reset:step;margin:.5rem 0}
 .steps li{
-  counter-increment:step;display:flex;gap:.9rem;
-  margin-bottom:1.1rem;align-items:flex-start;
+  counter-increment:step;
+  display:flex;gap:1.2rem;margin-bottom:1rem;
+  align-items:flex-start;font-size:.97rem;color:var(--ink2);
 }
 .steps li::before{
   content:counter(step);
-  background:var(--accent);color:#fff;
-  width:28px;height:28px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-family:Arial,sans-serif;font-size:.82rem;font-weight:bold;
-  flex-shrink:0;margin-top:2px;
+  font-family:var(--serif);font-size:1.2rem;
+  color:var(--gold);flex-shrink:0;
+  width:1.4rem;line-height:1.5;
 }
-.steps .sc{flex:1}
-.steps .sc strong{color:var(--accent-dark)}
+.steps .sc strong{color:var(--ink);font-weight:600}
 
-/* ── TIMELINE ── */
-.timeline{border-left:3px solid var(--accent);padding-left:1.3rem;margin:1rem 0}
-.tl-item{margin-bottom:1.4rem;position:relative}
+/* ═══ TIMELINE ═══ */
+.timeline{
+  position:relative;padding-left:2rem;margin:1.5rem 0;
+}
+.timeline::before{
+  content:'';position:absolute;left:0;
+  top:8px;bottom:0;
+  width:2px;background:var(--line);
+}
+.tl-item{margin-bottom:2rem;position:relative}
 .tl-item::before{
-  content:'';position:absolute;left:-1.62rem;top:5px;
-  width:12px;height:12px;background:var(--accent);border-radius:50%;
-  border:2px solid var(--bg);
+  content:'';position:absolute;
+  left:-2.4rem;top:7px;
+  width:10px;height:10px;
+  background:var(--gold);border-radius:50%;
+  box-shadow:0 0 0 3px var(--goldbg);
 }
 .tl-time{
-  font-family:Arial,sans-serif;font-size:.74rem;font-weight:bold;
-  color:var(--accent);text-transform:uppercase;letter-spacing:.5px;
+  font-size:.72rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:.25rem;font-weight:500;
 }
-.tl-title{font-weight:bold;color:var(--text);margin:.1rem 0}
-.tl-desc{font-size:.88rem;color:var(--text2)}
+.tl-title{
+  font-family:var(--serif);font-size:1.2rem;
+  color:var(--ink);margin-bottom:.25rem;font-weight:400;
+}
+.tl-desc{font-size:.95rem;color:var(--ink2);line-height:1.75}
 
-/* ── CARDS GRID ── */
-.card-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
-.card{
-  background:var(--bg2);border:1.5px solid var(--border);
-  border-radius:var(--rsm);padding:1rem;
+/* ═══ VIDEO ═══ */
+.video-block{margin:1.8rem 0}
+.video-label{
+  font-size:.75rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink3);margin-bottom:.7rem;font-weight:500;
 }
-.card-hd{
-  font-family:Arial,sans-serif;font-size:.77rem;font-weight:bold;
-  text-transform:uppercase;letter-spacing:.5px;color:var(--text3);margin-bottom:.6rem;
+.video-wrap{
+  position:relative;padding-bottom:56.25%;height:0;
+  overflow:hidden;background:#111;
+}
+.video-wrap iframe{
+  position:absolute;top:0;left:0;
+  width:100%;height:100%;border:none;
+}
+.video-desc{
+  font-size:.9rem;color:var(--ink3);
+  margin-top:.6rem;font-style:italic;
+}
+.video-grid{
+  display:grid;gap:1.5rem;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  margin:1.2rem 0;
 }
 
-/* ── DIVIDER ── */
-.div{height:1px;background:var(--border);margin:1.2rem 0}
+/* ═══ SOC CARD ═══ */
+.soc-card{
+  display:flex;align-items:flex-start;gap:1.4rem;
+  padding:1.1rem 1.2rem;
+  border:1px solid var(--linelt);
+  border-radius:4px;
+  background:var(--bg);
+  margin:.8rem 0;
+}
+.soc-platform{
+  font-size:.68rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink3);
+  min-width:65px;flex-shrink:0;margin-top:2px;
+  line-height:1.4;font-weight:500;
+}
+.soc-info .title{font-size:1rem;color:var(--ink);margin-bottom:.25rem;font-weight:500}
+.soc-info .desc{font-size:.9rem;color:var(--ink2);margin-bottom:.6rem;line-height:1.7}
+.soc-btn{
+  font-size:.7rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink);
+  text-decoration:none;
+  border-bottom:1px solid var(--line);
+  padding-bottom:1px;transition:color .2s,border-color .2s;
+}
+.soc-btn:hover{color:var(--gold);border-color:var(--gold)}
 
-/* ── ILLUSTRATION BLOCKS ── */
-.illus-section{
-  display:flex;gap:1.2rem;align-items:flex-start;margin:1rem 0;
+/* ═══ YT CARD ═══ */
+.yt-card{
+  display:block;position:relative;overflow:hidden;
+  text-decoration:none;background:#111;
+  aspect-ratio:16/9;
 }
-.illus-art{
-  flex-shrink:0;width:80px;display:flex;align-items:center;justify-content:center;
+.yt-thumb{width:100%;height:100%;object-fit:cover;display:block;opacity:.8;transition:opacity .2s}
+.yt-card:hover .yt-thumb{opacity:.65}
+.yt-play{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:58px;height:58px;border-radius:50%;
+  background:rgba(0,0,0,.55);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;color:#fff;padding-left:3px;
+  transition:transform .2s,background .2s;
 }
-.illus-art svg{width:80px;height:80px}
-.illus-text{flex:1}
-@media(max-width:480px){.illus-section{flex-direction:column}}
+.yt-card:hover .yt-play{transform:translate(-50%,-50%) scale(1.1);background:rgba(0,0,0,.75)}
+.yt-label{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,rgba(0,0,0,.65),transparent);
+  color:#fff;font-size:.72rem;letter-spacing:.06em;
+  padding:.6rem .8rem .4rem;
+}
 
-/* ── FLOUR TABLE ── */
-.flour-card{
-  display:flex;align-items:center;gap:1rem;
-  background:var(--card);border:1.5px solid var(--border);
-  border-radius:var(--rsm);padding:.9rem 1.1rem;margin:.6rem 0;
-}
-.flour-icon{font-size:2rem;flex-shrink:0;width:48px;text-align:center}
-.flour-info .name{font-weight:bold;color:var(--accent-dark);font-size:.93rem}
-.flour-info .brand{font-family:Arial,sans-serif;font-size:.8rem;color:var(--text3);margin:.1rem 0}
-.flour-info .pct{
-  display:inline-block;font-family:Arial,sans-serif;font-size:.76rem;font-weight:bold;
-  background:var(--accent-light);color:var(--accent-dark);
-  padding:2px 9px;border-radius:20px;margin-top:.2rem;
-}
-.flour-info .note{font-family:Arial,sans-serif;font-size:.79rem;color:var(--text2);margin-top:.2rem}
-
-/* ── BADGE ── */
-.badge{
-  display:inline-block;font-family:Arial,sans-serif;font-size:.7rem;font-weight:bold;
-  padding:2px 8px;border-radius:20px;margin-left:4px;vertical-align:middle;
-}
-.bdg-orange{background:var(--accent-light);color:var(--accent-dark)}
-.bdg-sage{background:var(--sage-bg);color:var(--sage)}
-
-/* ── OPEN-ALL ── */
-.open-all{
-  font-family:Arial,sans-serif;font-size:.8rem;color:var(--text3);
-  background:none;border:1.5px solid var(--border);border-radius:20px;
-  padding:6px 16px;cursor:pointer;margin-bottom:1.2rem;transition:all .2s;
-}
-.open-all:hover{border-color:var(--accent);color:var(--accent)}
-
-/* ── SHOPPING MODAL ── */
+/* ═══ SHOPPING MODAL ═══ */
 .overlay{
   display:none;position:fixed;inset:0;
-  background:rgba(60,42,30,.45);z-index:200;backdrop-filter:blur(3px);
+  background:rgba(26,22,18,.4);z-index:200;
+  backdrop-filter:blur(4px);
 }
 .overlay.open{display:flex;align-items:flex-start;justify-content:flex-end}
 .modal{
-  background:var(--card);width:min(480px,100vw);height:100vh;
-  overflow-y:auto;padding:1.5rem;box-shadow:-4px 0 28px rgba(60,42,30,.18);
+  background:var(--bg);
+  width:min(460px,100vw);height:100vh;
+  overflow-y:auto;padding:2.5rem 2rem;
+  border-left:1px solid var(--line);
 }
-.modal-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem}
-.modal-title{font-size:1.05rem;font-weight:bold;color:var(--accent-dark)}
+.modal-hdr{
+  display:flex;align-items:baseline;
+  justify-content:space-between;margin-bottom:2rem;
+}
+.modal-title{
+  font-family:var(--serif);font-size:1.5rem;
+  font-weight:300;color:var(--ink);letter-spacing:-.01em;
+}
 .modal-x{
-  background:none;border:none;font-size:1.4rem;cursor:pointer;
-  color:var(--text3);padding:4px;transition:color .2s;
+  background:none;border:none;
+  font-size:1.1rem;cursor:pointer;
+  color:var(--ink3);transition:color .2s;
+  letter-spacing:.1em;font-size:.7rem;
+  text-transform:uppercase;
 }
-.modal-x:hover{color:var(--accent)}
+.modal-x:hover{color:var(--ink)}
 .shop-sec{
-  font-family:Arial,sans-serif;font-size:.74rem;font-weight:bold;
-  text-transform:uppercase;letter-spacing:.5px;color:var(--text3);
-  margin:1.2rem 0 .5rem;
+  font-size:.72rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink3);
+  padding-bottom:.5rem;border-bottom:1px solid var(--line);
+  margin:1.8rem 0 .8rem;font-weight:500;
 }
 .shop-item{
-  display:flex;align-items:center;justify-content:space-between;gap:.7rem;
-  padding:.65rem 0;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;padding:.75rem 0;
+  border-bottom:1px solid var(--linelt);
 }
 .shop-item:last-child{border-bottom:none}
-.shop-name{font-family:Arial,sans-serif;font-size:.86rem;color:var(--text);flex:1}
+.shop-name{font-size:.95rem;color:var(--ink2);flex:1}
 .shop-link{
-  font-family:Arial,sans-serif;font-size:.76rem;
-  background:var(--accent);color:#fff;border-radius:20px;
-  padding:3px 11px;text-decoration:none;flex-shrink:0;transition:background .2s;
+  font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;
+  border-bottom:1px solid var(--line);padding-bottom:1px;
+  flex-shrink:0;transition:all .2s;
 }
-.shop-link:hover{background:var(--accent-dark)}
+.shop-link:hover{color:var(--gold);border-color:var(--gold)}
 
-/* ── FOOTER ── */
+/* ═══ FOOTER ═══ */
 footer{
-  text-align:center;padding:2rem 1rem 3rem;color:var(--text3);
-  font-family:Arial,sans-serif;font-size:.8rem;border-top:1px solid var(--border);
+  border-top:1px solid var(--line);
+  padding:3rem 2rem;text-align:center;
+  color:var(--ink3);
 }
+.footer-logo{
+  font-family:var(--serif);font-size:1.5rem;
+  font-weight:300;margin-bottom:.5rem;letter-spacing:.02em;
+}
+.footer-sub{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
 
-/* ── RESPONSIVE ── */
-@media(max-width:600px){
-  .video-grid{grid-template-columns:1fr}
-  .stats{grid-template-columns:repeat(2,1fr)}
-  .calc-row{flex-direction:column;align-items:flex-start}
-  .calc-row label{min-width:unset;width:100%}
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:700px){
+  .hero{grid-template-columns:1fr;padding:3rem 1.5rem 2rem;gap:2rem}
+  .hero-art{order:-1}
+  .hdr{padding:0 1.2rem;gap:1.2rem}
+  main{padding:0 1.2rem 4rem}
+  .s-body{padding:.5rem 0 2rem 1rem}
+  .s-num{font-size:2rem;width:2.8rem}
+  .stat-row{gap:1.5rem;padding:1rem 1rem}
+  .tool-cols{grid-template-columns:1fr}
+  .calc{padding:1.4rem}
+  .calc-row{flex-direction:column;align-items:flex-start;gap:.5rem}
   .calc-row input,.calc-row select{width:100%}
+  .video-grid{grid-template-columns:1fr}
+  footer{padding:2rem 1.5rem}
+  .s-title{font-size:1.3rem}
+}
+@media(max-width:480px){
+  .flour-item{flex-direction:column;gap:.5rem}
+  .flour-pct{font-size:1.6rem}
+  .hero-h1{font-size:2.6rem}
 }
 </style>
 </head>
@@ -482,8 +599,7 @@ footer{
 <!-- ═══ HEADER ═══ -->
 <header>
   <div class="hdr">
-    <span class="hdr-logo">🍞</span>
-    <span class="hdr-title">Левито Мадре</span>
+    <span class="hdr-logo">Левито Мадре</span>
     <nav class="hdr-nav">
       <a href="#starter" onclick="navClick('starter')">Закваска</a>
       <a href="#flour"   onclick="navClick('flour')">Мука</a>
@@ -493,7 +609,7 @@ footer{
       <a href="#baking"  onclick="navClick('baking')">Выпечка</a>
       <a href="#checklist" onclick="navClick('checklist')">Чеклист</a>
     </nav>
-    <button class="btn-shop" onclick="openShop()">🛒 Покупки</button>
+    <button class="btn-shop" onclick="openShop()">Список покупок</button>
   </div>
 </header>
 
@@ -501,217 +617,264 @@ footer{
 <div class="overlay" id="shopModal" onclick="if(event.target===this)closeShop()">
   <div class="modal">
     <div class="modal-hdr">
-      <span class="modal-title">🛒 Список покупок</span>
-      <button class="modal-x" onclick="closeShop()">✕</button>
+      <span class="modal-title">Список покупок</span>
+      <button class="modal-x" onclick="closeShop()">Закрыть ✕</button>
     </div>
-    <div class="box box-orange">💡 Начни с минимума — посмотри, зайдёт ли. Потом докупи специализированное.</div>
-
-    <div class="shop-sec">🌾 Мука</div>
-    <div class="shop-item"><span class="shop-name">Пшеничная Макфа (код А на упаковке)</span></div>
+    <div class="note">Начни с минимума — посмотри, зайдёт ли выпечка. Потом докупишь специализированное.</div>
+    <div class="shop-sec">Мука</div>
+    <div class="shop-item"><span class="shop-name">Пшеничная Макфа — код А на упаковке</span></div>
     <div class="shop-item"><span class="shop-name">Цельнозерновая «Французская штучка»</span></div>
-    <div class="shop-item"><span class="shop-name">Ржаная «Увелка» (маленький пакет)</span></div>
+    <div class="shop-item"><span class="shop-name">Ржаная «Увелка» — маленький пакет</span></div>
     <div class="shop-item"><span class="shop-name">Рисовая мука — для присыпки</span><a href="https://ozon.ru/t/MtXgb1t" target="_blank" class="shop-link">Ozon</a></div>
-
-    <div class="shop-sec">🔧 Инвентарь</div>
+    <div class="shop-sec">Инструменты</div>
     <div class="shop-item"><span class="shop-name">Нож пекарский со сменными лезвиями</span><a href="https://ozon.ru/t/91M48Ao" target="_blank" class="shop-link">Ozon</a></div>
-    <div class="shop-item"><span class="shop-name">Пергамент силиконизированный Laima 38×50 м</span><a href="https://ozon.ru/t/iNCPjkQ" target="_blank" class="shop-link">Ozon</a></div>
+    <div class="shop-item"><span class="shop-name">Пергамент силиконизированный Laima</span><a href="https://ozon.ru/t/iNCPjkQ" target="_blank" class="shop-link">Ozon</a></div>
     <div class="shop-item"><span class="shop-name">Шпатель металлический</span><a href="https://ozon.ru/t/91LWn7w" target="_blank" class="shop-link">Ozon</a></div>
     <div class="shop-item"><span class="shop-name">Шпатель прямой 19,5×12,5 см</span><a href="https://ozon.ru/t/1ECUBan" target="_blank" class="shop-link">Ozon</a></div>
-    <div class="shop-item"><span class="shop-name">Коврик силиконовый 21 см (2 шт.)</span><a href="https://ozon.ru/t/7WuKVMP" target="_blank" class="shop-link">Ozon</a></div>
-    <div class="shop-item"><span class="shop-name">Корзина для расстойки хлеба 23 см</span><a href="https://ozon.ru/t/4kg5w2z" target="_blank" class="shop-link">Ozon</a></div>
+    <div class="shop-item"><span class="shop-name">Корзина для расстойки 23 см</span><a href="https://ozon.ru/t/4kg5w2z" target="_blank" class="shop-link">Ozon</a></div>
     <div class="shop-item"><span class="shop-name">Весы кухонные Tefal</span><a href="https://ozon.ru/t/q4ZA6A5" target="_blank" class="shop-link">Ozon</a></div>
     <div class="shop-item"><span class="shop-name">Tefal Optiss BC50D4V0</span><a href="https://www.wildberries.ru/catalog/577695078/detail.aspx" target="_blank" class="shop-link">WB</a></div>
     <div class="shop-item"><span class="shop-name">Термометр-гигрометр цифровой</span><a href="https://ozon.ru/t/wGnOF3X" target="_blank" class="shop-link">Ozon</a></div>
-
-    <div class="shop-sec">🫕 Форма для выпечки</div>
+    <div class="shop-item"><span class="shop-name">Коврик силиконовый 21 см (2 шт.)</span><a href="https://ozon.ru/t/7WuKVMP" target="_blank" class="shop-link">Ozon</a></div>
+    <div class="shop-sec">Форма для выпечки</div>
     <div class="shop-item"><span class="shop-name">Форма круглая 26×26 см</span><a href="https://ozon.ru/t/c0Rh7Bq" target="_blank" class="shop-link">Ozon</a></div>
-    <div class="shop-item"><span class="shop-name">Форма круглая 24×24 см (вар. 1)</span><a href="https://ozon.ru/t/OLFVstg" target="_blank" class="shop-link">Ozon</a></div>
-    <div class="shop-item"><span class="shop-name">Форма круглая 24×24 см (вар. 2)</span><a href="https://ozon.ru/t/Wve308U" target="_blank" class="shop-link">Ozon</a></div>
-    <div class="shop-item"><span class="shop-name">Льняное/хлопковое полотенце (расстойка)</span></div>
-    <div class="shop-item"><span class="shop-name">Лёд в формочках (для пара)</span></div>
+    <div class="shop-item"><span class="shop-name">Форма круглая 24×24 см — вар. 1</span><a href="https://ozon.ru/t/OLFVstg" target="_blank" class="shop-link">Ozon</a></div>
+    <div class="shop-item"><span class="shop-name">Форма круглая 24×24 см — вар. 2</span><a href="https://ozon.ru/t/Wve308U" target="_blank" class="shop-link">Ozon</a></div>
+    <div class="shop-item"><span class="shop-name">Льняное полотенце — для расстойки без корзины</span></div>
+    <div class="shop-item"><span class="shop-name">Лёд в формочках — для пара при выпечке</span></div>
   </div>
 </div>
 
 <!-- ═══ HERO ═══ -->
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-art">
-      <!-- SVG: хлеб с паром -->
-      <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg" width="220" height="140" style="display:block;margin:0 auto">
-        <!-- тени -->
-        <ellipse cx="110" cy="128" rx="70" ry="8" fill="rgba(180,100,50,.15)"/>
-        <!-- буханка основная -->
-        <path d="M38,105 Q38,65 110,42 Q182,65 182,105 Q182,118 110,122 Q38,118 38,105Z" fill="#F5C49A"/>
-        <path d="M38,105 Q38,98 110,95 Q182,98 182,105 Q182,118 110,122 Q38,118 38,105Z" fill="#D4855A"/>
-        <!-- гребень (надрез) -->
-        <path d="M75,68 Q110,55 145,68" stroke="#C06030" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <!-- текстура/поры -->
-        <circle cx="88"  cy="80" r="4" fill="#E8A070" opacity=".7"/>
-        <circle cx="110" cy="74" r="5" fill="#E8A070" opacity=".7"/>
-        <circle cx="132" cy="80" r="4" fill="#E8A070" opacity=".7"/>
-        <circle cx="100" cy="88" r="3" fill="#E8A070" opacity=".6"/>
-        <circle cx="120" cy="88" r="3.5" fill="#E8A070" opacity=".6"/>
-        <!-- пар -->
-        <path d="M80,38 Q77,30 80,22 Q83,14 80,6" stroke="rgba(255,255,255,.6)" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <path d="M110,32 Q107,24 110,16 Q113,8 110,0" stroke="rgba(255,255,255,.6)" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <path d="M140,38 Q137,30 140,22 Q143,14 140,6" stroke="rgba(255,255,255,.6)" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <!-- зёрна пшеницы декор -->
-        <ellipse cx="28" cy="95" rx="5" ry="9" fill="rgba(210,160,70,.35)" transform="rotate(-20,28,95)"/>
-        <ellipse cx="192" cy="95" rx="5" ry="9" fill="rgba(210,160,70,.35)" transform="rotate(20,192,95)"/>
-      </svg>
-    </div>
-    <h1>Хлеб на закваске<br>Левито Мадре</h1>
-    <p>Памятка для начинающих — вся информация на одной странице. Открывай нужный раздел и пеки шаг за шагом.</p>
-    <div class="hero-badges">
-      <span class="hero-badge">🌾 Без дрожжей</span>
-      <span class="hero-badge">📱 Удобно с телефона</span>
-      <span class="hero-badge">🧮 Калькуляторы</span>
-      <span class="hero-badge">📹 Видео внутри</span>
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Памятка для начинающих</div>
+    <h1 class="hero-h1">Хлеб на&nbsp;закваске<br><em>Левито Мадре</em></h1>
+    <p class="hero-desc">Всё на одной странице — от первого кормления закваски до хрустящей корочки. Открывай нужный раздел и пеки шаг за шагом.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-val">3</span>
+        <span class="hero-meta-key">дня</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-val">3</span>
+        <span class="hero-meta-key">калькулятора</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-val">7</span>
+        <span class="hero-meta-key">видео</span>
+      </div>
     </div>
   </div>
-</div>
-
-<!-- ═══ PHOTO STRIP ═══ -->
-<div class="photo-strip">
-  <div class="photo-strip-inner">
-    <div class="photo-card">
-      <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=280&fit=crop&auto=format" alt="Ремесленный хлеб на закваске" loading="lazy">
-      <div class="photo-card-label">Хлеб на закваске</div>
-    </div>
-    <div class="photo-card">
-      <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400&h=280&fit=crop&auto=format" alt="Закваска в банке" loading="lazy">
-      <div class="photo-card-label">Закваска Левито Мадре</div>
-    </div>
-    <div class="photo-card">
-      <img src="https://images.unsplash.com/photo-1574027542338-98e75acfd385?w=400&h=280&fit=crop&auto=format" alt="Мякиш хлеба" loading="lazy">
-      <div class="photo-card-label">Красивый мякиш</div>
-    </div>
-    <div class="photo-card">
-      <img src="https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?w=400&h=280&fit=crop&auto=format" alt="Замес теста" loading="lazy">
-      <div class="photo-card-label">Замес теста</div>
-    </div>
-    <div class="photo-card">
-      <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&h=280&fit=crop&auto=format" alt="Выпечка хлеба" loading="lazy">
-      <div class="photo-card-label">Выпечка</div>
-    </div>
-    <div class="photo-card">
-      <img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=400&h=280&fit=crop&auto=format" alt="Хлеб с корочкой" loading="lazy">
-      <div class="photo-card-label">Хрустящая корочка</div>
-    </div>
+  <div class="hero-art">
+    <!-- SVG: артизанский хлеб — элегантная иллюстрация -->
+    <svg viewBox="0 0 460 340" xmlns="http://www.w3.org/2000/svg" width="100%" style="max-width:420px">
+      <defs>
+        <style>
+          .l{fill:none;stroke:#1A1612;stroke-linecap:round;stroke-linejoin:round}
+          .lr{fill:none;stroke:#C4503A;stroke-linecap:round;stroke-linejoin:round}
+        </style>
+      </defs>
+      <!-- Тень -->
+      <ellipse cx="230" cy="316" rx="145" ry="10" fill="#1A1612" opacity=".055"/>
+      <!-- Основная форма буханки (батар) -->
+      <path class="l" stroke-width="1.4"
+        d="M72,195 C72,118 155,50 230,46 C305,42 388,118 388,195
+           C388,242 350,274 230,282 C110,274 72,242 72,195Z"/>
+      <!-- Корочка снизу (более тёмная часть) -->
+      <path class="l" stroke-width=".7" opacity=".4"
+        d="M90,220 C110,260 160,278 230,282 C300,278 350,260 370,220"/>
+      <!-- Ухо от надреза (ear) — раскрытый гребень, акцентный цвет -->
+      <path class="lr" stroke-width="1.2"
+        d="M148,118 C178,85 285,80 315,110
+           C295,96 268,90 230,90 C192,90 163,100 148,118Z"
+        fill="rgba(196,80,58,.06)"/>
+      <!-- Линия надреза — терракота, основной акцент -->
+      <path class="lr" stroke-width="2.5"
+        d="M145,122 C175,88 287,84 318,113"/>
+      <!-- Вторичные надрезы (тоньше) -->
+      <path class="l" stroke-width=".8" opacity=".5"
+        d="M120,155 C148,142 175,138 200,141"/>
+      <path class="l" stroke-width=".8" opacity=".5"
+        d="M262,136 C288,140 315,150 335,165"/>
+      <!-- Пузыри на корочке (блистеры) -->
+      <circle class="l" stroke-width=".9" cx="178" cy="185" r="13"/>
+      <circle class="l" stroke-width=".9" cx="230" cy="175" r="17"/>
+      <circle class="l" stroke-width=".9" cx="284" cy="183" r="12"/>
+      <circle class="l" stroke-width=".7" cx="155" cy="210" r="8"/>
+      <circle class="l" stroke-width=".7" cx="310" cy="208" r="9"/>
+      <circle class="l" stroke-width=".6" cx="205" cy="220" r="6"/>
+      <circle class="l" stroke-width=".6" cx="258" cy="225" r="7"/>
+      <circle class="l" stroke-width=".55" cx="232" cy="245" r="5"/>
+      <!-- Мука присыпка (точки) -->
+      <circle fill="#1A1612" opacity=".15" cx="195" cy="148" r="1.5"/>
+      <circle fill="#1A1612" opacity=".12" cx="215" cy="142" r="1"/>
+      <circle fill="#1A1612" opacity=".15" cx="252" cy="144" r="1.5"/>
+      <circle fill="#1A1612" opacity=".1"  cx="270" cy="152" r="1"/>
+      <circle fill="#1A1612" opacity=".12" cx="178" cy="160" r="1"/>
+      <!-- Колоски пшеницы слева -->
+      <g opacity=".35">
+        <line class="l" stroke-width=".9" x1="36" y1="290" x2="36" y2="220"/>
+        <line class="l" stroke-width=".7" x1="36" y1="240" x2="28" y2="228"/>
+        <line class="l" stroke-width=".7" x1="36" y1="248" x2="44" y2="236"/>
+        <line class="l" stroke-width=".7" x1="36" y1="256" x2="28" y2="244"/>
+        <line class="l" stroke-width=".7" x1="36" y1="264" x2="44" y2="252"/>
+        <ellipse class="l" stroke-width=".8" cx="36" cy="216" rx="5" ry="10"
+          transform="rotate(-5,36,216)"/>
+      </g>
+      <!-- Колоски пшеницы справа -->
+      <g opacity=".35">
+        <line class="l" stroke-width=".9" x1="424" y1="290" x2="424" y2="220"/>
+        <line class="l" stroke-width=".7" x1="424" y1="240" x2="416" y2="228"/>
+        <line class="l" stroke-width=".7" x1="424" y1="248" x2="432" y2="236"/>
+        <line class="l" stroke-width=".7" x1="424" y1="256" x2="416" y2="244"/>
+        <line class="l" stroke-width=".7" x1="424" y1="264" x2="432" y2="252"/>
+        <ellipse class="l" stroke-width=".8" cx="424" cy="216" rx="5" ry="10"
+          transform="rotate(5,424,216)"/>
+      </g>
+      <!-- Пар -->
+      <path class="l" stroke-width="1" opacity=".25"
+        d="M190,36 C187,26 190,16 187,6"/>
+      <path class="l" stroke-width="1" opacity=".2"
+        d="M230,28 C227,18 230,8 227,0"/>
+      <path class="l" stroke-width="1" opacity=".25"
+        d="M270,36 C267,26 270,16 267,6"/>
+    </svg>
   </div>
-</div>
+</section>
 
-<!-- ═══ MAIN ═══ -->
+<hr class="page-rule">
+
 <main>
+<div class="sections-wrap">
 
-<!-- ── ЧЕКЛИСТ 3 ДНЯ ── -->
+<!-- ── ЧЕКЛИСТ: ЭТАПЫ 3 ДНЯ ── -->
+<div class="ctrl-row">
+  <button class="ctrl-btn" id="toggleAllBtn" onclick="toggleAll()">Развернуть все разделы</button>
+</div>
+
 <div class="section" id="checklist-days">
   <div class="s-hdr open" onclick="toggleSec(this)">
-    <div class="s-hdr-left">
-      <div class="s-icon s-icon-green">🗓️</div>
-      <div><div class="s-title">Этапы выпечки — 3 дня</div><div class="s-sub">Общий план: отмечай по ходу</div></div>
+    <div class="s-num">—</div>
+    <div class="s-titles">
+      <div class="s-title">Этапы выпечки — три дня</div>
+      <div class="s-sub">Общий план, отмечай по ходу</div>
     </div>
     <div class="s-toggle">+</div>
   </div>
   <div class="s-body open">
-    <div class="box box-sage" style="margin-top:0">Отмечай этапы по ходу — галочки сохраняются даже если закрыть страницу.</div>
-
-    <p style="font-family:Arial,sans-serif;font-size:.8rem;font-weight:bold;text-transform:uppercase;letter-spacing:.5px;color:var(--accent);margin:.8rem 0 .4rem">📅 День 1 — Вечер</p>
+    <div class="cl-day">День первый — вечер</div>
     <ul class="cl" id="clD">
-      <li onclick="chk(this,'clD',0)"><input type="checkbox"><span>Покормить закваску (10 минут)</span></li>
-      <li onclick="chk(this,'clD',1)"><input type="checkbox"><span>Отложить нужное количество для выпечки (110 г × кол-во буханок)</span></li>
-      <li onclick="chk(this,'clD',2)"><input type="checkbox"><span>Оставить подниматься — пару часов на кухне, потом в холодильник на ночь</span></li>
+      <li onclick="chk(this,'clD',0)"><input type="checkbox"><span>Покормить закваску — 10 минут</span></li>
+      <li onclick="chk(this,'clD',1)"><input type="checkbox"><span>Отложить нужное количество для выпечки (110 г × буханок)</span></li>
+      <li onclick="chk(this,'clD',2)"><input type="checkbox"><span>Оставить подниматься пару часов, затем убрать в холодильник на ночь</span></li>
     </ul>
-
-    <p style="font-family:Arial,sans-serif;font-size:.8rem;font-weight:bold;text-transform:uppercase;letter-spacing:.5px;color:var(--accent);margin:.8rem 0 .4rem">📅 День 2 — Весь день</p>
-    <ul class="cl" id="clD2" style="margin-bottom:0">
-      <li onclick="chk(this,'clD2',0)"><input type="checkbox"><span>Закваска на пике: купол, пузыри, выросла в 3 раза</span></li>
+    <div class="cl-day">День второй — весь день</div>
+    <ul class="cl" id="clD2">
+      <li onclick="chk(this,'clD2',0)"><input type="checkbox"><span>Закваска на пике — купол, пузыри, выросла в три раза</span></li>
       <li onclick="chk(this,'clD2',1)"><input type="checkbox"><span>Замес теста (блендер + мука + соль)</span></li>
-      <li onclick="chk(this,'clD2',2)"><input type="checkbox"><span>Автолиз 1 час (или миксер 20 мин)</span></li>
+      <li onclick="chk(this,'clD2',2)"><input type="checkbox"><span>Автолиз 1 час, или замес в миксере 20 минут</span></li>
       <li onclick="chk(this,'clD2',3)"><input type="checkbox"><span>Ламинирование</span></li>
-      <li onclick="chk(this,'clD2',4)"><input type="checkbox"><span>Обминки катушкой 1–2–3 (каждые 40 мин)</span></li>
-      <li onclick="chk(this,'clD2',5)"><input type="checkbox"><span>Предформовка → 15 мин отдыха</span></li>
+      <li onclick="chk(this,'clD2',4)"><input type="checkbox"><span>Обминки катушкой — три раза через каждые 40 минут</span></li>
+      <li onclick="chk(this,'clD2',5)"><input type="checkbox"><span>Предформовка, 15 минут отдыха</span></li>
       <li onclick="chk(this,'clD2',6)"><input type="checkbox"><span>Финальная формовка</span></li>
-      <li onclick="chk(this,'clD2',7)"><input type="checkbox"><span>В холодильник на ночь (в корзину / миску с полотенцем)</span></li>
+      <li onclick="chk(this,'clD2',7)"><input type="checkbox"><span>Убрать в холодильник на ночь</span></li>
     </ul>
-
-    <p style="font-family:Arial,sans-serif;font-size:.8rem;font-weight:bold;text-transform:uppercase;letter-spacing:.5px;color:var(--accent);margin:.8rem 0 .4rem">📅 День 3 — Утро</p>
-    <ul class="cl" id="clD3" style="margin-bottom:.5rem">
-      <li onclick="chk(this,'clD3',0)"><input type="checkbox"><span>Разогреть духовку с формой до 250°C (40–60 мин)</span></li>
+    <div class="cl-day">День третий — утро</div>
+    <ul class="cl" id="clD3">
+      <li onclick="chk(this,'clD3',0)"><input type="checkbox"><span>Разогреть духовку с формой до 250°С — 40–60 минут</span></li>
       <li onclick="chk(this,'clD3',1)"><input type="checkbox"><span>Надрезы лезвием</span></li>
-      <li onclick="chk(this,'clD3',2)"><input type="checkbox"><span>Выпечка с паром 30 мин (с крышкой)</span></li>
-      <li onclick="chk(this,'clD3',3)"><input type="checkbox"><span>Выпечка без пара 25 мин (без крышки)</span></li>
-      <li onclick="chk(this,'clD3',4)"><input type="checkbox"><span>Остудить на решётке минимум 1 час 🍞</span></li>
+      <li onclick="chk(this,'clD3',2)"><input type="checkbox"><span>Выпечка с паром 30 минут, крышка закрыта</span></li>
+      <li onclick="chk(this,'clD3',3)"><input type="checkbox"><span>Выпечка без пара 25 минут, крышка снята</span></li>
+      <li onclick="chk(this,'clD3',4)"><input type="checkbox"><span>Остудить на решётке минимум час</span></li>
     </ul>
-
-    <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;margin-top:.5rem">
-      <button class="cl-reset" onclick="resetCl('clD',3);resetCl('clD2',8);resetCl('clD3',5)">Сбросить всё</button>
-    </div>
+    <button class="cl-reset" onclick="resetCl('clD',3);resetCl('clD2',8);resetCl('clD3',5)">Сбросить</button>
   </div>
 </div>
 
-<button class="open-all" id="toggleAllBtn" onclick="toggleAll()">Развернуть все разделы</button>
-
-<!-- ── 1. ЧТО ТАКОЕ ЛМ ── -->
+<!-- ── 1. ЧТО ТАКОЕ ЛЕВИТО МАДРЕ ── -->
 <div class="section" id="starter">
   <div class="s-hdr" onclick="toggleSec(this)">
-    <div class="s-hdr-left">
-      <div class="s-icon s-icon-orange">🫙</div>
-      <div><div class="s-title">1. Что такое Левито Мадре</div><div class="s-sub">Закваска, живые дрожжи, хранение</div></div>
+    <div class="s-num">01</div>
+    <div class="s-titles">
+      <div class="s-title">Что такое Левито Мадре</div>
+      <div class="s-sub">Закваска, живые дрожжи, хранение</div>
     </div>
     <div class="s-toggle">+</div>
   </div>
   <div class="s-body">
-    <div class="illus-section">
-      <div class="illus-art">
-        <!-- SVG: банка с закваской -->
-        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-          <rect x="22" y="30" width="36" height="40" rx="4" fill="#F5C49A"/>
-          <rect x="24" y="50" width="32" height="20" rx="3" fill="#E8A070"/>
-          <rect x="20" y="26" width="40" height="8" rx="4" fill="#D4855A"/>
-          <!-- пузыри -->
-          <circle cx="35" cy="43" r="3" fill="rgba(255,255,255,.7)"/>
-          <circle cx="45" cy="38" r="2" fill="rgba(255,255,255,.7)"/>
-          <circle cx="40" cy="48" r="2.5" fill="rgba(255,255,255,.6)"/>
-          <circle cx="30" cy="52" r="2" fill="rgba(255,255,255,.6)"/>
-          <!-- крышка -->
-          <rect x="28" y="22" width="24" height="5" rx="2.5" fill="#A86040"/>
+    <div style="display:flex;gap:2.5rem;align-items:flex-start;flex-wrap:wrap">
+      <div style="flex:1;min-width:240px">
+        <div class="prose">
+          <p><strong>Левито Мадре</strong> — итальянская закваска, выведенная на фруктах, обычно на винограде. Густая, влажностью 50%: воды вдвое меньше, чем муки.</p>
+          <p>Внутри живут дикие дрожжи и молочнокислые бактерии. Они едят крахмал муки и выделяют углекислый газ — тесто наполняется пузырями и поднимается.</p>
+          <p>Если закваска пахнет спиртом или кислотой — она просто голодная, не испорченная. Покорми — и всё будет хорошо.</p>
+        </div>
+        <div class="callout" style="margin-top:1.5rem">
+          Один раз купила или получила закваску — больше её не нужно покупать. После каждой выпечки оставляй немного, корми — и она живёт у тебя бесконечно.
+        </div>
+        <div style="margin-top:1rem">
+          <a href="https://www.hlebomoli.ru/blog/ob-italyanskoy-zakvaske-levito-madre" target="_blank" class="soc-btn">Подробная статья о Левито Мадре →</a>
+        </div>
+      </div>
+      <!-- SVG: банка с закваской -->
+      <div style="flex-shrink:0;width:120px;opacity:.75">
+        <svg viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg" width="120">
+          <defs><style>.jl{fill:none;stroke:#1A1612;stroke-linecap:round}</style></defs>
+          <!-- Крышка -->
+          <rect class="jl" stroke-width="1.2" x="28" y="18" width="44" height="10" rx="3"/>
+          <rect class="jl" stroke-width=".8" x="35" y="14" width="30" height="6" rx="2"/>
+          <!-- Тело банки -->
+          <path class="jl" stroke-width="1.3"
+            d="M22,28 L22,135 Q22,148 50,148 Q78,148 78,135 L78,28 Z"/>
+          <!-- Горлышко -->
+          <line class="jl" stroke-width=".7" x1="22" y1="38" x2="78" y2="38"/>
+          <!-- Закваска внутри -->
+          <path fill="rgba(184,150,76,.12)" stroke="none"
+            d="M23,70 Q30,60 50,58 Q70,60 77,70 L77,135 Q77,146 50,146 Q23,146 23,135 Z"/>
+          <!-- Поверхность закваски (купол) -->
+          <path class="jl" stroke-width="1.2"
+            d="M23,70 Q30,58 50,56 Q70,58 77,70"/>
+          <!-- Пузыри -->
+          <circle class="jl" stroke-width=".8" cx="38" cy="82" r="5"/>
+          <circle class="jl" stroke-width=".8" cx="56" cy="76" r="7"/>
+          <circle class="jl" stroke-width=".8" cx="65" cy="90" r="4"/>
+          <circle class="jl" stroke-width=".7" cx="35" cy="100" r="3.5"/>
+          <circle class="jl" stroke-width=".7" cx="50" cy="108" r="5"/>
+          <circle class="jl" stroke-width=".7" cx="66" cy="102" r="3"/>
+          <circle class="jl" stroke-width=".6" cx="43" cy="118" r="3"/>
+          <circle class="jl" stroke-width=".6" cx="60" cy="120" r="4"/>
+          <!-- Шкала (линия) -->
+          <line class="jl" stroke-width=".6" opacity=".4" x1="25" y1="95" x2="30" y2="95"/>
+          <line class="jl" stroke-width=".6" opacity=".4" x1="25" y1="115" x2="30" y2="115"/>
         </svg>
       </div>
-      <div class="illus-text prose">
-        <p><strong>Левито Мадре</strong> — итальянская закваска, выведенная на фруктах (обычно на винограде). Густая, влажностью 50%: воды вдвое меньше, чем муки.</p>
-        <p>Внутри живут <strong>дикие дрожжи и молочнокислые бактерии</strong>. Они едят крахмал муки и выделяют углекислый газ — поэтому тесто поднимается.</p>
-        <p>Если закваска пахнет спиртом или кислотой — она просто голодная, не испорченная. Покорми — и всё будет хорошо.</p>
-      </div>
     </div>
-    <div class="box box-sage">
-      <strong>Главное:</strong> один раз купила или получила закваску — больше не нужно покупать. После каждой выпечки оставляй немного, кормишь — и она живёт бесконечно.
-    </div>
-    <a href="https://www.hlebomoli.ru/blog/ob-italyanskoy-zakvaske-levito-madre" target="_blank" style="font-family:Arial,sans-serif;font-size:.86rem;color:var(--sky)">📖 Подробная статья о Левито Мадре →</a>
   </div>
 </div>
 
 <!-- ── ЧЕКЛИСТ ПОДГОТОВКИ ── -->
 <div class="section" id="checklist-prep">
   <div class="s-hdr" onclick="toggleSec(this)">
-    <div class="s-hdr-left">
-      <div class="s-icon s-icon-rose">✅</div>
-      <div><div class="s-title">Готова к замесу? Чеклист подготовки</div><div class="s-sub">Проверь перед тем как начать</div></div>
+    <div class="s-num">—</div>
+    <div class="s-titles">
+      <div class="s-title">Готова к замесу?</div>
+      <div class="s-sub">Чеклист подготовки — проверь перед началом</div>
     </div>
     <div class="s-toggle">+</div>
   </div>
   <div class="s-body">
     <ul class="cl" id="clS">
-      <li onclick="chk(this,'clS',0)"><input type="checkbox"><span>Закваска активная: поднялась куполом, пузырчатая, на пике</span></li>
-      <li onclick="chk(this,'clS',1)"><input type="checkbox"><span>Закваска нужного количества (110 г × кол-во буханок)</span></li>
+      <li onclick="chk(this,'clS',0)"><input type="checkbox"><span>Закваска активная — поднялась куполом, пузырчатая, на пике</span></li>
+      <li onclick="chk(this,'clS',1)"><input type="checkbox"><span>Нужное количество закваски (110 г на каждую буханку)</span></li>
       <li onclick="chk(this,'clS',2)"><input type="checkbox"><span>Вода взвешена — фильтрованная или бутилированная</span></li>
-      <li onclick="chk(this,'clS',3)"><input type="checkbox"><span>Мука взвешена: пшеничная + цельнозерновая</span></li>
-      <li onclick="chk(this,'clS',4)"><input type="checkbox"><span>Соль: 11 г на каждую буханку</span></li>
-      <li onclick="chk(this,'clS',5)"><input type="checkbox"><span>Форма для выпечки (утятница / казан с крышкой)</span></li>
+      <li onclick="chk(this,'clS',3)"><input type="checkbox"><span>Мука взвешена: пшеничная и цельнозерновая</span></li>
+      <li onclick="chk(this,'clS',4)"><input type="checkbox"><span>Соль — 11 г на каждую буханку</span></li>
+      <li onclick="chk(this,'clS',5)"><input type="checkbox"><span>Форма для выпечки — утятница или казан с крышкой</span></li>
       <li onclick="chk(this,'clS',6)"><input type="checkbox"><span>Пергамент нарезан</span></li>
-      <li onclick="chk(this,'clS',7)"><input type="checkbox"><span>Полотенце или расстоечная корзина + рисовая мука</span></li>
-      <li onclick="chk(this,'clS',8)"><input type="checkbox"><span>Впереди ~3 часа дома (замес + обминки)</span></li>
-      <li onclick="chk(this,'clS',9)"><input type="checkbox"><span>Температура кухни 23–28°C (термометр)</span></li>
+      <li onclick="chk(this,'clS',7)"><input type="checkbox"><span>Полотенце или расстоечная корзина с рисовой мукой</span></li>
+      <li onclick="chk(this,'clS',8)"><input type="checkbox"><span>Впереди около трёх часов дома — замес и обминки</span></li>
+      <li onclick="chk(this,'clS',9)"><input type="checkbox"><span>Температура кухни 23–28°С</span></li>
     </ul>
     <div class="cl-prog" id="clS-prog">0 из 10</div>
     <div class="prog-bar"><div class="prog-fill" id="clS-bar" style="width:0%"></div></div>
@@ -722,70 +885,57 @@ footer{
 <!-- ── 2. КАК КОРМИТЬ ЗАКВАСКУ ── -->
 <div class="section">
   <div class="s-hdr open" onclick="toggleSec(this)">
-    <div class="s-hdr-left">
-      <div class="s-icon s-icon-honey">🌾</div>
-      <div><div class="s-title">2. Как кормить закваску</div><div class="s-sub">Пропорции, частота, видео</div></div>
+    <div class="s-num">02</div>
+    <div class="s-titles">
+      <div class="s-title">Как кормить закваску</div>
+      <div class="s-sub">Пропорции, частота, калькулятор, видео</div>
     </div>
     <div class="s-toggle">+</div>
   </div>
   <div class="s-body open">
-    <div class="stats">
-      <div class="stat"><span class="val">1:1:½</span><span class="key">Закваска : Мука : Вода</span></div>
-      <div class="stat"><span class="val">1×/нед</span><span class="key">Частота кормления</span></div>
-      <div class="stat"><span class="val">50%</span><span class="key">Влажность закваски</span></div>
-      <div class="stat"><span class="val">×3</span><span class="key">Вырастает в объёме</span></div>
+    <div class="stat-row">
+      <div class="stat-item"><span class="stat-val">1:1:½</span><span class="stat-key">Закваска — мука — вода</span></div>
+      <div class="stat-item"><span class="stat-val">1×</span><span class="stat-key">в неделю</span></div>
+      <div class="stat-item"><span class="stat-val">50%</span><span class="stat-key">влажность</span></div>
+      <div class="stat-item"><span class="stat-val">×3</span><span class="stat-key">вырастает</span></div>
     </div>
-
-    <div class="prose" style="margin-top:1rem">
-      <p><strong>Как делать:</strong> влей воду к закваске, разбей блендером до жидкой сметаны, добавь муку, замеси. Оставь при комнатной температуре 4–8 часов, потом убери в холодильник.</p>
+    <div class="prose">
+      <p>Влей воду к закваске, разбей блендером до жидкой сметаны, добавь муку и замеси. Оставь при комнатной температуре 4–8 часов, затем убери в холодильник.</p>
     </div>
+    <div class="note">Хранить в прозрачной стеклянной банке 1–1,5 л. Нужно видеть рост и пузыри через стенки.</div>
 
-    <div class="box box-orange">
-      <strong>Посуда:</strong> стеклянная или прозрачная банка 1–1,5 л. Нужно видеть рост и пузыри через стенки.
-    </div>
-
-    <div class="div"></div>
-
-    <!-- Видео: кормление -->
     <div class="video-block">
-      <div class="video-label">📹 Видео: как кормить закваску</div>
+      <div class="video-label">Видео — как кормить закваску</div>
       <div class="video-wrap">
         <iframe src="https://www.youtube.com/embed/6vvAG72jFWo" allowfullscreen loading="lazy" title="Как кормить закваску"></iframe>
       </div>
-      <p class="video-desc">Как кормить закваску перед замесом и вообще как с ней работать</p>
     </div>
 
-    <div class="div"></div>
-
-    <!-- Калькулятор кормления -->
-    <h4 class="sub">🧮 Калькулятор кормления закваски</h4>
+    <h4 class="sub">Калькулятор кормления</h4>
     <div class="calc">
-      <div class="calc-title">🫙 Сколько нужно муки и воды?</div>
+      <div class="calc-title">Сколько муки и воды нужно?</div>
       <div class="calc-row">
-        <label>У меня есть закваски (г):</label>
+        <label>У меня есть закваски, г</label>
         <input type="number" id="s-have" value="100" min="1" max="5000">
       </div>
-      <button class="calc-btn" onclick="calcFeed()">Посчитать</button>
+      <button class="calc-btn" onclick="calcFeed()">Рассчитать</button>
       <div class="calc-res" id="feed-res">
         <div class="res-row"><span class="nm">Закваска</span><span class="am" id="f-s">—</span></div>
-        <div class="res-row"><span class="nm">Мука (Макфа)</span><span class="am" id="f-f">—</span></div>
-        <div class="res-row"><span class="nm">Вода (фильтр. или бутилированная)</span><span class="am" id="f-w">—</span></div>
-        <div class="res-row"><span class="nm">Итого закваски после кормления</span><span class="am" id="f-t">—</span></div>
+        <div class="res-row"><span class="nm">Мука Макфа</span><span class="am" id="f-f">—</span></div>
+        <div class="res-row"><span class="nm">Вода фильтрованная</span><span class="am" id="f-w">—</span></div>
+        <div class="res-row"><span class="nm">Итого после кормления</span><span class="am" id="f-t">—</span></div>
       </div>
     </div>
 
-    <div class="div"></div>
-
-    <!-- Температура и время -->
-    <h4 class="sub">🌡️ Температура и время подъёма</h4>
-    <table class="tbl green">
-      <thead><tr><th>Температура</th><th>Время подъёма</th></tr></thead>
+    <h4 class="sub">Время подъёма при разной температуре</h4>
+    <table class="tbl">
+      <thead><tr><th>Температура</th><th>Время</th></tr></thead>
       <tbody>
-        <tr><td>28°C (тепло)</td><td>~4 часа</td></tr>
-        <tr><td>25°C</td><td>~4–6 часов</td></tr>
-        <tr><td>23°C</td><td>~5–7 часов</td></tr>
-        <tr><td>21°C</td><td>~8 часов</td></tr>
-        <tr><td>5°C (холодильник)</td><td>~16–18 часов</td></tr>
+        <tr><td>28°С — тепло</td><td>~4 часа</td></tr>
+        <tr><td>25°С</td><td>~4–6 часов</td></tr>
+        <tr><td>23°С</td><td>~5–7 часов</td></tr>
+        <tr><td>21°С</td><td>~8 часов</td></tr>
+        <tr><td>5°С — холодильник</td><td>~16–18 часов</td></tr>
       </tbody>
     </table>
   </div>
@@ -794,43 +944,66 @@ footer{
 <!-- ── 3. МУКА ── -->
 <div class="section" id="flour">
   <div class="s-hdr" onclick="toggleSec(this)">
-    <div class="s-hdr-left">
-      <div class="s-icon s-icon-honey">🌾</div>
-      <div><div class="s-title">3. Мука: какую брать</div><div class="s-sub">Три типа муки и их пропорции</div></div>
+    <div class="s-num">03</div>
+    <div class="s-titles">
+      <div class="s-title">Мука</div>
+      <div class="s-sub">Три типа и их пропорции</div>
     </div>
     <div class="s-toggle">+</div>
   </div>
   <div class="s-body">
-    <div class="flour-card">
-      <div class="flour-icon">🌾</div>
-      <div class="flour-info">
-        <div class="name">Пшеничная высшего сорта</div>
-        <div class="brand">Макфа Челябинского завода <span class="badge bdg-orange">код А</span></div>
-        <div class="pct">70% рецепта</div>
-        <div class="note">Основа. Лучшая клейковина из доступных. Продаётся везде.</div>
+    <div style="display:flex;gap:3rem;align-items:flex-start;flex-wrap:wrap">
+      <div style="flex:1;min-width:260px">
+        <div class="flour-list">
+          <div class="flour-item">
+            <div class="flour-pct">70%</div>
+            <div>
+              <div class="flour-name">Пшеничная высшего сорта</div>
+              <div class="flour-brand">Макфа, Челябинский завод — код А на упаковке</div>
+              <div class="flour-note">Основа. Лучшая клейковина из доступных. Есть везде.</div>
+            </div>
+          </div>
+          <div class="flour-item">
+            <div class="flour-pct">20%</div>
+            <div>
+              <div class="flour-name">Цельнозерновая</div>
+              <div class="flour-brand">«Французская штучка»</div>
+              <div class="flour-note">Добавляет вкус и питательность.</div>
+            </div>
+          </div>
+          <div class="flour-item">
+            <div class="flour-pct">10%</div>
+            <div>
+              <div class="flour-name">Ржаная</div>
+              <div class="flour-brand">«Увелка» — маленький пакет</div>
+              <div class="flour-note">В первую выпечку не класть — делает тесто липким и сложным.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- SVG: колоски пшеницы -->
+      <div style="flex-shrink:0;width:100px;opacity:.6;padding-top:1rem">
+        <svg viewBox="0 0 80 200" xmlns="http://www.w3.org/2000/svg" width="80">
+          <defs><style>.wl{fill:none;stroke:#1A1612;stroke-linecap:round}</style></defs>
+          <!-- Стебель 1 -->
+          <line class="wl" stroke-width="1" x1="25" y1="200" x2="25" y2="60"/>
+          <line class="wl" stroke-width=".8" x1="25" y1="85"  x2="14" y2="72"/>
+          <line class="wl" stroke-width=".8" x1="25" y1="96"  x2="36" y2="83"/>
+          <line class="wl" stroke-width=".8" x1="25" y1="107" x2="14" y2="94"/>
+          <line class="wl" stroke-width=".8" x1="25" y1="118" x2="36" y2="105"/>
+          <ellipse class="wl" stroke-width="1" cx="25" cy="54" rx="6" ry="13" transform="rotate(-6,25,54)"/>
+          <!-- Стебель 2 -->
+          <line class="wl" stroke-width="1" x1="55" y1="200" x2="55" y2="70"/>
+          <line class="wl" stroke-width=".8" x1="55" y1="95"  x2="44" y2="82"/>
+          <line class="wl" stroke-width=".8" x1="55" y1="106" x2="66" y2="93"/>
+          <line class="wl" stroke-width=".8" x1="55" y1="117" x2="44" y2="104"/>
+          <line class="wl" stroke-width=".8" x1="55" y1="128" x2="66" y2="115"/>
+          <ellipse class="wl" stroke-width="1" cx="55" cy="64" rx="6" ry="13" transform="rotate(6,55,64)"/>
+        </svg>
       </div>
     </div>
-    <div class="flour-card">
-      <div class="flour-icon">🌿</div>
-      <div class="flour-info">
-        <div class="name">Цельнозерновая</div>
-        <div class="brand">«Французская штучка»</div>
-        <div class="pct">20% рецепта</div>
-        <div class="note">Добавляет вкус и питательность хлебу.</div>
-      </div>
-    </div>
-    <div class="flour-card">
-      <div class="flour-icon">🌰</div>
-      <div class="flour-info">
-        <div class="name">Ржаная</div>
-        <div class="brand">«Увелка» — маленький пакет</div>
-        <div class="pct">10% рецепта</div>
-        <div class="note">В первую выпечку НЕ класть — делает тесто липким. Добавляй когда освоишься.</div>
-      </div>
-    </div>
-
-    <div class="box box-sage" style="margin-top:1rem">
-      <strong>Про Макфу:</strong> на упаковке ищи код с буквой А — это Челябинский завод, самая хорошая клейковина. Веди закваску и пеки на одной муке.
+    <div class="callout">
+      Ищи на упаковке Макфы код с буквой А — это Челябинский завод, самая хорошая клейковина. Веди закваску и пеки на одной муке.
     </div>
   </div>
 </div>
@@ -838,33 +1011,32 @@ footer{
 <!-- ── 4. ИНВЕНТАРЬ ── -->
 <div class="section" id="tools">
   <div class="s-hdr" onclick="toggleSec(this)">
-    <div class="s-hdr-left">
-      <div class="s-icon s-icon-blue">🔧</div>
-      <div><div class="s-title">4. Инвентарь</div><div class="s-sub">Что нужно для выпечки</div></div>
+    <div class="s-num">04</div>
+    <div class="s-titles">
+      <div class="s-title">Инвентарь</div>
+      <div class="s-sub">Что нужно для выпечки</div>
     </div>
     <div class="s-toggle">+</div>
   </div>
   <div class="s-body">
-    <div class="box box-orange" style="margin-top:0">
-      💡 Начни с минимума. Если хлеб зайдёт — докупишь. Ссылки на покупку — в <button onclick="openShop()" style="background:none;border:none;color:var(--sky);cursor:pointer;font-family:inherit;font-size:inherit;text-decoration:underline;padding:0">Списке покупок</button>.
-    </div>
-    <div class="card-grid" style="margin-top:1rem">
-      <div class="card">
-        <div class="card-hd">⭐ Обязательно</div>
-        <ul class="list" style="font-size:.88rem">
+    <div class="note">Начни с минимума. Ссылки на покупку — в списке покупок (кнопка в шапке).</div>
+    <div class="tool-cols">
+      <div>
+        <div class="tool-col-title">Обязательно</div>
+        <ul class="tool-list">
           <li>Кухонные весы</li>
           <li>Большая миска для замеса</li>
-          <li>Утятница / казан с крышкой</li>
+          <li>Утятница или казан с крышкой</li>
           <li>Пергамент силиконизированный</li>
-          <li>Льняное/хлопковое полотенце</li>
-          <li>Рисовая мука (присыпка)</li>
-          <li>Лёд (для пара при выпечке)</li>
-          <li>Пекарский нож / лезвие</li>
+          <li>Льняное или хлопковое полотенце</li>
+          <li>Рисовая мука для присыпки</li>
+          <li>Лёд в формочках для пара</li>
+          <li>Пекарский нож — лезвие</li>
         </ul>
       </div>
-      <div class="card">
-        <div class="card-hd">🛒 Позже докупить</div>
-        <ul class="list" style="font-size:.88rem">
+      <div>
+        <div class="tool-col-title">Позже докупить</div>
+        <ul class="tool-list">
           <li>Корзина для расстойки хлеба</li>
           <li>Металлический шпатель</li>
           <li>Прямой шпатель</li>
@@ -873,10 +1045,9 @@ footer{
           <li>Высокая банка 1,5 л для закваски</li>
         </ul>
       </div>
-      <div class="card">
-        <div class="card-hd">🫕 Форма для выпечки</div>
-        <p style="font-size:.86rem;color:var(--text2)">Лучший материал — <strong>алюминий</strong> или <strong>чугун</strong>. Керамика хуже проводит жар.<br><br>Нужна крышка куполом, дно плоское. Алюминиевая утятница и казан — отличный выбор.</p>
-      </div>
+    </div>
+    <div class="callout">
+      <strong>Форма для выпечки:</strong> алюминий или чугун — лучший жар. Керамика хуже. Нужна крышка куполом, дно плоское. Алюминиевая утятница и казан — отличный выбор.
     </div>
   </div>
 </div>
@@ -884,74 +1055,71 @@ footer{
 <!-- ── 5. КАЛЬКУЛЯТОР ── -->
 <div class="section" id="calc">
   <div class="s-hdr open" onclick="toggleSec(this)">
-    <div class="s-hdr-left">
-      <div class="s-icon s-icon-purple">🧮</div>
-      <div><div class="s-title">5. Калькулятор рецепта</div><div class="s-sub">Количество ингредиентов на любое число буханок</div></div>
+    <div class="s-num">05</div>
+    <div class="s-titles">
+      <div class="s-title">Калькулятор рецепта</div>
+      <div class="s-sub">Ингредиенты на любое количество буханок</div>
     </div>
     <div class="s-toggle">+</div>
   </div>
   <div class="s-body open">
-    <div class="box box-sage" style="margin-top:0">
-      <strong>Базовый рецепт (~1056 г теста):</strong><br>
-      500 г пшеничной + 50 г цельнозерновой + 385 г воды + 110 г закваски + 11 г соли<br>
-      <span style="font-size:.85em;opacity:.85">→ Выход: <strong>2 небольшие буханки</strong> или <strong>1 большой каравай</strong> (готовый хлеб ~700 г)</span>
+    <div class="callout">
+      Базовый рецепт (~1056 г теста) — на <strong>две небольшие буханки</strong> или <strong>один большой каравай</strong> (готовый хлеб ~700 г).
+      <br>500 г пшеничной + 50 г цельнозерновой + 385 г воды + 110 г закваски + 11 г соли.
     </div>
 
     <div class="calc">
-      <div class="calc-title">🍞 Ингредиенты на нужное количество буханок</div>
+      <div class="calc-title">Рецепт хлеба</div>
       <div class="calc-row">
-        <label>Количество буханок:</label>
+        <label>Количество буханок</label>
         <input type="number" id="loaves" value="2" min="1" max="20">
       </div>
       <div class="calc-row">
-        <label>Ржаная мука:</label>
+        <label>Ржаная мука</label>
         <select id="rye">
-          <option value="0">Без ржаной (первая попытка)</option>
-          <option value="1">С ржаной (пропорция 70/20/10)</option>
+          <option value="0">Без ржаной — первая попытка</option>
+          <option value="1">С ржаной, пропорция 70/20/10</option>
         </select>
       </div>
-      <button class="calc-btn" onclick="calcRecipe()">Посчитать</button>
+      <button class="calc-btn" onclick="calcRecipe()">Рассчитать</button>
       <div class="calc-res" id="r-res">
-        <div class="res-row"><span class="nm">Закваска (на пике!)</span><span class="am" id="r-s">—</span></div>
-        <div class="res-row"><span class="nm">Пшеничная мука (Макфа)</span><span class="am" id="r-f1">—</span></div>
+        <div class="res-row"><span class="nm">Закваска — на пике!</span><span class="am" id="r-s">—</span></div>
+        <div class="res-row"><span class="nm">Пшеничная мука Макфа</span><span class="am" id="r-f1">—</span></div>
         <div class="res-row"><span class="nm">Цельнозерновая мука</span><span class="am" id="r-f2">—</span></div>
         <div class="res-row" id="rye-row" style="display:none"><span class="nm">Ржаная мука</span><span class="am" id="r-f3">—</span></div>
         <div class="res-row"><span class="nm">Вода</span><span class="am" id="r-w">—</span></div>
         <div class="res-row"><span class="nm">Соль</span><span class="am" id="r-salt">—</span></div>
-        <div class="res-row" style="background:var(--bg2)"><span class="nm">Итого теста</span><span class="am" id="r-tot">—</span></div>
-        <p style="font-family:Arial,sans-serif;font-size:.78rem;color:var(--text3);margin-top:.6rem">
-          💡 Оставь <span id="r-left">—</span> закваски — покорми её после выпечки.
-        </p>
+        <div class="res-row"><span class="nm">Итого теста</span><span class="am" id="r-tot">—</span></div>
+        <p class="res-note">Оставь <span id="r-left">—</span> закваски — покорми её после выпечки.</p>
       </div>
     </div>
 
-    <div class="div"></div>
-    <h4 class="sub">🍞 Калькулятор для хлебопечки (дрожжи → закваска)</h4>
-    <div class="prose" style="margin-bottom:.8rem">
-      <p>Закваска ЛМ влажностью 50% = 2 части муки + 1 часть воды. Закваски берём <strong>25–30% от муки + воды</strong>.</p>
+    <h4 class="sub">Пересчёт для хлебопечки — с дрожжей на закваску</h4>
+    <div class="prose" style="margin-bottom:1rem">
+      <p>Закваска ЛМ влажностью 50% — две части муки и одна часть воды. Закваски берём <strong>25–30% от суммы муки и воды</strong>.</p>
     </div>
     <div class="calc">
-      <div class="calc-title">🍞 Пересчёт рецепта для хлебопечки</div>
+      <div class="calc-title">Рецепт для хлебопечки</div>
       <div class="calc-row">
-        <label>Мука в рецепте (г):</label>
+        <label>Мука в рецепте, г</label>
         <input type="number" id="hb-f" value="550" min="100">
       </div>
       <div class="calc-row">
-        <label>Вода в рецепте (г):</label>
+        <label>Вода в рецепте, г</label>
         <input type="number" id="hb-w" value="385" min="50">
       </div>
       <div class="calc-row">
-        <label>Доля закваски:</label>
+        <label>Доля закваски</label>
         <select id="hb-p">
           <option value="25">25% — осторожный вариант</option>
           <option value="30" selected>30% — максимум</option>
         </select>
       </div>
-      <button class="calc-btn" onclick="calcHB()">Посчитать</button>
+      <button class="calc-btn" onclick="calcHB()">Рассчитать</button>
       <div class="calc-res" id="hb-res">
         <div class="res-row"><span class="nm">Закваска Левито Мадре</span><span class="am" id="hb-s">—</span></div>
-        <div class="res-row"><span class="nm">Мука (скорректировано)</span><span class="am" id="hb-fl">—</span></div>
-        <div class="res-row"><span class="nm">Вода (скорректировано)</span><span class="am" id="hb-wt">—</span></div>
+        <div class="res-row"><span class="nm">Мука — скорректировано</span><span class="am" id="hb-fl">—</span></div>
+        <div class="res-row"><span class="nm">Вода — скорректировано</span><span class="am" id="hb-wt">—</span></div>
         <div class="res-row"><span class="nm">Соль</span><span class="am">оставь из оригинала</span></div>
       </div>
     </div>
@@ -961,121 +1129,109 @@ footer{
 <!-- ── 6. КОГДА ЗАКВАСКА ГОТОВА ── -->
 <div class="section">
   <div class="s-hdr" onclick="toggleSec(this)">
-    <div class="s-hdr-left">
-      <div class="s-icon s-icon-green">📍</div>
-      <div><div class="s-title">6. Закваска на пике — как понять</div><div class="s-sub">Визуальные признаки + видео</div></div>
+    <div class="s-num">06</div>
+    <div class="s-titles">
+      <div class="s-title">Закваска на пике — как понять</div>
+      <div class="s-sub">Визуальные признаки и видео</div>
     </div>
     <div class="s-toggle">+</div>
   </div>
   <div class="s-body">
     <div class="prose">
-      <p><strong>Закваска готова к замесу когда:</strong> поднялась куполом, вся в пузырях, увеличилась ~в 3 раза. Выглядит активной и пышной.</p>
-      <p>Если постояла 2–4 дня без кормления — сначала покорми, дождись пика, только потом месишь.</p>
+      <p>Закваска готова к замесу когда поднялась куполом, вся в пузырях, увеличилась примерно в три раза. Выглядит активной и пышной.</p>
+      <p>Если стояла без кормления 2–4 дня — сначала покорми, дождись пика, только потом месишь.</p>
     </div>
-    <div class="box box-sky">
-      <strong>Тест float test:</strong> брось ложку закваски в стакан воды. Если всплыла — закваска готова к замесу.
-    </div>
-    <div class="video-grid" style="margin-top:1rem">
+    <div class="callout"><strong>Тест float test:</strong> брось ложку закваски в стакан воды. Если всплыла — закваска готова к замесу.</div>
+    <div class="video-grid">
       <div class="video-block">
-        <div class="video-label">📹 Видео 1: активная закваска</div>
+        <div class="video-label">Видео — активная закваска</div>
         <div class="video-wrap">
-          <iframe src="https://www.youtube.com/embed/B4sYhWzWu6Y" allowfullscreen loading="lazy" title="Активная закваска"></iframe>
+          <iframe src="https://www.youtube.com/embed/B4sYhWzWu6Y" allowfullscreen loading="lazy"></iframe>
         </div>
       </div>
       <div class="video-block">
-        <div class="video-label">📹 Видео 2: работа с закваской</div>
+        <div class="video-label">Видео — работа с закваской</div>
         <div class="video-wrap">
-          <iframe src="https://www.youtube.com/embed/VkLOfGgvud8" allowfullscreen loading="lazy" title="Работа с закваской"></iframe>
+          <iframe src="https://www.youtube.com/embed/VkLOfGgvud8" allowfullscreen loading="lazy"></iframe>
         </div>
       </div>
       <div class="video-block">
-        <div class="video-label">📹 Видео 3: ещё о закваске</div>
+        <div class="video-label">Видео — о закваске</div>
         <div class="video-wrap">
-          <iframe src="https://www.youtube.com/embed/1V-D4e81zRg" allowfullscreen loading="lazy" title="О закваске"></iframe>
+          <iframe src="https://www.youtube.com/embed/1V-D4e81zRg" allowfullscreen loading="lazy"></iframe>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ── 7. ЗАМЕС И ОБМИНКИ ── -->
+<!-- ── 7. ЗАМЕС ── -->
 <div class="section" id="kneading">
   <div class="s-hdr" onclick="toggleSec(this)">
-    <div class="s-hdr-left">
-      <div class="s-icon s-icon-rose">👐</div>
-      <div><div class="s-title">7. Замес, ламинирование и обминки</div><div class="s-sub">Пошагово + видео каждого этапа</div></div>
+    <div class="s-num">07</div>
+    <div class="s-titles">
+      <div class="s-title">Замес, ламинирование и обминки</div>
+      <div class="s-sub">Пошагово с видео каждого этапа</div>
     </div>
     <div class="s-toggle">+</div>
   </div>
   <div class="s-body">
-
-    <h4 class="sub" style="margin-top:0">Шаг 1: Замес теста</h4>
+    <h4 class="sub" style="margin-top:0">Замес теста</h4>
     <div class="prose">
       <p>Разбей закваску с водой блендером до однородной жижи. Добавь муку и соль — замеси тесто.</p>
-      <p><strong>Руками:</strong> оставь на 1 час автолиз (клейковина развивается сама). Потом 2–3 подхода по 10 «отбивок» с паузами 5 минут.</p>
-      <p><strong>Планетарный миксер:</strong> без автолиза — 20 минут с насадкой для теста.</p>
+      <p><strong>Руками:</strong> автолиз 1 час, затем 2–3 подхода по 10 «отбивок» с паузами 5 минут. Тесто становится гладким.</p>
+      <p><strong>Миксер:</strong> без автолиза — 20 минут с насадкой для теста.</p>
     </div>
-
     <div class="video-block">
-      <div class="video-label">📹 Видео: работа с влажным тестом</div>
+      <div class="video-label">Видео — работа с влажным тестом</div>
       <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/6vTwfiyXIM8" allowfullscreen loading="lazy" title="Работа с тестом"></iframe>
+        <iframe src="https://www.youtube.com/embed/6vTwfiyXIM8" allowfullscreen loading="lazy"></iframe>
       </div>
       <p class="video-desc">Как складывать тесто, работать с влажным, формировать структуру без агрессивного вымешивания</p>
     </div>
-
-    <div class="video-block" style="margin-top:1.2rem">
-      <div class="video-label">📹 Видео: отбивание и замес руками</div>
+    <div class="video-block">
+      <div class="video-label">Видео — отбивание и замес руками</div>
       <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/eodCw9FgyPY" allowfullscreen loading="lazy" title="Замес руками"></iframe>
+        <iframe src="https://www.youtube.com/embed/eodCw9FgyPY" allowfullscreen loading="lazy"></iframe>
       </div>
     </div>
-
-    <div class="soc-card" style="margin-top:1.2rem">
-      <div class="soc-icon-wrap soc-icon-ig">📱</div>
-      <div class="soc-info">
-        <div class="title">Instagram: замес на планетарном миксере</div>
-        <div class="desc">Как выглядит хорошо развитая клейковина после 20 минут замеса — тесто тянется, не рвётся.</div>
-        <a href="https://www.instagram.com/reel/DYB2A-aMJ3L/?igsh=MTk0dTRlbHpienFlbg==" target="_blank" class="soc-btn btn-ig">Открыть Reel в Instagram</a>
-      </div>
-    </div>
-
-    <div class="div"></div>
-
-    <h4 class="sub">Шаг 2: Ламинирование (через ~40 мин)</h4>
-    <div class="prose">
-      <p>Растяни тесто на столе в тонкий пласт. Можно добавить начинку: жареный лук, оливки, семена. Сложи и верни в миску.</p>
-      <p>Ламинирование помогает тесту держать газ и красиво раскрыться в духовке.</p>
-    </div>
-
     <div class="soc-card">
-      <div class="soc-icon-wrap soc-icon-ig">📱</div>
+      <div class="soc-platform">Instagram</div>
       <div class="soc-info">
-        <div class="title">Instagram: ламинирование теста</div>
-        <div class="desc">Техника растяжки теста в тонкий пласт — видно как правильно раскладывать и складывать.</div>
-        <a href="https://www.instagram.com/reel/DYaFUqzMbLq/?igsh=aDFpdjN4NjZsNDZx" target="_blank" class="soc-btn btn-ig">Открыть Reel в Instagram</a>
+        <div class="title">Замес на планетарном миксере</div>
+        <div class="desc">Как выглядит правильно развитая клейковина после 20 минут замеса.</div>
+        <a href="https://www.instagram.com/reel/DYB2A-aMJ3L/?igsh=MTk0dTRlbHpienFlbg==" target="_blank" class="soc-btn">Открыть в Instagram →</a>
       </div>
     </div>
 
-    <div class="div"></div>
-
-    <h4 class="sub">Шаг 3: Обминки катушкой (3–4 раза, каждые 40 мин)</h4>
+    <h4 class="sub">Ламинирование — через 40 минут после замеса</h4>
     <div class="prose">
-      <p>Интервал не обязательно строго 30 минут — 40–50 тоже хорошо. Всего 3–4 обминки. Тесто должно стать пышным и насыщенным воздухом.</p>
+      <p>Растяни тесто на столе в тонкий пласт. Можно добавить начинку: жареный лук, оливки, семена. Сложи и верни в миску. Делаю всегда — даже без начинок.</p>
+    </div>
+    <div class="soc-card">
+      <div class="soc-platform">Instagram</div>
+      <div class="soc-info">
+        <div class="title">Ламинирование теста</div>
+        <div class="desc">Техника растяжки теста в тонкий пласт перед обминками.</div>
+        <a href="https://www.instagram.com/reel/DYaFUqzMbLq/?igsh=aDFpdjN4NjZsNDZx" target="_blank" class="soc-btn">Открыть в Instagram →</a>
+      </div>
     </div>
 
+    <h4 class="sub">Обминки катушкой — три раза через 40 минут</h4>
+    <div class="prose">
+      <p>Интервал не обязательно строго 30 минут — 40–50 тоже хорошо. Тесто должно стать пышным и насыщенным воздухом.</p>
+    </div>
     <div class="soc-card">
-      <div class="soc-icon-wrap soc-icon-ig">📱</div>
+      <div class="soc-platform">Instagram</div>
       <div class="soc-info">
-        <div class="title">Instagram: обминка катушкой (coil fold)</div>
+        <div class="title">Обминка катушкой (coil fold)</div>
         <div class="desc">Основная техника обминки во время ферментации — мягко, без агрессии.</div>
-        <a href="https://www.instagram.com/reel/DXKbYxBDMG5/?igsh=eWNxcmVocTJvYTY5" target="_blank" class="soc-btn btn-ig">Открыть Reel в Instagram</a>
+        <a href="https://www.instagram.com/reel/DXKbYxBDMG5/?igsh=eWNxcmVocTJvYTY5" target="_blank" class="soc-btn">Открыть в Instagram →</a>
       </div>
     </div>
 
-    <div class="box box-sky" style="margin-top:1rem">
-      <strong>Примерный timeline замеса:</strong><br>
-      0:00 Замес → 1:00 Ламинирование → 1:40 Обминка 1 → 2:20 Обминка 2 → 3:00 Обминка 3 → 3:40 Предформовка
+    <div class="callout" style="margin-top:1.5rem">
+      <strong>Примерный timeline:</strong> 0:00 Замес → 1:00 Ламинирование → 1:40 Обминка 1 → 2:20 Обминка 2 → 3:00 Обминка 3 → 3:40 Предформовка
     </div>
   </div>
 </div>
@@ -1083,147 +1239,143 @@ footer{
 <!-- ── 8. ФОРМОВКА ── -->
 <div class="section">
   <div class="s-hdr" onclick="toggleSec(this)">
-    <div class="s-hdr-left">
-      <div class="s-icon s-icon-orange">🫓</div>
-      <div><div class="s-title">8. Формовка и холодная ферментация</div><div class="s-sub">Предформовка, финальная форма, ночь в холодильнике</div></div>
+    <div class="s-num">08</div>
+    <div class="s-titles">
+      <div class="s-title">Формовка и холодная ферментация</div>
+      <div class="s-sub">Предформовка, финал, ночь в холодильнике</div>
     </div>
     <div class="s-toggle">+</div>
   </div>
   <div class="s-body">
     <h4 class="sub" style="margin-top:0">Предформовка</h4>
     <div class="prose">
-      <p>Взвесь тесто, раздели на порции (600–700 г на буханку). Сделай предформовку, накрой миской на <strong>15 минут</strong> — тесто отдыхает.</p>
+      <p>Взвесь тесто, раздели на порции — 600–700 г на буханку. Предформуй, положи на стол швом вниз, накрой миской на <strong>15 минут</strong>.</p>
     </div>
     <div class="soc-card">
-      <div class="soc-icon-wrap soc-icon-ig">📱</div>
+      <div class="soc-platform">Instagram</div>
       <div class="soc-info">
-        <div class="title">Instagram: предформовка теста</div>
+        <div class="title">Предформовка теста</div>
         <div class="desc">Как собрать тесто перед финальной формовкой.</div>
-        <a href="https://www.instagram.com/reel/DVLjhBGjL_4/?igsh=ODZiMml5OTJqYjI=" target="_blank" class="soc-btn btn-ig">Открыть Reel в Instagram</a>
+        <a href="https://www.instagram.com/reel/DVLjhBGjL_4/?igsh=ODZiMml5OTJqYjI=" target="_blank" class="soc-btn">Открыть в Instagram →</a>
       </div>
     </div>
 
-    <div class="div"></div>
-
     <h4 class="sub">Финальная формовка</h4>
     <div class="prose">
-      <p>Важно создать натяжение поверхности — хлеб красиво раскроется. Формовка зависит от посуды: для утятницы — батон, для круглой кастрюли — шар.</p>
+      <p>Важно создать натяжение поверхности — хлеб красиво раскроется в духовке. Для утятницы — батон, для круглого казана — шар.</p>
     </div>
     <div class="video-block">
-      <div class="video-label">📹 Видео: формовка и подготовка к расстойке</div>
+      <div class="video-label">Видео — формовка и подготовка к расстойке</div>
       <a href="https://www.youtube.com/watch?v=eS9S2ZWIS7c" target="_blank" class="yt-card">
         <img src="https://img.youtube.com/vi/eS9S2ZWIS7c/hqdefault.jpg" alt="Формовка хлеба" class="yt-thumb">
         <div class="yt-play">▶</div>
-        <div class="yt-label">Смотреть на YouTube: формовка и подготовка к расстойке</div>
+        <div class="yt-label">Смотреть на YouTube — формовка и подготовка к расстойке</div>
       </a>
       <p class="video-desc">Как собрать тесто в заготовку, создать натяжение поверхности и уложить в корзину</p>
     </div>
 
-    <div class="div"></div>
-
-    <h4 class="sub">Холодная ферментация (ночь в холодильнике)</h4>
+    <h4 class="sub">Холодная ферментация</h4>
     <div class="prose">
-      <p>Сложи сформованный хлеб в расстоечную корзину или миску с льняным полотенцем, посыпанным рисовой мукой. В холодильник на <strong>ночь (8–16 часов)</strong>.</p>
+      <p>Сложи сформованный хлеб в расстоечную корзину или миску с полотенцем, посыпанным рисовой мукой. В холодильник на <strong>ночь — 8–16 часов</strong>.</p>
     </div>
-    <div class="box box-sage">
-      <strong>Зачем холодная ферментация:</strong> медленный подъём развивает вкус и аромат. Надрезы получаются чёткими. Можно лечь спать — всё само происходит.
-    </div>
+    <div class="callout">Медленный подъём в холоде развивает вкус и аромат. Надрезы получаются чёткими. Можно спокойно лечь спать.</div>
   </div>
 </div>
 
 <!-- ── 9. ВЫПЕЧКА ── -->
 <div class="section" id="baking">
   <div class="s-hdr" onclick="toggleSec(this)">
-    <div class="s-hdr-left">
-      <div class="s-icon s-icon-rose">🔥</div>
-      <div><div class="s-title">9. Выпечка</div><div class="s-sub">Температура, пар, время</div></div>
+    <div class="s-num">09</div>
+    <div class="s-titles">
+      <div class="s-title">Выпечка</div>
+      <div class="s-sub">Температура, пар, время</div>
     </div>
     <div class="s-toggle">+</div>
   </div>
   <div class="s-body">
-    <div class="stats" style="margin-bottom:1rem">
-      <div class="stat"><span class="val">250°C</span><span class="key">Температура</span></div>
-      <div class="stat"><span class="val">30 мин</span><span class="key">С паром (с крышкой)</span></div>
-      <div class="stat"><span class="val">25 мин</span><span class="key">Без пара (без крышки)</span></div>
-      <div class="stat"><span class="val">40–60 мин</span><span class="key">Разогреть форму</span></div>
+    <div class="stat-row">
+      <div class="stat-item"><span class="stat-val">250°</span><span class="stat-key">температура</span></div>
+      <div class="stat-item"><span class="stat-val">30'</span><span class="stat-key">с паром, крышка</span></div>
+      <div class="stat-item"><span class="stat-val">25'</span><span class="stat-key">без пара</span></div>
+      <div class="stat-item"><span class="stat-val">60'</span><span class="stat-key">разогрев формы</span></div>
     </div>
-
-    <ol class="list">
-      <li>Разогрей духовку вместе с формой до 250°C — <strong>не менее 40–60 минут</strong>. Форма должна быть раскалённой.</li>
+    <ol class="lst" style="margin-top:1.2rem">
+      <li>Разогрей духовку вместе с формой до 250°С — не менее 40–60 минут. Форма должна быть раскалённой.</li>
       <li>Достань тесто из холодильника. Сделай надрезы лезвием глубиной ~1 см.</li>
-      <li>На дно раскалённой формы положи несколько кубиков льда, сверху — пергамент с тестом, <strong>накрой крышкой.</strong></li>
+      <li>На дно формы — несколько кубиков льда, сверху — пергамент с тестом. Накрой крышкой.</li>
       <li>Выпекай <strong>30 минут с крышкой</strong> — лёд тает, пар поднимается, хлеб раскрывается.</li>
-      <li>Сними крышку, пеки ещё <strong>25 минут</strong> для золотистой хрустящей корочки.</li>
-      <li>Достань, остужай на решётке <strong>минимум 1 час</strong> до разрезания.</li>
+      <li>Сними крышку, пеки ещё <strong>25 минут</strong> до золотистой корочки.</li>
+      <li>Остужай на решётке <strong>минимум 1 час</strong> — мякиш ещё доходит внутри.</li>
     </ol>
-
-    <div class="box box-honey" style="margin-top:1rem">
-      <strong>Признаки отличного хлеба:</strong> гребень и блистеры (мелкие пузырьки) на корочке, красивый мякиш с равномерными порами.
-    </div>
-    <div class="box box-sky">
-      <strong>Заморозка:</strong> лишний хлеб режь кусочками и замораживай. После морозилки — кусочек в тостер, вернёт свежесть и хруст.
-    </div>
+    <div class="note">Гребень и блистеры на корочке, красивый мякиш с равномерными порами — признаки отличного хлеба.</div>
+    <div class="callout">Лишний хлеб режь кусочками и замораживай. После морозилки — кусочек в тостер, вернёт свежесть и хруст.</div>
   </div>
 </div>
 
 <!-- ── 10. ПОШАГОВЫЙ ПЛАН ── -->
 <div class="section">
   <div class="s-hdr open" onclick="toggleSec(this)">
-    <div class="s-hdr-left">
-      <div class="s-icon s-icon-blue">📋</div>
-      <div><div class="s-title">10. Пошаговый план выпечки</div><div class="s-sub">Два дня — от закваски до готового хлеба</div></div>
+    <div class="s-num">10</div>
+    <div class="s-titles">
+      <div class="s-title">Пошаговый план выпечки</div>
+      <div class="s-sub">Три дня — от закваски до готового хлеба</div>
     </div>
     <div class="s-toggle">+</div>
   </div>
   <div class="s-body open">
     <div class="timeline">
       <div class="tl-item">
-        <div class="tl-time">День 1 — утром</div>
+        <div class="tl-time">День первый — вечер</div>
         <div class="tl-title">Покорми закваску</div>
-        <div class="tl-desc">10 минут. Отдели нужное количество для выпечки (110 г × количество буханок). Оставь подниматься.</div>
+        <div class="tl-desc">10 минут. Отдели нужное количество для выпечки (110 г × буханок). Оставь подниматься.</div>
       </div>
       <div class="tl-item">
-        <div class="tl-time">+ 4–6 часов</div>
+        <div class="tl-time">+ 2 часа</div>
+        <div class="tl-title">В холодильник на ночь</div>
+        <div class="tl-desc">Пару часов на кухне, потом в холодильник — закваска будет медленно расти до утра.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">День второй — первая половина</div>
         <div class="tl-title">Закваска на пике → замес</div>
-        <div class="tl-desc">Разбей закваску с водой блендером. Добавь муку и соль. Замеси. Автолиз 1 час (или миксер 20 мин).</div>
+        <div class="tl-desc">Разбей закваску с водой блендером. Добавь муку и соль. Замеси. Автолиз 1 час или миксер 20 мин.</div>
       </div>
       <div class="tl-item">
         <div class="tl-time">+ 1 час</div>
         <div class="tl-title">Ламинирование</div>
-        <div class="tl-desc">Растяни тесто, при желании добавь лук / оливки. Сложи, верни в миску.</div>
+        <div class="tl-desc">Растяни тесто, при желании добавь лук, оливки. Сложи, верни в миску.</div>
       </div>
       <div class="tl-item">
-        <div class="tl-time">+ 40 мин × 3–4</div>
-        <div class="tl-title">Обминки катушкой</div>
-        <div class="tl-desc">Каждые 40 минут — быстро обомни и уходи. Тесто должно стать пышным.</div>
+        <div class="tl-time">+ 40 мин × 3</div>
+        <div class="tl-title">Три обминки катушкой</div>
+        <div class="tl-desc">Каждые 40 минут — быстро обомни и уходи. Тесто становится пышным.</div>
       </div>
       <div class="tl-item">
         <div class="tl-time">+ 40 мин</div>
-        <div class="tl-title">Предформовка → 15 мин отдыха</div>
-        <div class="tl-desc">Взвесь (600–700 г на буханку). Предформуй. Накрой миской на 15 минут.</div>
+        <div class="tl-title">Предформовка — 15 минут отдыха</div>
+        <div class="tl-desc">Взвесь по 600–700 г на буханку. Предформуй. Накрой миской на 15 минут.</div>
       </div>
       <div class="tl-item">
         <div class="tl-time">+ 15 мин</div>
-        <div class="tl-title">Финальная формовка → в холодильник</div>
-        <div class="tl-desc">Сформуй буханку, создай натяжение. В корзину с полотенцем и рисовой мукой. В холодильник на ночь.</div>
+        <div class="tl-title">Финальная формовка → холодильник</div>
+        <div class="tl-desc">Сформуй, создай натяжение. В корзину с полотенцем и рисовой мукой. В холодильник на ночь.</div>
       </div>
       <div class="tl-item">
-        <div class="tl-time">День 2 — утром</div>
-        <div class="tl-title">Разогреть духовку 250°C (40–60 мин)</div>
+        <div class="tl-time">День третий — утром</div>
+        <div class="tl-title">Разогреть духовку 250°С — 40–60 минут</div>
         <div class="tl-desc">Форму оставь внутри — она должна быть раскалённой.</div>
       </div>
       <div class="tl-item">
         <div class="tl-time">+ 40–60 мин</div>
-        <div class="tl-title">Надрезы → выпечка с паром 30 мин</div>
-        <div class="tl-desc">Лёд на дно, пергамент с тестом, надрезы, накрыть крышкой.</div>
+        <div class="tl-title">Надрезы → выпечка с паром 30 минут</div>
+        <div class="tl-desc">Лёд на дно, пергамент с тестом, надрезы, крышка закрыта.</div>
       </div>
       <div class="tl-item">
         <div class="tl-time">+ 30 мин</div>
-        <div class="tl-title">Снять крышку → ещё 25 мин</div>
+        <div class="tl-title">Снять крышку → ещё 25 минут</div>
         <div class="tl-desc">До золотисто-коричневой хрустящей корочки.</div>
       </div>
       <div class="tl-item">
-        <div class="tl-time">+ 25 мин → 1 час</div>
+        <div class="tl-time">+ 25 мин</div>
         <div class="tl-title">Остужать на решётке минимум 1 час</div>
         <div class="tl-desc">Не режь горячий — мякиш ещё доходит внутри.</div>
       </div>
@@ -1234,226 +1386,169 @@ footer{
 <!-- ── 11. ФИНАЛЬНЫЙ ЧЕКЛИСТ ── -->
 <div class="section" id="checklist">
   <div class="s-hdr open" onclick="toggleSec(this)">
-    <div class="s-hdr-left">
-      <div class="s-icon s-icon-green">🏁</div>
-      <div><div class="s-title">11. Финальный чеклист выпечки</div><div class="s-sub">Отмечай по ходу работы</div></div>
+    <div class="s-num">11</div>
+    <div class="s-titles">
+      <div class="s-title">Финальный чеклист</div>
+      <div class="s-sub">Все шаги выпечки по порядку</div>
     </div>
     <div class="s-toggle">+</div>
   </div>
   <div class="s-body open">
     <ul class="cl" id="clF">
-      <li onclick="chk(this,'clF',0)"><input type="checkbox"><span><strong>День 1:</strong> Покормила закваску</span></li>
-      <li onclick="chk(this,'clF',1)"><input type="checkbox"><span><strong>День 1:</strong> Дождалась пика (купол, пузыри, ×3)</span></li>
-      <li onclick="chk(this,'clF',2)"><input type="checkbox"><span><strong>День 1:</strong> Разбила закваску с водой блендером</span></li>
-      <li onclick="chk(this,'clF',3)"><input type="checkbox"><span><strong>День 1:</strong> Добавила муку и соль, замесила</span></li>
-      <li onclick="chk(this,'clF',4)"><input type="checkbox"><span><strong>День 1:</strong> Автолиз 1 час (или миксер 20 мин)</span></li>
-      <li onclick="chk(this,'clF',5)"><input type="checkbox"><span><strong>День 1:</strong> Ламинирование</span></li>
-      <li onclick="chk(this,'clF',6)"><input type="checkbox"><span><strong>День 1:</strong> Обминка катушкой 1 (через 40 мин)</span></li>
-      <li onclick="chk(this,'clF',7)"><input type="checkbox"><span><strong>День 1:</strong> Обминка катушкой 2 (через 40 мин)</span></li>
-      <li onclick="chk(this,'clF',8)"><input type="checkbox"><span><strong>День 1:</strong> Обминка катушкой 3 (через 40 мин)</span></li>
-      <li onclick="chk(this,'clF',9)"><input type="checkbox"><span><strong>День 1:</strong> Предформовка → 15 мин отдыха</span></li>
-      <li onclick="chk(this,'clF',10)"><input type="checkbox"><span><strong>День 1:</strong> Финальная формовка</span></li>
-      <li onclick="chk(this,'clF',11)"><input type="checkbox"><span><strong>День 1:</strong> Тесто в холодильник на ночь</span></li>
-      <li onclick="chk(this,'clF',12)"><input type="checkbox"><span><strong>День 2:</strong> Разогрела духовку + форму 250°C (40–60 мин)</span></li>
-      <li onclick="chk(this,'clF',13)"><input type="checkbox"><span><strong>День 2:</strong> Надрезы лезвием</span></li>
-      <li onclick="chk(this,'clF',14)"><input type="checkbox"><span><strong>День 2:</strong> Выпечка с паром 30 мин (с крышкой)</span></li>
-      <li onclick="chk(this,'clF',15)"><input type="checkbox"><span><strong>День 2:</strong> Выпечка без пара 25 мин (без крышки)</span></li>
-      <li onclick="chk(this,'clF',16)"><input type="checkbox"><span><strong>День 2:</strong> Остужаю 1 час на решётке</span></li>
-      <li onclick="chk(this,'clF',17)"><input type="checkbox"><span><strong>День 2:</strong> Оставила ~80–100 г закваски для следующей выпечки</span></li>
+      <li onclick="chk(this,'clF',0)"><input type="checkbox"><span><strong>День 1:</strong> покормила закваску</span></li>
+      <li onclick="chk(this,'clF',1)"><input type="checkbox"><span><strong>День 1:</strong> отложила нужное количество для выпечки</span></li>
+      <li onclick="chk(this,'clF',2)"><input type="checkbox"><span><strong>День 2:</strong> закваска на пике — купол, пузыри</span></li>
+      <li onclick="chk(this,'clF',3)"><input type="checkbox"><span><strong>День 2:</strong> разбила закваску с водой блендером</span></li>
+      <li onclick="chk(this,'clF',4)"><input type="checkbox"><span><strong>День 2:</strong> добавила муку и соль, замесила</span></li>
+      <li onclick="chk(this,'clF',5)"><input type="checkbox"><span><strong>День 2:</strong> автолиз 1 час или миксер 20 мин</span></li>
+      <li onclick="chk(this,'clF',6)"><input type="checkbox"><span><strong>День 2:</strong> ламинирование</span></li>
+      <li onclick="chk(this,'clF',7)"><input type="checkbox"><span><strong>День 2:</strong> обминка катушкой 1</span></li>
+      <li onclick="chk(this,'clF',8)"><input type="checkbox"><span><strong>День 2:</strong> обминка катушкой 2</span></li>
+      <li onclick="chk(this,'clF',9)"><input type="checkbox"><span><strong>День 2:</strong> обминка катушкой 3</span></li>
+      <li onclick="chk(this,'clF',10)"><input type="checkbox"><span><strong>День 2:</strong> предформовка — 15 минут отдыха</span></li>
+      <li onclick="chk(this,'clF',11)"><input type="checkbox"><span><strong>День 2:</strong> финальная формовка</span></li>
+      <li onclick="chk(this,'clF',12)"><input type="checkbox"><span><strong>День 2:</strong> тесто в холодильник на ночь</span></li>
+      <li onclick="chk(this,'clF',13)"><input type="checkbox"><span><strong>День 3:</strong> разогрела духовку и форму 250°С — 40–60 мин</span></li>
+      <li onclick="chk(this,'clF',14)"><input type="checkbox"><span><strong>День 3:</strong> надрезы лезвием</span></li>
+      <li onclick="chk(this,'clF',15)"><input type="checkbox"><span><strong>День 3:</strong> выпечка с паром 30 минут, крышка закрыта</span></li>
+      <li onclick="chk(this,'clF',16)"><input type="checkbox"><span><strong>День 3:</strong> выпечка без пара 25 минут, крышка снята</span></li>
+      <li onclick="chk(this,'clF',17)"><input type="checkbox"><span><strong>День 3:</strong> остужаю час на решётке</span></li>
+      <li onclick="chk(this,'clF',18)"><input type="checkbox"><span><strong>День 3:</strong> оставила 80–100 г закваски — покормлю после</span></li>
     </ul>
-    <div class="cl-prog" id="clF-prog">0 из 18</div>
+    <div class="cl-prog" id="clF-prog">0 из 19</div>
     <div class="prog-bar"><div class="prog-fill" id="clF-bar" style="width:0%"></div></div>
-    <button class="cl-reset" onclick="resetCl('clF',18)">Сбросить</button>
+    <button class="cl-reset" onclick="resetCl('clF',19)">Сбросить</button>
   </div>
 </div>
 
 <!-- ── 12. СОВЕТЫ ── -->
 <div class="section">
   <div class="s-hdr" onclick="toggleSec(this)">
-    <div class="s-hdr-left">
-      <div class="s-icon s-icon-purple">💡</div>
-      <div><div class="s-title">12. Советы и нюансы</div><div class="s-sub">Добавки, глютеновое окно, хранение</div></div>
+    <div class="s-num">12</div>
+    <div class="s-titles">
+      <div class="s-title">Советы и нюансы</div>
+      <div class="s-sub">Добавки, температура, хранение</div>
     </div>
     <div class="s-toggle">+</div>
   </div>
   <div class="s-body">
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-hd">Сколько буханок печь</div>
-        <p style="font-size:.86rem;color:var(--text2)">Минимум две! Одну простую, вторую — с добавкой. Лишнее режь кусочками и замораживай.</p>
-      </div>
-      <div class="card">
-        <div class="card-hd">Добавки</div>
-        <p style="font-size:.86rem;color:var(--text2)">Жареный лук из ВкусВилла, оливки, семена. Кладутся во время ламинирования.</p>
-      </div>
-      <div class="card">
-        <div class="card-hd">Про обминки</div>
-        <p style="font-size:.86rem;color:var(--text2)">Не строго 30 мин — 40–50 нормально. Главное не делать поздно ночью когда хочется спать.</p>
-      </div>
+    <div class="prose">
+      <p><strong>Сколько буханок печь.</strong> Минимум две — одну простую, вторую с добавкой. Лишнее режь кусочками и замораживай.</p>
+      <p><strong>Добавки.</strong> Жареный лук из ВкусВилла, оливки, семена — кладутся во время ламинирования.</p>
+      <p><strong>Про обминки.</strong> Не обязательно строго 30 минут — 40–50 нормально. Главное не делать поздно ночью.</p>
+      <p><strong>Глютеновое окно.</strong> Растяни кусок теста — если тянется не рвясь и просвечивает, клейковина развита хорошо.</p>
     </div>
-
-    <div class="box box-sky" style="margin-top:1rem">
-      <strong>Глютеновое окно</strong> — тест качества клейковины. Растяни кусок теста: если тянется не рвясь и просвечивает — клейковина развита хорошо, хлеб получится.
-    </div>
-
-    <div class="div"></div>
-
-    <div class="soc-card">
-      <div class="soc-icon-wrap soc-icon-fb">📘</div>
+    <div class="soc-card" style="margin-top:1.5rem">
+      <div class="soc-platform">Facebook</div>
       <div class="soc-info">
-        <div class="title">Facebook: техника работы с тестом</div>
+        <div class="title">Техника работы с тестом</div>
         <div class="desc">Дополнительное видео о технике хлебного теста.</div>
-        <a href="https://www.facebook.com/share/r/1XvYti5bar/" target="_blank" class="soc-btn btn-fb">Открыть в Facebook</a>
+        <a href="https://www.facebook.com/share/r/1XvYti5bar/" target="_blank" class="soc-btn">Открыть в Facebook →</a>
       </div>
     </div>
   </div>
 </div>
 
+</div><!-- /sections-wrap -->
 </main>
 
 <footer>
-  <p>🍞 Памятка по хлебу на закваске Левито Мадре</p>
-  <p style="margin-top:.3rem;opacity:.7">Основано на рекомендациях наставника</p>
+  <div class="footer-logo">Левито Мадре</div>
+  <div class="footer-sub">Памятка по хлебу на закваске</div>
 </footer>
 
 <script>
-// ── SECTION TOGGLE ──
-function toggleSec(hdr){
-  hdr.classList.toggle('open');
-  hdr.nextElementSibling.classList.toggle('open');
-}
+// ── SECTIONS ──
+function toggleSec(h){h.classList.toggle('open');h.nextElementSibling.classList.toggle('open')}
 function toggleAll(){
-  const btn = document.getElementById('toggleAllBtn');
-  const allOpen = btn.dataset.state === 'open';
+  const btn=document.getElementById('toggleAllBtn');
+  const open=btn.dataset.state==='open';
   document.querySelectorAll('.s-hdr').forEach(h=>{
-    if(allOpen){
-      h.classList.remove('open');
-      h.nextElementSibling.classList.remove('open');
-    } else {
-      h.classList.add('open');
-      h.nextElementSibling.classList.add('open');
-    }
+    open?(h.classList.remove('open'),h.nextElementSibling.classList.remove('open'))
+        :(h.classList.add('open'),h.nextElementSibling.classList.add('open'));
   });
-  btn.dataset.state = allOpen ? '' : 'open';
-  btn.textContent = allOpen ? 'Развернуть все разделы' : 'Свернуть все разделы';
+  btn.dataset.state=open?'':'open';
+  btn.textContent=open?'Развернуть все разделы':'Свернуть все разделы';
 }
-
-// ── NAV: scroll + open section ──
 function navClick(id){
-  const sec = document.getElementById(id);
-  if(!sec) return;
-  const hdr = sec.querySelector('.s-hdr');
-  if(hdr && !hdr.classList.contains('open')){
-    hdr.classList.add('open');
-    hdr.nextElementSibling.classList.add('open');
-  }
+  const s=document.getElementById(id);if(!s)return;
+  const h=s.querySelector('.s-hdr');
+  if(h&&!h.classList.contains('open')){h.classList.add('open');h.nextElementSibling.classList.add('open')}
 }
-
 // ── ACTIVE NAV ──
-const navSections=['starter','flour','tools','calc','kneading','baking','checklist'];
+const NAV_IDS=['starter','flour','tools','calc','kneading','baking','checklist'];
 window.addEventListener('scroll',()=>{
   let cur='';
-  navSections.forEach(id=>{
-    const el=document.getElementById(id);
-    if(el && el.getBoundingClientRect().top<=80) cur=id;
-  });
-  document.querySelectorAll('.hdr-nav a').forEach(a=>{
-    a.classList.toggle('active', a.getAttribute('href')==='#'+cur);
-  });
+  NAV_IDS.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=80)cur=id;});
+  document.querySelectorAll('.hdr-nav a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
 },{passive:true});
-
-// ── SHOPPING MODAL ──
-function openShop(){
-  document.getElementById('shopModal').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeShop(){
-  document.getElementById('shopModal').classList.remove('open');
-  document.body.style.overflow='';
-}
-document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeShop(); });
-
+// ── SHOP ──
+function openShop(){document.getElementById('shopModal').classList.add('open');document.body.style.overflow='hidden'}
+function closeShop(){document.getElementById('shopModal').classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeShop()});
 // ── CHECKLIST ──
 function chk(li,id,i){
   li.classList.toggle('done');
-  const checked=li.classList.contains('done');
-  li.querySelector('input').checked=checked;
-  const saved=JSON.parse(localStorage.getItem('cl_'+id)||'[]');
-  saved[i]=checked;
-  localStorage.setItem('cl_'+id,JSON.stringify(saved));
-  updProg(id,document.querySelectorAll('#'+id+' li').length);
+  const c=li.classList.contains('done');li.querySelector('input').checked=c;
+  const s=JSON.parse(localStorage.getItem('cl_'+id)||'[]');s[i]=c;
+  localStorage.setItem('cl_'+id,JSON.stringify(s));
+  updP(id,document.querySelectorAll('#'+id+' li').length);
 }
-function updProg(id,total){
+function updP(id,tot){
   const n=document.querySelectorAll('#'+id+' li.done').length;
-  const p=document.getElementById(id+'-prog');
-  const b=document.getElementById(id+'-bar');
-  if(p) p.textContent=n+' из '+total;
-  if(b) b.style.width=(n/total*100)+'%';
+  const p=document.getElementById(id+'-prog');const b=document.getElementById(id+'-bar');
+  if(p)p.textContent=n+' из '+tot;if(b)b.style.width=(n/tot*100)+'%';
 }
-function resetCl(id,total){
+function resetCl(id,tot){
   localStorage.removeItem('cl_'+id);
-  document.querySelectorAll('#'+id+' li').forEach(li=>{
-    li.classList.remove('done');
-    li.querySelector('input').checked=false;
-  });
-  updProg(id,total);
+  document.querySelectorAll('#'+id+' li').forEach(li=>{li.classList.remove('done');li.querySelector('input').checked=false;});
+  updP(id,tot);
 }
-function loadCl(id,total){
-  const saved=JSON.parse(localStorage.getItem('cl_'+id)||'[]');
-  document.querySelectorAll('#'+id+' li').forEach((li,i)=>{
-    if(saved[i]){ li.classList.add('done'); li.querySelector('input').checked=true; }
-  });
-  updProg(id,total);
+function loadCl(id,tot){
+  const s=JSON.parse(localStorage.getItem('cl_'+id)||'[]');
+  document.querySelectorAll('#'+id+' li').forEach((li,i)=>{if(s[i]){li.classList.add('done');li.querySelector('input').checked=true;}});
+  updP(id,tot);
 }
-loadCl('clS',10);
-loadCl('clF',18);
-loadCl('clD',3);
-loadCl('clD2',8);
-loadCl('clD3',5);
-
+loadCl('clS',10);loadCl('clF',19);loadCl('clD',3);loadCl('clD2',8);loadCl('clD3',5);
 // ── CALC: FEEDING ──
 function calcFeed(){
-  const h=parseFloat(document.getElementById('s-have').value)||0;
-  if(h<=0) return;
+  const h=parseFloat(document.getElementById('s-have').value)||0;if(!h)return;
   document.getElementById('f-s').textContent=h+' г';
   document.getElementById('f-f').textContent=Math.round(h)+' г';
-  document.getElementById('f-w').textContent=Math.round(h*0.5)+' г';
-  document.getElementById('f-t').textContent=Math.round(h+h+h*0.5)+' г';
+  document.getElementById('f-w').textContent=Math.round(h*.5)+' г';
+  document.getElementById('f-t').textContent=Math.round(h*2.5)+' г';
   document.getElementById('feed-res').classList.add('show');
 }
-
 // ── CALC: RECIPE ──
 function calcRecipe(){
   const n=parseInt(document.getElementById('loaves').value)||1;
   const rye=parseInt(document.getElementById('rye').value);
-  const starter=110*n, water=385*n, salt=11*n;
+  const starter=110*n,water=385*n,salt=11*n;
   let f1,f2,f3=0;
-  if(rye){ f1=Math.round(385*n); f2=Math.round(110*n); f3=Math.round(55*n); }
-  else { f1=500*n; f2=50*n; }
+  if(rye){f1=Math.round(385*n);f2=Math.round(110*n);f3=Math.round(55*n);}
+  else{f1=500*n;f2=50*n;}
   const tot=starter+water+salt+f1+f2+f3;
   document.getElementById('r-s').textContent=starter+' г';
   document.getElementById('r-f1').textContent=f1+' г';
   document.getElementById('r-f2').textContent=f2+' г';
   document.getElementById('r-salt').textContent=salt+' г';
   document.getElementById('r-w').textContent=water+' г';
-  document.getElementById('r-tot').textContent=Math.round(tot)+' г (~'+n+' бух. по '+Math.round(tot/n)+' г)';
-  document.getElementById('r-left').textContent=Math.round(starter*0.75)+' г';
+  document.getElementById('r-tot').textContent=Math.round(tot)+' г';
+  document.getElementById('r-left').textContent=Math.round(starter*.75)+' г';
   const rr=document.getElementById('rye-row');
-  if(rye){ rr.style.display='flex'; document.getElementById('r-f3').textContent=f3+' г'; }
-  else { rr.style.display='none'; }
+  if(rye){rr.style.display='flex';document.getElementById('r-f3').textContent=f3+' г';}
+  else{rr.style.display='none';}
   document.getElementById('r-res').classList.add('show');
 }
-
 // ── CALC: BREAD MACHINE ──
 function calcHB(){
   const f=parseFloat(document.getElementById('hb-f').value)||550;
   const w=parseFloat(document.getElementById('hb-w').value)||385;
   const pct=parseInt(document.getElementById('hb-p').value)/100;
   const s=Math.round((f+w)*pct);
-  const sf=Math.round(s*2/3), sw=Math.round(s/3);
   document.getElementById('hb-s').textContent=s+' г';
-  document.getElementById('hb-fl').textContent=Math.round(f-sf)+' г (было '+f+' г)';
-  document.getElementById('hb-wt').textContent=Math.round(w-sw)+' г (было '+w+' г)';
+  document.getElementById('hb-fl').textContent=Math.round(f-s*2/3)+' г (было '+f+' г)';
+  document.getElementById('hb-wt').textContent=Math.round(w-s/3)+' г (было '+w+' г)';
   document.getElementById('hb-res').classList.add('show');
 }
 </script>
