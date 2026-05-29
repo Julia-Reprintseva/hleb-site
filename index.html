@@ -698,8 +698,8 @@ footer{
 }
 .step-hdr:hover .step-title{color:var(--ink);}
 .step-title{
-  font-family:var(--serif);font-size:1.05rem;font-weight:400;
-  color:var(--ink2);letter-spacing:-.01em;line-height:1.3;
+  font-family:var(--serif);font-size:1.35rem;font-weight:400;
+  color:var(--ink);letter-spacing:-.01em;line-height:1.3;
   transition:color .15s;
 }
 .step-hdr.open .step-title{color:var(--gold);}
@@ -1045,19 +1045,35 @@ footer{
           </clipPath>
         </defs>
         <rect width="900" height="148" fill="#F5EDE0"/>
+        <!-- hatched I block -->
         <rect x="38" y="14" width="108" height="16" fill="#DDD0C0"/>
         <rect x="74" y="14" width="36" height="120" fill="#DDD0C0"/>
         <rect x="38" y="118" width="108" height="16" fill="#DDD0C0"/>
         <rect x="0" y="0" width="200" height="148" fill="url(#hst1b)" clip-path="url(#cp-Ib)"/>
+        <!-- arcs — three concentric -->
         <path d="M 198,136 Q 262,58 326,136" stroke="#C4503A" stroke-width="4.5" fill="none" stroke-linecap="round"/>
         <path d="M 215,136 Q 279,38 343,136" stroke="#C4503A" stroke-width="2.5" fill="none" opacity=".55" stroke-linecap="round"/>
         <path d="M 232,136 Q 296,18 360,136" stroke="#C4503A" stroke-width="1.4" fill="none" opacity=".3" stroke-linecap="round"/>
+        <!-- extra light arc -->
+        <path d="M 248,136 Q 312,10 376,136" stroke="#C4503A" stroke-width=".7" fill="none" opacity=".18" stroke-linecap="round"/>
+        <!-- thin vertical dividers between zones -->
+        <line x1="390" y1="18" x2="390" y2="130" stroke="#C4503A" stroke-width=".7" opacity=".18"/>
+        <line x1="544" y1="18" x2="544" y2="130" stroke="#C4503A" stroke-width=".7" opacity=".18"/>
+        <!-- circles cluster -->
         <circle cx="430" cy="56" r="15" fill="#C4503A" opacity=".9"/>
         <circle cx="468" cy="36" r="9.5" fill="#C4503A" opacity=".65"/>
         <circle cx="404" cy="84" r="7" fill="#C4503A" opacity=".5"/>
         <circle cx="455" cy="90" r="5" fill="#C4503A" opacity=".45"/>
         <circle cx="488" cy="65" r="4" fill="#C4503A" opacity=".35"/>
         <circle cx="415" cy="108" r="3" fill="#C4503A" opacity=".25"/>
+        <!-- extra tiny dots -->
+        <circle cx="500" cy="42" r="2.5" fill="#C4503A" opacity=".22"/>
+        <circle cx="476" cy="114" r="2" fill="#C4503A" opacity=".18"/>
+        <circle cx="510" cy="96" r="1.8" fill="#C4503A" opacity=".18"/>
+        <!-- cross mark between circles and grid -->
+        <line x1="524" y1="66" x2="536" y2="66" stroke="#C4503A" stroke-width="1.4" opacity=".45"/>
+        <line x1="530" y1="60" x2="530" y2="72" stroke="#C4503A" stroke-width="1.4" opacity=".45"/>
+        <!-- grid lines -->
         <line x1="554" y1="24" x2="820" y2="24" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
         <line x1="554" y1="30" x2="820" y2="30" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
         <line x1="554" y1="36" x2="820" y2="36" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
@@ -1076,6 +1092,12 @@ footer{
         <line x1="554" y1="114" x2="820" y2="114" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
         <line x1="554" y1="120" x2="820" y2="120" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
         <line x1="554" y1="126" x2="820" y2="126" stroke="#C4503A" stroke-width=".9" opacity=".3"/>
+        <!-- vertical lines inside grid (column dividers) -->
+        <line x1="620" y1="24" x2="620" y2="126" stroke="#C4503A" stroke-width=".7" opacity=".2"/>
+        <line x1="686" y1="24" x2="686" y2="126" stroke="#C4503A" stroke-width=".7" opacity=".2"/>
+        <line x1="752" y1="24" x2="752" y2="126" stroke="#C4503A" stroke-width=".7" opacity=".2"/>
+        <!-- small square accent -->
+        <rect x="822" y="135" width="9" height="9" fill="#C4503A" opacity=".55"/>
         <text x="848" y="118" font-family="'Playfair Display', serif" font-size="9.5" letter-spacing="3" fill="#C4503A" opacity=".6" transform="rotate(-90,848,118)">ДЕНЬ ПЕРВЫЙ</text>
         <rect x="0" y="143" width="900" height="5" fill="#C4503A"/>
         <text x="220" y="82" font-family="'Cormorant Garamond', Georgia, serif" font-size="42" font-weight="400" fill="#1A1612" letter-spacing="-0.5" opacity=".85">День первый — вечер</text>
@@ -1175,19 +1197,42 @@ footer{
         <!-- ghost "II" — two tall vertical bars -->
         <rect x="30" y="8" width="46" height="132" fill="#C4503A" opacity=".07" rx="2"/>
         <rect x="96" y="8" width="46" height="132" fill="#C4503A" opacity=".07" rx="2"/>
-        <!-- thin horizontal rule at 1/3 height -->
+        <!-- cap and base bars of the "II" -->
+        <rect x="24" y="8" width="126" height="10" fill="#C4503A" opacity=".09" rx="1"/>
+        <rect x="24" y="130" width="126" height="10" fill="#C4503A" opacity=".09" rx="1"/>
+        <!-- thin horizontal rules -->
         <line x1="0" y1="49" x2="900" y2="49" stroke="#C4503A" stroke-width="1" opacity=".15"/>
+        <line x1="0" y1="6" x2="900" y2="6" stroke="#C4503A" stroke-width=".8" opacity=".1"/>
+        <!-- diagonal tick marks at top right -->
+        <line x1="680" y1="14" x2="696" y2="30" stroke="#C4503A" stroke-width="1.2" opacity=".25"/>
+        <line x1="700" y1="14" x2="716" y2="30" stroke="#C4503A" stroke-width="1.2" opacity=".25"/>
+        <line x1="720" y1="14" x2="736" y2="30" stroke="#C4503A" stroke-width="1.2" opacity=".25"/>
+        <line x1="740" y1="14" x2="756" y2="30" stroke="#C4503A" stroke-width="1.2" opacity=".25"/>
+        <line x1="760" y1="14" x2="776" y2="30" stroke="#C4503A" stroke-width="1.2" opacity=".25"/>
+        <line x1="780" y1="14" x2="796" y2="30" stroke="#C4503A" stroke-width="1.2" opacity=".25"/>
+        <line x1="800" y1="14" x2="816" y2="30" stroke="#C4503A" stroke-width="1.2" opacity=".25"/>
         <!-- wave in lower third, well below text -->
         <path d="M 0,110 Q 150,90 300,112 Q 450,134 600,108 Q 750,84 900,106" stroke="#C4503A" stroke-width="4" fill="none" stroke-linecap="round" opacity=".55"/>
         <path d="M 0,118 Q 150,98 300,120 Q 450,142 600,116 Q 750,92 900,114" stroke="#C4503A" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".25"/>
+        <!-- small dots at wave inflections -->
+        <circle cx="150" cy="90" r="4" fill="#C4503A" opacity=".4"/>
+        <circle cx="300" cy="112" r="3" fill="#C4503A" opacity=".35"/>
+        <circle cx="450" cy="134" r="4.5" fill="#C4503A" opacity=".4"/>
+        <circle cx="600" cy="108" r="3" fill="#C4503A" opacity=".35"/>
+        <circle cx="750" cy="84" r="4" fill="#C4503A" opacity=".4"/>
+        <!-- small tick marks at bottom edge -->
+        <line x1="200" y1="136" x2="200" y2="143" stroke="#C4503A" stroke-width="1.2" opacity=".35"/>
+        <line x1="350" y1="136" x2="350" y2="143" stroke="#C4503A" stroke-width="1.2" opacity=".35"/>
+        <line x1="500" y1="136" x2="500" y2="143" stroke="#C4503A" stroke-width="1.2" opacity=".35"/>
+        <line x1="650" y1="136" x2="650" y2="143" stroke="#C4503A" stroke-width="1.2" opacity=".35"/>
         <!-- terracotta accent bar on right -->
         <rect x="840" y="0" width="60" height="148" fill="#C4503A" opacity=".12"/>
         <!-- vertical label -->
         <text x="862" y="118" font-family="'Playfair Display', serif" font-size="9.5" letter-spacing="3" fill="#C4503A" opacity=".5" transform="rotate(-90,862,118)">ДЕНЬ ВТОРОЙ</text>
         <!-- bottom rule -->
         <rect x="0" y="143" width="900" height="5" fill="#C4503A"/>
-        <!-- title text -->
-        <text x="170" y="82" font-family="'Cormorant Garamond', Georgia, serif" font-size="42" font-weight="400" fill="#1A1612" letter-spacing="-0.5" opacity=".85">День второй</text>
+        <!-- title text — aligned x=220 -->
+        <text x="220" y="82" font-family="'Cormorant Garamond', Georgia, serif" font-size="42" font-weight="400" fill="#1A1612" letter-spacing="-0.5" opacity=".85">День второй</text>
       </svg>
     </div>
 
@@ -1399,6 +1444,7 @@ footer{
     <div class="day-div day-div-s">
       <svg viewBox="0 0 900 148" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
         <rect width="900" height="148" fill="#C4503A"/>
+        <!-- horizontal lines texture -->
         <line x1="0" y1="18" x2="900" y2="18" stroke="#B8432E" stroke-width="1.2"/>
         <line x1="0" y1="30" x2="900" y2="30" stroke="#B8432E" stroke-width="1.2"/>
         <line x1="0" y1="42" x2="900" y2="42" stroke="#B8432E" stroke-width="1.2"/>
@@ -1410,10 +1456,14 @@ footer{
         <line x1="0" y1="114" x2="900" y2="114" stroke="#B8432E" stroke-width="1.2"/>
         <line x1="0" y1="126" x2="900" y2="126" stroke="#B8432E" stroke-width="1.2"/>
         <line x1="0" y1="138" x2="900" y2="138" stroke="#B8432E" stroke-width="1.2"/>
+        <!-- cream dome — two ellipses -->
         <ellipse cx="450" cy="148" rx="284" ry="148" fill="#FAF7F0"/>
         <ellipse cx="450" cy="148" rx="260" ry="130" fill="#F5EEDE"/>
-        <path d="M 348,70 Q 400,52 452,66" stroke="#1A1612" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".7"/>
-        <path d="M 388,57 Q 446,40 500,56" stroke="#1A1612" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".5"/>
+        <!-- bread scoring lines inside dome — above text cap height -->
+        <path d="M 360,38 Q 412,20 464,36" stroke="#1A1612" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".7"/>
+        <path d="M 390,26 Q 448,10 506,24" stroke="#1A1612" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".5"/>
+        <path d="M 376,46 Q 422,32 468,44" stroke="#1A1612" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".3"/>
+        <!-- bubble circles in dome -->
         <circle cx="390" cy="112" r="18" fill="none" stroke="#C4503A" stroke-width="1.8" opacity=".65"/>
         <circle cx="438" cy="96" r="12" fill="none" stroke="#C4503A" stroke-width="1.5" opacity=".6"/>
         <circle cx="482" cy="118" r="22" fill="none" stroke="#C4503A" stroke-width="1.8" opacity=".65"/>
@@ -1422,12 +1472,28 @@ footer{
         <circle cx="510" cy="132" r="10" fill="none" stroke="#C4503A" stroke-width="1.2" opacity=".45"/>
         <circle cx="360" cy="130" r="8" fill="none" stroke="#C4503A" stroke-width="1.2" opacity=".4"/>
         <circle cx="502" cy="96" r="8" fill="none" stroke="#C4503A" stroke-width="1.2" opacity=".45"/>
+        <!-- extra tiny bubble circles -->
+        <circle cx="345" cy="112" r="5" fill="none" stroke="#C4503A" stroke-width="1" opacity=".3"/>
+        <circle cx="530" cy="110" r="6" fill="none" stroke="#C4503A" stroke-width="1" opacity=".3"/>
+        <!-- ghost "III" large -->
         <text x="70" y="104" font-family="'Playfair Display', serif" font-size="78" font-weight="900" fill="#FAF7F0" opacity=".15" letter-spacing="-4">III</text>
         <text x="70" y="104" font-family="'Playfair Display', serif" font-size="78" font-weight="900" fill="none" stroke="#FAF7F0" stroke-width="1" opacity=".4" letter-spacing="-4">III</text>
+        <!-- small crosses in left terracotta area -->
+        <line x1="36" y1="32" x2="44" y2="32" stroke="#FAF7F0" stroke-width="1.2" opacity=".35"/>
+        <line x1="40" y1="28" x2="40" y2="36" stroke="#FAF7F0" stroke-width="1.2" opacity=".35"/>
+        <line x1="56" y1="52" x2="64" y2="52" stroke="#FAF7F0" stroke-width="1.2" opacity=".25"/>
+        <line x1="60" y1="48" x2="60" y2="56" stroke="#FAF7F0" stroke-width="1.2" opacity=".25"/>
+        <!-- small crosses in right terracotta area -->
+        <line x1="820" y1="32" x2="828" y2="32" stroke="#FAF7F0" stroke-width="1.2" opacity=".35"/>
+        <line x1="824" y1="28" x2="824" y2="36" stroke="#FAF7F0" stroke-width="1.2" opacity=".35"/>
+        <line x1="848" y1="52" x2="856" y2="52" stroke="#FAF7F0" stroke-width="1.2" opacity=".25"/>
+        <line x1="852" y1="48" x2="852" y2="56" stroke="#FAF7F0" stroke-width="1.2" opacity=".25"/>
+        <!-- small square and label -->
         <text x="70" y="30" font-family="'Playfair Display', serif" font-size="9.5" letter-spacing="4.5" fill="#FAF7F0" opacity=".65">ДЕНЬ ТРЕТИЙ</text>
         <rect x="70" y="112" width="13" height="13" fill="#FAF7F0" opacity=".5"/>
         <rect x="0" y="0" width="900" height="5" fill="#FAF7F0" opacity=".25"/>
-        <text x="310" y="82" font-family="'Cormorant Garamond', Georgia, serif" font-size="42" font-weight="400" fill="#1A1612" letter-spacing="-0.5" opacity=".85">День третий — утро</text>
+        <!-- title text — aligned x=220 -->
+        <text x="220" y="82" font-family="'Cormorant Garamond', Georgia, serif" font-size="42" font-weight="400" fill="#1A1612" letter-spacing="-0.5" opacity=".85">День третий — утро</text>
       </svg>
     </div>
 
