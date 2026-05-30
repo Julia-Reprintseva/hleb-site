@@ -1728,35 +1728,40 @@ footer{
   <div class="s-body">
     <div class="plan-cl-wrap">
 
-      <div class="cl-day-hdr" id="clF1-hdr" onclick="chkDay('clF1',2)">
-        <input type="checkbox" id="clF1-cb" onclick="event.stopPropagation()" onchange="chkDay('clF1',2)">
+      <div class="cl-day-hdr" id="clF1-hdr" onclick="chkDay('clF1',4)">
+        <input type="checkbox" id="clF1-cb" onclick="event.stopPropagation()" onchange="chkDay('clF1',4)">
         <span>День первый — вечер</span>
       </div>
-      <ul class="cl cl-sm" id="clF1" data-tot="2" data-hdr="clF1-hdr">
+      <ul class="cl cl-sm" id="clF1" data-tot="4" data-hdr="clF1-hdr">
         <li onclick="chk(this,'clF1',0)"><input type="checkbox"><span>Покормите закваску</span></li>
-        <li onclick="chk(this,'clF1',1)"><input type="checkbox"><span>Отложите нужное количество для выпечки — 110 г × кол-во буханок</span></li>
+        <li onclick="chk(this,'clF1',1)"><input type="checkbox"><span>Оставьте на 2 часа в выключенной духовке — закваска должна подняться</span></li>
+        <li onclick="chk(this,'clF1',2)"><input type="checkbox"><span>Отложите нужное количество для выпечки — 110 г × кол-во буханок</span></li>
+        <li onclick="chk(this,'clF1',3)"><input type="checkbox"><span>Уберите закваску в холодное место на ночь</span></li>
       </ul>
-      <div class="cl-prog" id="clF1-prog">0 из 2</div>
+      <div class="cl-prog" id="clF1-prog">0 из 4</div>
       <div class="prog-bar"><div class="prog-fill" id="clF1-bar" style="width:0%"></div></div>
 
-      <div class="cl-day-hdr" id="clF2-hdr" style="margin-top:1.8rem" onclick="chkDay('clF2',11)">
-        <input type="checkbox" id="clF2-cb" onclick="event.stopPropagation()" onchange="chkDay('clF2',11)">
+      <div class="cl-day-hdr" id="clF2-hdr" style="margin-top:1.8rem" onclick="chkDay('clF2',14)">
+        <input type="checkbox" id="clF2-cb" onclick="event.stopPropagation()" onchange="chkDay('clF2',14)">
         <span>День второй — весь день</span>
       </div>
-      <ul class="cl cl-sm" id="clF2" data-tot="11" data-hdr="clF2-hdr">
+      <ul class="cl cl-sm" id="clF2" data-tot="14" data-hdr="clF2-hdr">
         <li onclick="chk(this,'clF2',0)"><input type="checkbox"><span>Закваска на пике — купол, пузыри, выросла в три раза</span></li>
         <li onclick="chk(this,'clF2',1)"><input type="checkbox"><span>Разбейте закваску с водой блендером</span></li>
-        <li onclick="chk(this,'clF2',2)"><input type="checkbox"><span>Добавьте муку и соль, замесите тесто</span></li>
-        <li onclick="chk(this,'clF2',3)"><input type="checkbox"><span>Автолиз 1 час — или замес в миксере 20 минут</span></li>
-        <li onclick="chk(this,'clF2',4)"><input type="checkbox"><span>Сделайте ламинирование</span></li>
-        <li onclick="chk(this,'clF2',5)"><input type="checkbox"><span>Обминка катушкой — первая</span></li>
-        <li onclick="chk(this,'clF2',6)"><input type="checkbox"><span>Обминка катушкой — вторая</span></li>
-        <li onclick="chk(this,'clF2',7)"><input type="checkbox"><span>Обминка катушкой — третья</span></li>
-        <li onclick="chk(this,'clF2',8)"><input type="checkbox"><span>Предформовка — 15 минут отдыха</span></li>
-        <li onclick="chk(this,'clF2',9)"><input type="checkbox"><span>Финальная формовка</span></li>
-        <li onclick="chk(this,'clF2',10)"><input type="checkbox"><span>Уберите тесто в холодильник на ночь</span></li>
+        <li onclick="chk(this,'clF2',2)"><input type="checkbox"><span>Добавьте муку, замесите тесто</span></li>
+        <li onclick="chk(this,'clF2',3)"><input type="checkbox"><span>Добавьте соль и оставьте на автолиз 1 час</span></li>
+        <li onclick="chk(this,'clF2',4)"><input type="checkbox"><span>Отбивание — 2–3 приёма по 10 отбивок, между приёмами 5 минут отдыха</span></li>
+        <li onclick="chk(this,'clF2',5)"><input type="checkbox"><span>Тесто в миску — расстойка 40 минут</span></li>
+        <li onclick="chk(this,'clF2',6)"><input type="checkbox"><span>Ламинирование (можно добавить лук, оливки или семена)</span></li>
+        <li onclick="chk(this,'clF2',7)"><input type="checkbox"><span>Обминка катушкой — первая (через 40 минут)</span></li>
+        <li onclick="chk(this,'clF2',8)"><input type="checkbox"><span>Обминка катушкой — вторая (через 40 минут)</span></li>
+        <li onclick="chk(this,'clF2',9)"><input type="checkbox"><span>Обминка катушкой — третья (через 40 минут)</span></li>
+        <li onclick="chk(this,'clF2',10)"><input type="checkbox"><span>Предформовка</span></li>
+        <li onclick="chk(this,'clF2',11)"><input type="checkbox"><span>15 минут отдыха под миской</span></li>
+        <li onclick="chk(this,'clF2',12)"><input type="checkbox"><span>Финальная формовка</span></li>
+        <li onclick="chk(this,'clF2',13)"><input type="checkbox"><span>Уберите тесто в холодильник на ночь</span></li>
       </ul>
-      <div class="cl-prog" id="clF2-prog">0 из 11</div>
+      <div class="cl-prog" id="clF2-prog">0 из 14</div>
       <div class="prog-bar"><div class="prog-fill" id="clF2-bar" style="width:0%"></div></div>
 
       <div class="cl-day-hdr" id="clF3-hdr" style="margin-top:1.8rem" onclick="chkDay('clF3',6)">
@@ -1775,7 +1780,7 @@ footer{
       <div class="prog-bar"><div class="prog-fill" id="clF3-bar" style="width:0%"></div></div>
 
       <button class="cl-reset" style="margin-top:1.2rem"
-        onclick="resetCl('clF1',2);resetCl('clF2',11);resetCl('clF3',6)">Сбросить всё</button>
+        onclick="resetCl('clF1',4);resetCl('clF2',14);resetCl('clF3',6)">Сбросить всё</button>
     </div>
   </div>
 </div>
@@ -1931,7 +1936,7 @@ function loadCl(id,tot){
   updDayHdr(id,tot);
 }
 loadCl('clS',10);
-loadCl('clF1',2);loadCl('clF2',11);loadCl('clF3',6);
+loadCl('clF1',4);loadCl('clF2',14);loadCl('clF3',6);
 loadCl('clD',3);loadCl('clD2',8);loadCl('clD3',5);
 // ── CALC: FEEDING ──
 function calcFeed(){
