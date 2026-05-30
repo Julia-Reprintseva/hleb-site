@@ -81,18 +81,34 @@ header{
 .hero-eyebrow{
   font-size:.72rem;letter-spacing:.22em;
   text-transform:uppercase;color:var(--ink3);
-  margin-top:.9rem;margin-bottom:1.4rem;
+  margin-top:1.8rem;margin-bottom:.6rem;
+  padding-top:1.4rem;border-top:1px solid var(--linelt);
 }
 .hero-h1{
   font-family:var(--serif);
   font-size:clamp(2.8rem,5vw,4.8rem);
   font-weight:300;line-height:1.05;
-  color:var(--ink);margin-bottom:0;
+  color:var(--ink);margin-bottom:1.2rem;
   letter-spacing:-.02em;
 }
 .hero-desc{
   font-size:1rem;color:var(--ink2);
-  line-height:1.85;max-width:360px;
+  line-height:1.85;
+}
+.hero-desc-serif{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:1.2rem;
+  font-weight:300;
+  color:var(--ink);
+  line-height:1.65;
+  margin-bottom:.9rem;
+}
+.hero-desc-note{
+  font-size:.88rem;
+  color:var(--ink3);
+  line-height:1.75;
+  margin-bottom:0;
 }
 .hero-meta{
   display:flex;gap:2rem;margin-top:2.5rem;flex-wrap:wrap;
@@ -931,6 +947,8 @@ footer{
 <section class="hero">
   <div class="hero-text">
     <h1 class="hero-h1">Хлеб на&nbsp;закваске<br><em>Левито Мадре</em></h1>
+    <p class="hero-desc-serif">Левито Мадре — итальянская пшеничная закваска, которая делает хлеб живым: с хрустящей коркой, воздушным мякишем и настоящим ароматом. Стоит только вдохнуть его — и вам не захочется уходить с кухни.</p>
+    <p class="hero-desc-note">Я создала этот сайт для себя, чтобы испечь первый хлеб. Надеюсь, он будет полезен и вам. У вас всё получится, даже если вы никогда не держали закваску в руках.</p>
     <div class="hero-eyebrow">Памятка для начинающих</div>
     <p class="hero-desc">Пять разделов — закваска, мука, пошаговый план замеса и выпечки, чеклист на три дня. Открывайте нужный раздел и пеките шаг за шагом.</p>
     <div class="hero-meta">
