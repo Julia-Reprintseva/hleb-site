@@ -806,7 +806,9 @@ footer{
   line-height:1.15;
 }
 #plan .s-body{padding-left:0;}
-#plan{margin-top:3rem;border:1.5px solid #C4503A;padding:0 2rem 2rem;}
+#plan{margin:1.5rem 0;border-top:none;border:1.5px solid #C4503A;padding:0 2rem 2rem;}
+#checklist{border-top:none;}
+#starter{border-top:none;}
 #plan .day-div-s{margin:2rem 0;}
 #plan .day-div-s + .step-sec,
 #plan .step-sec + .step-sec{margin-top:0;}
@@ -1022,8 +1024,6 @@ footer{
   </div>
 </section>
 
-<hr class="page-rule">
-
 <main>
 <div class="sections-wrap">
 
@@ -1169,14 +1169,15 @@ footer{
 
 <!-- ── 03. ПОШАГОВЫЙ ПЛАН ВЫПЕЧКИ ── -->
 <div class="section" id="plan">
-  <div class="s-hdr" style="cursor:default" onclick="">
+  <div class="s-hdr" onclick="toggleSec(this)">
     <div class="s-num">03</div>
     <div class="s-titles">
       <div class="plan-main-title">Пошаговый план выпечки</div>
       <div class="s-sub">Три дня — от закваски до готового хлеба</div>
     </div>
+    <div class="s-toggle">+</div>
   </div>
-  <div class="s-body open">
+  <div class="s-body">
 
     <!-- ══ ДЕНЬ ПЕРВЫЙ ══ -->
     <div class="day-div day-div-s">
