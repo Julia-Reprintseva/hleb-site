@@ -562,22 +562,22 @@ h4.sub::before{
 }
 
 /* ═══ SOC CARD ═══ */
-.soc-card{
-  display:flex;align-items:flex-start;gap:1.4rem;
-  padding:1.1rem 1.2rem;
-  border:1px solid var(--linelt);
-  border-radius:4px;
-  background:var(--bg);
-  margin:.8rem 0;
+.soc-card{display:none}
+.soc-links{display:flex;flex-wrap:wrap;gap:.6rem;margin:.8rem 0}
+.soc-link{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.45rem .9rem;
+  border:1px solid var(--line);border-radius:2px;
+  font-size:.78rem;color:var(--ink);text-decoration:none;
+  background:var(--bg);transition:border-color .2s,color .2s;
+  white-space:nowrap;
 }
-.soc-platform{
-  font-size:.68rem;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--ink3);
-  min-width:65px;flex-shrink:0;margin-top:2px;
-  line-height:1.4;font-weight:500;
+.soc-link:hover{border-color:var(--gold);color:var(--gold)}
+.soc-link-tag{
+  font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink3);border-right:1px solid var(--linelt);
+  padding-right:.5rem;margin-right:.1rem;
 }
-.soc-info .title{font-size:1rem;color:var(--ink);margin-bottom:.25rem;font-weight:500}
-.soc-info .desc{font-size:.9rem;color:var(--ink2);margin-bottom:.6rem;line-height:1.7}
 .soc-btn{
   font-size:.7rem;letter-spacing:.1em;
   text-transform:uppercase;color:var(--ink);
@@ -1248,10 +1248,11 @@ footer{
           <div class="stat-item"><span class="stat-val">×3</span><span class="stat-key">вырастает</span></div>
         </div>
         <div class="prose">
-          <p>Влейте воду к закваске, разбейте блендером до консистенции жидкой сметаны — блендер нужен только на этом этапе, дальше убирается. Добавьте муку и замесите руками до однородного густого теста.</p>
-          <p>Кормить раз в неделю. Если пропустили — ничего страшного, можно раз в две недели. Если закваска пахнет спиртом или кислотой — просто голодная, не испорченная. Покормите, и всё пройдёт.</p>
+          <p>Влейте воду к закваске и пробейте блендером до консистенции жидкой сметаны. Блендер нужен только на этом этапе — дальше тесто замешивается вручную.</p>
+          <p>Добавьте муку и вымесите руками до однородного плотного теста. Масса должна быть густой, эластичной и собираться в ком.</p>
+          <p>Кормить закваску достаточно один раз в неделю. Если пропустили кормление, ничего страшного: Левито Мадре выдержит и две недели без обновления. Если появился запах спирта или выраженная кислинка, это не значит, что закваска испортилась. Скорее всего, она просто проголодалась. Покормите её — и запах уйдёт.</p>
         </div>
-        <div class="note">Хранить в высокой прозрачной банке с неплотно закрытой крышкой: закваска растёт в три раза и должна иметь доступ к воздуху. Прозрачность важна — нужно видеть рост и пузырьки через стенки. Хорошо подходят высокие банки-колбы с бамбуковой крышкой (1–1,5 л).</div>
+        <div class="note">Храните закваску в высокой прозрачной банке с неплотно закрытой крышкой. Левито Мадре может увеличиваться в объёме в три раза, поэтому ей нужно достаточно места и небольшой доступ к воздуху. Прозрачная банка удобна: через стенки видно, как закваска растёт, появляются пузырьки и меняется структура. Лучше всего подходят высокие банки-колбы объёмом 1–1,5 л, например с бамбуковой крышкой.</div>
         <div class="video-block" style="margin-top:1.5rem">
           <a class="video-link" href="https://www.youtube.com/watch?v=6vTwfiyXIM8" target="_blank" rel="noopener">
             <span class="video-link-icon">▶</span>
@@ -1267,16 +1268,17 @@ footer{
     <!-- шаг 2 -->
     <div class="step-sec">
       <div class="step-hdr" onclick="toggleStep(this)">
-        <span class="step-title">Тайминг и ускорение роста</span>
+        <span class="step-title">Как ускорить созревание закваски</span>
         <span class="step-toggle">+</span>
       </div>
       <div class="step-body">
         <div class="prose">
-          <p>Если нужно быстро: накройте банку пакетом неплотно (нужен кислород, но не заветривание) и поставьте в выключенную духовку. При 25–28°С закваска выйдет на пик за 4 часа вместо 6–8.</p>
-          <p><strong>Два рабочих варианта тайминга:</strong></p>
+          <p>Если нужно ускорить процесс, накройте банку пакетом, но не герметично: закваске нужен доступ к кислороду, а поверхность не должна заветриваться. Поставьте банку в выключенную духовку.</p>
+          <p>При температуре 25–28 °C Левито Мадре выйдет на пик примерно за четыре часа вместо обычных шести–восьми часов.</p>
+          <p><strong>Два удобных варианта по времени</strong></p>
           <ul class="lst">
-            <li><strong>Утром покормили</strong> → через 4–6 часов на пике → замес в тот же день вечером → ночь в холодильнике → утром выпечка</li>
-            <li><strong>Вечером покормили</strong> → на пару часов в духовку → убрали в холодильник → на следующий день во второй половине дня замес</li>
+            <li><strong>Вариант 1. Кормление утром.</strong> Утром покормили закваску → через четыре–шесть часов она вышла на пик → вечером в тот же день сделали замес → убрали тесто на ночь в холодильник → утром выпекаете.</li>
+            <li><strong>Вариант 2. Кормление вечером.</strong> Вечером покормили закваску → поставили на пару часов в выключенную духовку → затем убрали в холодильник → на следующий день во второй половине дня сделали замес.</li>
           </ul>
         </div>
         <table class="tbl" style="margin-top:1.4rem">
@@ -1295,16 +1297,16 @@ footer{
     <!-- шаг 3 -->
     <div class="step-sec">
       <div class="step-hdr" onclick="toggleStep(this)">
-        <span class="step-title">Закваска на пике — как понять</span>
+        <span class="step-title">Как понять, что закваска готова к замесу</span>
         <span class="step-toggle">+</span>
       </div>
       <div class="step-body">
         <div class="prose">
-          <p>Закваска готова к замесу, когда поднялась куполом, вся в пузырях, увеличилась примерно в три раза. Выглядит активной и пышной.</p>
-          <p>Если стояла без кормления 2–4 дня — сначала покормите, дождитесь пика, только потом месите.</p>
+          <p>Закваска готова к работе, когда она заметно поднялась, стала пышной, покрылась пузырьками и увеличилась примерно в три раза. Верх может быть слегка округлым, похожим на купол, — это хороший признак активности.</p>
+          <p>Если закваска стояла без кормления два–четыре дня, не используйте её сразу. Сначала покормите, дождитесь пика активности и только после этого замешивайте тесто.</p>
         </div>
-        <div class="callout"><strong>Float test:</strong> опустите ложку закваски в стакан воды — если всплыла, закваска на пике и готова к замесу.</div>
-        <div class="note" style="margin-top:1.2rem"><strong>Если перекисла — реанимация:</strong> растворите 1 ч.л. сахара или мёда в 50 мл тёплой воды, опустите закваску на 20–30 минут, затем покормите по обычной схеме.</div>
+        <div class="callout"><strong>Проверка в воде.</strong> Можно сделать простой тест: опустите ложку закваски в стакан воды. Если закваска всплыла, значит, она на пике и готова к замесу.</div>
+        <div class="note" style="margin-top:1.2rem">Если закваска перекисла, её можно восстановить. Растворите одну чайную ложку сахара или мёда в 50 мл тёплой воды, опустите туда закваску на 20–30 минут, затем покормите по обычной схеме. Она не капризничает — просто просит нормальный завтрак.</div>
       </div>
     </div>
 
@@ -1490,29 +1492,16 @@ footer{
         <span class="step-toggle">+</span>
       </div>
       <div class="step-body">
-        <div class="video-block" style="margin-bottom:1.5rem">
-          <a class="video-link" href="https://www.youtube.com/watch?v=eS9S2ZWIS7c" target="_blank" rel="noopener">
-            <span class="video-link-icon">▶</span>
-            <span class="video-link-text">
-              <span class="video-link-title">Полный рецепт хлеба на Левито Мадре</span>
-              <span class="video-link-desc">Весь процесс от замеса до выпечки — YouTube</span>
-            </span>
-          </a>
-        </div>
         <div class="prose">
-          <p>Разбейте закваску с водой блендером до однородной консистенции. Добавьте муку и соль — замесите тесто.</p>
-          <p><strong>Руками:</strong> автолиз 1 час, затем 2–3 подхода по 10 «отбивок» с паузами 5 минут. Тесто постепенно становится гладким и эластичным.</p>
-          <p><strong>Миксер:</strong> без автолиза — около 20 минут с насадкой для теста.</p>
+          <p>Смешайте закваску с водой и пробейте блендером до однородной консистенции. Добавьте муку и соль, затем замесите тесто.</p>
+          <p><strong>Замес руками.</strong> Оставьте тесто на автолиз на один час. После этого сделайте два–три подхода по десять отбивок, с паузами по пять минут между подходами. Постепенно тесто станет более гладким, упругим и эластичным.</p>
+          <p><strong>Замес в планетарном миксере.</strong> Автолиз не нужен. Замешивайте тесто около 20 минут с насадкой-крюком, пока оно не станет гладким и хорошо собранным.</p>
         </div>
-        <div class="soc-card">
-          <div class="soc-platform">Instagram</div>
-          <div class="soc-info">
-            <div class="title">Замес на планетарном миксере</div>
-            <div class="desc">Как выглядит правильно развитая клейковина после 20 минут замеса.</div>
-            <a href="https://www.instagram.com/reel/DYB2A-aMJ3L/?igsh=MTk0dTRlbHpienFlbg==" target="_blank" class="soc-btn">Открыть в Instagram →</a>
-          </div>
+        <div class="note" style="margin-top:1rem"><strong>Как проверить клейковину.</strong> Сделайте тест на глютеновое окно: аккуратно растяните небольшой кусочек теста пальцами. Если тесто тянется тонкой плёнкой, не рвётся и слегка просвечивает, клейковина развита хорошо. Можно переходить к следующему этапу.</div>
+        <div class="soc-links">
+          <a href="https://www.youtube.com/watch?v=eS9S2ZWIS7c" target="_blank" class="soc-link"><span class="soc-link-tag">YouTube</span>Полный рецепт хлеба на Левито Мадре →</a>
+          <a href="https://www.instagram.com/reel/DYB2A-aMJ3L/?igsh=MTk0dTRlbHpienFlbg==" target="_blank" class="soc-link"><span class="soc-link-tag">Instagram</span>Замес на планетарном миксере →</a>
         </div>
-        <div class="note" style="margin-top:1rem"><strong>Глютеновое окно:</strong> аккуратно растяните кусок теста — если тянется не рвясь и слегка просвечивает, клейковина развита хорошо. Можно двигаться дальше.</div>
       </div>
     </div>
 
@@ -1523,47 +1512,30 @@ footer{
       </div>
       <div class="step-body">
         <div class="prose">
-          <p>Растяните тесто на столе в тонкий пласт. Можно добавить начинку: жареный лук из ВкусВилла, оливки, семена — это хорошая возможность для экспериментов. Сложите и верните в миску. Рекомендуется делать всегда — даже без начинок.</p>
+          <p>Выложите тесто на рабочую поверхность и аккуратно растяните его в тонкий пласт. На этом этапе можно добавить начинку: жареный лук, оливки, семена или другие ингредиенты по вкусу.</p>
+          <p>Распределите начинку по поверхности теста, затем сложите его конвертом и верните в миску.</p>
+          <p>Этот этап рекомендуется делать всегда — даже если вы готовите хлеб без добавок. Растяжка и складывание помогают укрепить тесто, развить клейковину и сделать мякиш более воздушным.</p>
         </div>
-        <div class="soc-card">
-          <div class="soc-platform">Instagram</div>
-          <div class="soc-info">
-            <div class="title">Ламинирование теста</div>
-            <div class="desc">Техника растяжки теста в тонкий пласт перед обминками.</div>
-            <a href="https://www.instagram.com/reel/DYaFUqzMbLq/?igsh=aDFpdjN4NjZsNDZx" target="_blank" class="soc-btn">Открыть в Instagram →</a>
-          </div>
+        <div class="soc-links">
+          <a href="https://www.instagram.com/reel/DYaFUqzMbLq/?igsh=aDFpdjN4NjZsNDZx" target="_blank" class="soc-link"><span class="soc-link-tag">Instagram</span>Ламинирование теста →</a>
         </div>
       </div>
     </div>
 
     <div class="step-sec">
       <div class="step-hdr" onclick="toggleStep(this)">
-        <span class="step-title">Обминки катушкой — 3–5 раз через 30–50 минут</span>
+        <span class="step-title">Обминки теста</span>
         <span class="step-toggle">+</span>
       </div>
       <div class="step-body">
         <div class="prose">
-          <p>Классическая схема — три обминки с интервалом 40 минут. Но если делаете 4 или 5 — ничего плохого. Интервал тоже гибкий: 30–50 минут — всё нормально. Ориентируйтесь на тесто: оно должно становиться всё более упругим, пышным, насыщенным воздухом после каждой обминки.</p>
-          <p>Если пропустили одну обминку или сделали перерыв длиннее — просто продолжайте. Хлеб не испортится.</p>
+          <p>Классическая схема — три обминки с интервалом около 40 минут. Но это ориентир, а не строгое правило. Если тесту нужно больше силы и структуры, можно сделать четыре–пять обминок.</p>
+          <p>Интервал между обминками тоже может быть гибким: обычно достаточно 30–50 минут. Ориентируйтесь не только на таймер, но и на состояние теста. После каждой обминки оно должно становиться более упругим, пышным и наполненным воздухом.</p>
+          <p>Если вы пропустили одну обминку или сделали паузу длиннее обычного, ничего страшного. Просто продолжайте с текущего этапа: тесто не испортится, а хлеб всё равно получится.</p>
         </div>
-        <div class="soc-card">
-          <div class="soc-platform">Instagram</div>
-          <div class="soc-info">
-            <div class="title">Обминка катушкой (coil fold)</div>
-            <div class="desc">Основная техника обминки во время ферментации — мягко, без агрессии.</div>
-            <a href="https://www.instagram.com/reel/DXKbYxBDMG5/?igsh=eWNxcmVocTJvYTY5" target="_blank" class="soc-btn">Открыть в Instagram →</a>
-          </div>
-        </div>
-        <div class="soc-card">
-          <div class="soc-platform">Facebook</div>
-          <div class="soc-info">
-            <div class="title">Техника работы с тестом</div>
-            <div class="desc">Дополнительное видео о технике хлебного теста.</div>
-            <a href="https://www.facebook.com/share/r/1XvYti5bar/" target="_blank" class="soc-btn">Открыть в Facebook →</a>
-          </div>
-        </div>
-        <div class="callout" style="margin-top:1.5rem">
-          <strong>Примерный timeline:</strong> 0:00 Замес → 1:00 Ламинирование → 1:40 Обминка 1 → 2:20 Обминка 2 → 3:00 Обминка 3 → 3:40 Предформовка
+        <div class="soc-links">
+          <a href="https://www.instagram.com/reel/DXKbYxBDMG5/?igsh=eWNxcmVocTJvYTY5" target="_blank" class="soc-link"><span class="soc-link-tag">Instagram</span>Обминка катушкой →</a>
+          <a href="https://www.facebook.com/share/r/1XvYti5bar/" target="_blank" class="soc-link"><span class="soc-link-tag">Facebook</span>Техника работы с тестом →</a>
         </div>
       </div>
     </div>
@@ -1576,25 +1548,20 @@ footer{
       <div class="step-body">
         <h4 class="sub" style="margin-top:0">Предформовка</h4>
         <div class="prose">
-          <p>Взвесьте тесто и разделите на порции — 600–700 г на буханку. Сделайте предформовку, положите на стол швом вниз и накройте миской на <strong>15 минут</strong>, чтобы тесто расслабилось.</p>
+          <p>Взвесьте тесто и разделите его на порции: по 600–700 г на одну буханку. Сделайте предформовку, положите заготовки на стол швом вниз и накройте миской на пятнадцать минут, чтобы тесто расслабилось.</p>
         </div>
-        <div class="soc-card">
-          <div class="soc-platform">Instagram</div>
-          <div class="soc-info">
-            <div class="title">Предформовка теста</div>
-            <div class="desc">Как собрать тесто перед финальной формовкой.</div>
-            <a href="https://www.instagram.com/reel/DVLjhBGjL_4/?igsh=ODZiMml5OTJqYjI=" target="_blank" class="soc-btn">Открыть в Instagram →</a>
-          </div>
+        <div class="soc-links">
+          <a href="https://www.instagram.com/reel/DVLjhBGjL_4/?igsh=ODZiMml5OTJqYjI=" target="_blank" class="soc-link"><span class="soc-link-tag">Instagram</span>Предформовка теста →</a>
         </div>
         <h4 class="sub">Финальная формовка</h4>
         <div class="prose">
-          <p>Постарайтесь создать хорошее натяжение поверхности — тогда хлеб красиво раскроется в духовке. Для утятницы подойдёт форма батона, для круглого казана — шар.</p>
+          <p>Постарайтесь создать хорошее натяжение поверхности: тогда хлеб красиво раскроется в духовке. Для утятницы подойдёт форма батона, для круглого казана — шар.</p>
         </div>
         <h4 class="sub">Холодная ферментация</h4>
         <div class="prose">
-          <p>Переложите сформованный хлеб в расстоечную корзину или миску с полотенцем, присыпанным рисовой мукой. Уберите в холодильник на <strong>ночь — 8–16 часов</strong>.</p>
+          <p>Переложите сформованный хлеб в расстоечную корзину или миску с полотенцем, присыпанным рисовой мукой. Уберите в холодильник на ночь — на восемь–шестнадцать часов.</p>
+          <p>Медленный подъём в холоде развивает вкус и аромат, а надрезы после такой расстойки получаются более чёткими. Можно спокойно лечь спать: тесто знает, что делать.</p>
         </div>
-        <div class="callout">Медленный подъём в холоде развивает вкус и аромат. Надрезы получаются чёткими. Можно спокойно лечь спать.</div>
       </div>
     </div>
 
@@ -1695,6 +1662,21 @@ footer{
       </div>
     </div>
 
+    <!-- шаг: выпечка на камне -->
+    <div class="step-sec">
+      <div class="step-hdr" onclick="toggleStep(this)">
+        <span class="step-title">Выпечка на камне</span>
+        <span class="step-toggle">+</span>
+      </div>
+      <div class="step-body">
+        <div class="prose">
+          <p>Если выпекаете на камне, пар нужно создать отдельно. Переложите хлеб на раскалённый камень, сделайте надрез и сразу подайте активный пар в духовку: поставьте на нижний уровень противень с кипятком или плесните горячую воду в заранее разогретую металлическую ёмкость.</p>
+          <p>Первые двадцать пять минут выпекайте при 240 °C с активным паром. Затем уберите ёмкость с водой, уменьшите температуру до 220 °C и допекайте хлеб до готовности.</p>
+          <p>Если духовка была разогрета до 250 °C, остужать её не нужно. Просто загрузите хлеб и сразу выставьте 240 °C для первого этапа выпечки.</p>
+        </div>
+      </div>
+    </div>
+
     <!-- шаг: остужение -->
     <div class="step-sec">
       <div class="step-hdr" onclick="toggleStep(this)">
@@ -1734,7 +1716,7 @@ footer{
       </div>
       <ul class="cl cl-sm" id="clF1" data-tot="4" data-hdr="clF1-hdr">
         <li onclick="chk(this,'clF1',0)"><input type="checkbox"><span>Покормите закваску</span></li>
-        <li onclick="chk(this,'clF1',1)"><input type="checkbox"><span>Оставьте на 2 часа в выключенной духовке — закваска должна подняться</span></li>
+        <li onclick="chk(this,'clF1',1)"><input type="checkbox"><span>Оставьте на два часа в выключенной духовке — закваска должна подняться</span></li>
         <li onclick="chk(this,'clF1',2)"><input type="checkbox"><span>Отложите нужное количество для выпечки — 110 г × кол-во буханок</span></li>
         <li onclick="chk(this,'clF1',3)"><input type="checkbox"><span>Уберите закваску в холодное место на ночь</span></li>
       </ul>
@@ -1749,15 +1731,15 @@ footer{
         <li onclick="chk(this,'clF2',0)"><input type="checkbox"><span>Закваска на пике — купол, пузыри, выросла в три раза</span></li>
         <li onclick="chk(this,'clF2',1)"><input type="checkbox"><span>Разбейте закваску с водой блендером</span></li>
         <li onclick="chk(this,'clF2',2)"><input type="checkbox"><span>Добавьте муку, замесите тесто</span></li>
-        <li onclick="chk(this,'clF2',3)"><input type="checkbox"><span>Добавьте соль и оставьте на автолиз 1 час</span></li>
-        <li onclick="chk(this,'clF2',4)"><input type="checkbox"><span>Отбивание — 2–3 приёма по 10 отбивок, между приёмами 5 минут отдыха</span></li>
+        <li onclick="chk(this,'clF2',3)"><input type="checkbox"><span>Добавьте соль и оставьте на автолиз один час</span></li>
+        <li onclick="chk(this,'clF2',4)"><input type="checkbox"><span>Отбивание — два–три приёма по десять отбивок, между приёмами пять минут отдыха</span></li>
         <li onclick="chk(this,'clF2',5)"><input type="checkbox"><span>Тесто в миску — расстойка 40 минут</span></li>
         <li onclick="chk(this,'clF2',6)"><input type="checkbox"><span>Ламинирование (можно добавить лук, оливки или семена)</span></li>
         <li onclick="chk(this,'clF2',7)"><input type="checkbox"><span>Обминка катушкой — первая (через 40 минут)</span></li>
         <li onclick="chk(this,'clF2',8)"><input type="checkbox"><span>Обминка катушкой — вторая (через 40 минут)</span></li>
         <li onclick="chk(this,'clF2',9)"><input type="checkbox"><span>Обминка катушкой — третья (через 40 минут)</span></li>
         <li onclick="chk(this,'clF2',10)"><input type="checkbox"><span>Предформовка</span></li>
-        <li onclick="chk(this,'clF2',11)"><input type="checkbox"><span>15 минут отдыха под миской</span></li>
+        <li onclick="chk(this,'clF2',11)"><input type="checkbox"><span>Пятнадцать минут отдыха под миской</span></li>
         <li onclick="chk(this,'clF2',12)"><input type="checkbox"><span>Финальная формовка</span></li>
         <li onclick="chk(this,'clF2',13)"><input type="checkbox"><span>Уберите тесто в холодильник на ночь</span></li>
       </ul>
