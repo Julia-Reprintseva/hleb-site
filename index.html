@@ -815,6 +815,47 @@ footer{
   .photo-divider-caption{padding:2rem 1.5rem 1.8rem;}
 }
 
+/* ═══ CTA ═══ */
+.cta-section{
+  border-top:1px solid var(--line);
+  padding:4rem 2rem;
+  background:var(--goldbg);
+}
+.cta-inner{max-width:960px;margin:0 auto}
+.cta-eyebrow{
+  font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:2rem;text-align:center;
+}
+.cta-cards{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+}
+.cta-card{
+  background:var(--bg);
+  border:1px solid var(--line);
+  padding:1.8rem 1.6rem;
+  display:flex;flex-direction:column;gap:.6rem;
+}
+.cta-icon{font-size:1.4rem;line-height:1}
+.cta-card-title{
+  font-family:var(--serif);font-size:1.25rem;
+  font-weight:400;color:var(--ink);letter-spacing:-.01em;
+}
+.cta-card-desc{
+  font-size:.88rem;color:var(--ink2);line-height:1.65;flex:1;
+}
+.cta-btn{
+  display:inline-block;margin-top:.8rem;
+  font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;
+  border-bottom:1px solid var(--gold);padding-bottom:1px;
+  transition:opacity .2s;align-self:flex-start;
+}
+.cta-btn:hover{opacity:.7}
+@media(max-width:700px){
+  .cta-cards{grid-template-columns:1fr}
+}
+
 /* ═══ GALLERY ═══ */
 .gallery-section{
   padding:5rem 2rem 4rem;
@@ -916,6 +957,7 @@ footer{
   main{padding:0 1.2rem 4rem}
   .s-body{padding:.5rem 0 2rem 1rem}
   .day-div-s{margin:1rem 0 1rem -1rem}
+  .day-div svg text[font-size="42"]{font-size:28px}
   .s-num{font-size:2rem;width:2.8rem}
   .stat-row{gap:1.5rem;padding:1rem 1rem}
   .tool-cols{grid-template-columns:1fr}
@@ -1023,6 +1065,16 @@ footer{
   margin-bottom:1.4rem;letter-spacing:-.01em;
 }
 </style>
+<!-- Яндекс Метрика — замените XXXXXXXX на номер вашего счётчика -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+   ym(XXXXXXXX,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXXX" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
 </head>
 <body id="top">
 
@@ -1036,6 +1088,7 @@ footer{
       <a href="#plan"      onclick="navClick('plan')">План выпечки</a>
       <a href="#checklist" onclick="navClick('checklist')">Чек-лист</a>
       <a href="#discard"   onclick="navClick('discard')">Остатки</a>
+      <a href="#gallery">Фото</a>
     </nav>
     <button class="btn-shop" onclick="openShop()">Список покупок</button>
   </div>
@@ -1078,7 +1131,7 @@ footer{
   <div class="hero-text">
     <h1 class="hero-h1">Хлеб на&nbsp;закваске<br><em>Левито Мадре</em></h1>
     <p class="hero-desc-serif">Левито Мадре — итальянская пшеничная закваска, которая делает хлеб живым: с хрустящей коркой, воздушным мякишем и настоящим ароматом. Стоит только вдохнуть его — и не захочется уходить с кухни.</p>
-    <p class="hero-desc-note" style="border-top:1px solid var(--linelt);padding-top:1.4rem;margin-top:1.4rem;">Пять разделов: закваска, инвентарь, пошаговый план на три дня, чек-лист и что делать с остатками. Открывайте нужный блок и пеките.</p>
+    <p class="hero-desc-note" style="border-top:1px solid var(--linelt);padding-top:1.4rem;margin-top:1.4rem;">Закваска, инвентарь, пошаговый план на три дня, чек-лист, что делать с остатками — всё в одном месте. Откройте нужный блок и начните.</p>
     <div class="hero-meta">
       <div class="hero-meta-item">
         <span class="hero-meta-val">3</span>
@@ -1668,22 +1721,22 @@ footer{
           </div>
           <div class="aside-body">
             <div class="prose">
-              <p>Понимание гидратации начинается с того, как мука впитывает воду. Разные виды муки делают это с разной скоростью — и знание этого помогает решить, нужен ли автолиз или ферментолиз. Некоторые виды муки впитывают воду быстро, другим нужно больше времени. Понимая поведение своей муки, вы получаете контроль над временем замешивания и развитием теста.</p>
+              <p>Разная мука впитывает воду по-разному — и это меняет всё: время замеса, нужен ли автолиз, как поведёт себя тесто при формовке. Цельнозерновая тянет воду медленнее, чем белая. Старая мука — иначе, чем свежая. Когда понимаешь свою муку, перестаёшь гадать и начинаешь управлять тестом.</p>
             </div>
             <h4 class="sub">Пример формулы с высокой гидратацией</h4>
             <div class="stat-row">
               <div class="stat-item"><span class="stat-val">600 г</span><span class="stat-key">хлебная мука 12% белка</span></div>
-              <div class="stat-item"><span class="stat-val">75 г</span><span class="stat-key">Pasta Madre</span></div>
+              <div class="stat-item"><span class="stat-val">75 г</span><span class="stat-key">Левито Мадре</span></div>
               <div class="stat-item"><span class="stat-val">100%</span><span class="stat-key">общая гидратация</span></div>
             </div>
             <div class="callout">
-              <strong>Распределение воды:</strong> 23 г из Pasta Madre + 400 г для ферментолиза + 229 г во время бассинажа = <strong>652 г итого</strong>
+              <strong>Распределение воды:</strong> 23 г из Левито Мадре + 400 г для ферментолиза + 229 г во время бассинажа <em>(постепенное добавление воды в конце замеса)</em> = <strong>652 г итого</strong>
             </div>
             <div class="prose">
-              <p>Даже если тесто изначально хорошо замешивается, это не гарантирует, что мука удержит всю воду. Превышение способности муки к впитыванию означает, что часть воды останется несвязанной — и в процессе брожения будет ослаблять глютеновую сетку.</p>
-              <p><strong>Периоды отдыха</strong> — одно из лучших решений. Хорошо отдохнувшее тесто ведёт себя лучше: частицы муки полностью увлажняются, глютеновая сетка организуется с минимальным перемешиванием.</p>
-              <p><strong>Оценка теста после основной ферментации</strong> имеет решающее значение — именно тогда вы понимаете, как его формовать. Более рыхлое тесто лучше формовать плотнее, чтобы создать дополнительное поверхностное натяжение.</p>
-              <p><strong>Перед холодной расстойкой</strong> оцените прочность теста — это определяет стратегию надрезания. Крепкое тесто надрезают перед посадкой в печь. Слабое может выиграть от пяти минут в духовке без надреза — корочка начнёт застывать.</p>
+              <p>Тесто может хорошо замеситься — и всё равно не удержать всю воду. Если мука не успела впитать — лишняя вода остаётся в тесте и во время брожения начинает его разрушать: клейковина слабеет, структура плывёт.</p>
+              <p><strong>Дайте тесту отдохнуть.</strong> Паузы между обминками — не просто традиция. За это время мука дотягивает воду, клейковина выстраивается сама. Хорошо отдохнувшее тесто формуется легче и держит форму лучше.</p>
+              <p><strong>Смотрите на тесто после ферментации.</strong> Рыхлое и мягкое — формуйте плотнее, с хорошим натяжением. Плотное и упругое — можно работать аккуратнее.</p>
+              <p><strong>Перед холодной расстойкой оцените прочность.</strong> Тесто не станет крепче в холодильнике — каким войдёт, таким и выйдет. Если чувствуете, что слабовато — дайте ещё 20 минут при комнатной температуре после формовки.</p>
             </div>
             <h4 class="sub">Как читать структуру мякиша</h4>
             <p class="prose" style="margin-bottom:1rem">По срезу хлеба можно определить, правильно ли прошла ферментация — недостаточно, хорошо или слишком долго.</p>
@@ -1986,23 +2039,50 @@ footer{
   </div>
   <div class="s-body">
     <div class="prose">
-      <p>После кормления закваски у вас может остаться лишняя Левито Мадре. Не выбрасывайте её: такие остатки отлично подходят для выпечки. Они добавляют тесту лёгкую кислинку, аромат и помогают сделать мякиш мягче и воздушнее — без добавления дрожжей.</p>
+      <p>После кормления закваски почти всегда остаётся лишняя Левито Мадре. Не выбрасывайте её: остатки отлично работают в выпечке. Они добавляют лёгкую кислинку, аромат и делают мякиш мягче и воздушнее — без дрожжей.</p>
       <h4 class="sub">Что можно приготовить</h4>
       <ul class="lst">
         <li><strong>Блины и оладьи</strong> — добавьте остатки закваски в тесто вместо части муки и воды. Выпечка получится пышной, мягкой и с приятной кислинкой.</li>
         <li><strong>Пирожки и лепёшки</strong> — Левито Мадре можно использовать как часть теста: она улучшает текстуру, делает выпечку нежнее и добавляет характерный хлебный аромат.</li>
         <li><strong>Вафли, маффины и быстрый хлеб</strong> — остатки хорошо работают в рецептах, где важны мягкость, пористость и вкус, а не длительный подъём теста.</li>
       </ul>
-      <p>Храните остатки закваски в отдельной банке в холодильнике до двух недель. Перед использованием кормить их не нужно — просто добавьте нужное количество в тесто.</p>
+      <p>Храните остатки в отдельной банке в холодильнике до двух недель. Перед использованием кормить не нужно — просто добавьте нужное количество в тесто.</p>
     </div>
-    <div class="callout">Для следующего кормления оставьте 80–100 г закваски. Это ваш стартер на следующую неделю. Всё остальное можно смело использовать в выпечке.</div>
+    <div class="callout">Для следующего кормления оставьте 80–100 г закваски. Всё остальное — смело в дело.</div>
+    <div class="note" style="margin-top:1.2rem">Левито Мадре — живая. Кормите раз в неделю, пеките когда хочется, используйте остатки. Чем больше печёте — тем лучше понимаете тесто. Остальное приходит само.</div>
   </div>
 </div>
 
 </div><!-- /sections-wrap -->
 </main>
 
-<section class="gallery-section">
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-eyebrow">Хотите больше?</div>
+    <div class="cta-cards">
+      <div class="cta-card">
+        <div class="cta-icon">🍞</div>
+        <div class="cta-card-title">Купить хлеб</div>
+        <div class="cta-card-desc">Хлеб на Левито Мадре домашней выпечки — с хрустящей коркой и живым мякишем</div>
+        <a href="https://t.me/juliareprintseva" target="_blank" class="cta-btn">Написать в Telegram</a>
+      </div>
+      <div class="cta-card">
+        <div class="cta-icon">💻</div>
+        <div class="cta-card-title">Заказать сайт</div>
+        <div class="cta-card-desc">Такой же сайт — для вашего проекта, рецепта или идеи. Делаю быстро и красиво с помощью ИИ</div>
+        <a href="https://t.me/juliareprintseva" target="_blank" class="cta-btn">Обсудить проект</a>
+      </div>
+      <div class="cta-card">
+        <div class="cta-icon">🎓</div>
+        <div class="cta-card-title">Мастер-класс по ИИ</div>
+        <div class="cta-card-desc">Научу создавать сайты и контент с помощью искусственного интеллекта — без программирования</div>
+        <a href="https://t.me/juliareprintseva" target="_blank" class="cta-btn">Записаться</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section" id="gallery">
   <div class="gallery-eyebrow">из моей кухни</div>
   <h2 class="gallery-title">А теперь — к столу</h2>
   <p class="gallery-desc">Это не идеальные фото из журнала. Это настоящее — силиконовый коврик, вафельное полотенце, три шарика теста, которые поднимаются на подоконнике. Именно так и выглядит домашний хлеб в процессе.</p>
