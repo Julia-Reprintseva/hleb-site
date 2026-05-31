@@ -682,18 +682,25 @@ h4.sub::before{
 /* ═══ CONTACT ═══ */
 .contact-section{
   border-top:1px solid var(--line);
-}
-.contact-inner{
-  max-width:960px;margin:0 auto;
-  padding:3rem 2rem;
-  display:flex;align-items:baseline;justify-content:center;gap:2.5rem;flex-wrap:wrap;
+  padding:2.5rem 2rem;
   text-align:center;
+}
+.contact-byline{
+  font-family:var(--serif);font-size:1.55rem;
+  font-weight:300;color:var(--ink);
+  letter-spacing:-.01em;
+  margin-bottom:.6rem;
+}
+.contact-row{
+  display:flex;align-items:center;
+  justify-content:center;gap:1.5rem;flex-wrap:wrap;
+  font-size:.88rem;color:var(--ink3);
 }
 .contact-label{
   font-size:.72rem;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink3);
-  flex-shrink:0;
 }
+.contact-sep{color:var(--line)}
 .contact-phone{
   font-family:var(--serif);font-size:1.5rem;
   font-weight:300;color:var(--ink);
@@ -713,17 +720,23 @@ h4.sub::before{
 /* ═══ FOOTER ═══ */
 footer{
   border-top:1px solid var(--line);
-  padding:3rem 2rem 2.5rem;text-align:center;
+  padding:2.5rem 2rem 2rem;text-align:center;
   color:var(--ink3);
 }
+.footer-wheat{opacity:.35;margin:0 auto 1rem;display:block}
 .footer-logo{
-  font-family:var(--serif);font-size:1.5rem;
-  font-weight:300;margin-bottom:.5rem;letter-spacing:.02em;
+  font-family:var(--serif);font-size:1.8rem;
+  font-weight:300;color:var(--ink);
+  letter-spacing:-.01em;margin-bottom:.8rem;
 }
-.footer-sub{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+.footer-contacts{
+  display:flex;align-items:center;justify-content:center;
+  gap:.8rem;flex-wrap:wrap;margin-bottom:1rem;
+  font-size:.88rem;
+}
 .footer-meta{
   display:flex;align-items:center;justify-content:center;
-  gap:1.5rem;margin-top:1.2rem;
+  gap:1rem;
   font-size:.72rem;letter-spacing:.08em;color:var(--ink3);
 }
 .footer-top{
@@ -731,7 +744,40 @@ footer{
   text-decoration:none;transition:color .2s;
 }
 .footer-top:hover{color:var(--ink)}
-.footer-wheat{opacity:.2;margin:1.4rem auto 0;display:block}
+
+/* ═══ ASIDE (отступление) ═══ */
+.aside-block{
+  margin-top:2rem;
+  border:1px solid var(--line);
+  border-left:3px solid var(--linelt);
+  border-radius:0 4px 4px 0;
+}
+.aside-hdr{
+  display:flex;align-items:center;gap:1rem;
+  padding:1rem 1.4rem;cursor:pointer;user-select:none;
+  transition:background .2s;
+}
+.aside-hdr:hover{background:var(--linelt)}
+.aside-hdr-text{flex:1;display:flex;flex-direction:column;gap:.2rem}
+.aside-label{
+  font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold);
+}
+.aside-title{
+  font-family:var(--serif);font-size:1.1rem;
+  font-weight:400;color:var(--ink);
+}
+.aside-toggle{
+  color:var(--ink3);font-size:1.1rem;
+  transition:transform .3s;flex-shrink:0;
+}
+.aside-hdr.open .aside-toggle{transform:rotate(45deg);color:var(--gold)}
+.aside-hdr.open .aside-title{color:var(--gold)}
+.aside-body{
+  display:none;padding:1rem 1.4rem 1.6rem;
+  border-top:1px solid var(--linelt);
+}
+.aside-body.open{display:block}
 
 /* ═══ PHOTO DIVIDER ═══ */
 .photo-divider{
@@ -888,6 +934,10 @@ footer{
   .s-title{font-size:1.3rem}
   .need-list li{flex-wrap:wrap;gap:.3rem 1rem}
   .nl-note{width:100%;margin-top:.1rem}
+  .jar-illustration{display:none}
+  .s-body .btn-shop{width:100%;box-sizing:border-box;text-align:center}
+  .soc-link{width:100%;box-sizing:border-box}
+  .soc-links{flex-direction:column}
 }
 @media(max-width:480px){
   .flour-item{flex-direction:column;gap:.5rem}
@@ -984,7 +1034,7 @@ footer{
       <a href="#starter"   onclick="navClick('starter')">Закваска</a>
       <a href="#flour"     onclick="navClick('flour')">Что понадобится</a>
       <a href="#plan"      onclick="navClick('plan')">План выпечки</a>
-      <a href="#checklist" onclick="navClick('checklist')">Чеклист</a>
+      <a href="#checklist" onclick="navClick('checklist')">Чек-лист</a>
       <a href="#discard"   onclick="navClick('discard')">Остатки</a>
     </nav>
     <button class="btn-shop" onclick="openShop()">Список покупок</button>
@@ -1028,7 +1078,7 @@ footer{
   <div class="hero-text">
     <h1 class="hero-h1">Хлеб на&nbsp;закваске<br><em>Левито Мадре</em></h1>
     <p class="hero-desc-serif">Левито Мадре — итальянская пшеничная закваска, которая делает хлеб живым: с хрустящей коркой, воздушным мякишем и настоящим ароматом. Стоит только вдохнуть его — и не захочется уходить с кухни.</p>
-    <p class="hero-desc-note">Пять разделов: закваска, мука, пошаговый план на три дня, чеклист и что делать с остатками. Открывайте нужный блок и пеките.</p>
+    <p class="hero-desc-note" style="border-top:1px solid var(--linelt);padding-top:1.4rem;margin-top:1.4rem;">Пять разделов: закваска, инвентарь, пошаговый план на три дня, чек-лист и что делать с остатками. Открывайте нужный блок и пеките.</p>
     <div class="hero-meta">
       <div class="hero-meta-item">
         <span class="hero-meta-val">3</span>
@@ -1039,7 +1089,7 @@ footer{
         <span class="hero-meta-key">калькулятора</span>
       </div>
       <div class="hero-meta-item">
-        <span class="hero-meta-val">2</span>
+        <span class="hero-meta-val">3</span>
         <span class="hero-meta-key">видео</span>
       </div>
     </div>
@@ -1161,7 +1211,7 @@ footer{
           <a href="https://www.hlebomoli.ru/blog/ob-italyanskoy-zakvaske-levito-madre" target="_blank" class="soc-link"><span class="soc-link-tag">Статья</span>Подробнее о Левито Мадре →</a>
         </div>
       </div>
-      <div style="flex-shrink:0;width:120px;opacity:.75">
+      <div class="jar-illustration" style="flex-shrink:0;width:120px;opacity:.75">
         <svg viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg" width="120">
           <defs><style>.jl{fill:none;stroke:#1A1612;stroke-linecap:round}</style></defs>
           <rect class="jl" stroke-width="1.2" x="28" y="18" width="44" height="10" rx="3"/>
@@ -1252,7 +1302,7 @@ footer{
   </div>
 </div>
 
-<!-- ── 03. ПОШАГОВЫЙ ПЛАН ВЫПЕЧКИ ── -->
+<!-- ── 04. ПОШАГОВЫЙ ПЛАН ВЫПЕЧКИ ── -->
 <div class="section" id="plan">
   <div class="s-hdr" onclick="toggleSec(this)">
     <div class="s-num">03</div>
@@ -1497,7 +1547,7 @@ footer{
 
     <div class="step-sec">
       <div class="step-hdr" onclick="toggleStep(this)">
-        <span class="step-title">Чеклист перед замесом</span>
+        <span class="step-title">Чек-лист перед замесом</span>
         <span class="step-toggle">+</span>
       </div>
       <div class="step-body">
@@ -1606,6 +1656,41 @@ footer{
           <a href="https://www.youtube.com/watch?v=eS9S2ZWIS7c" target="_blank" class="soc-link"><span class="soc-link-tag">YouTube</span>Полный рецепт хлеба на Левито Мадре →</a>
           <a href="https://www.instagram.com/reel/DYB2A-aMJ3L/?igsh=MTk0dTRlbHpienFlbg==" target="_blank" class="soc-link"><span class="soc-link-tag">Instagram</span>Замес на планетарном миксере →</a>
         </div>
+
+        <!-- Отступление: гидратация -->
+        <div class="aside-block">
+          <div class="aside-hdr" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+            <div class="aside-hdr-text">
+              <span class="aside-label">Для тех, кто хочет разобраться глубже</span>
+              <span class="aside-title">Гидратация и структура мякиша</span>
+            </div>
+            <span class="aside-toggle">+</span>
+          </div>
+          <div class="aside-body">
+            <div class="prose">
+              <p>Понимание гидратации начинается с того, как мука впитывает воду. Разные виды муки делают это с разной скоростью — и знание этого помогает решить, нужен ли автолиз или ферментолиз. Некоторые виды муки впитывают воду быстро, другим нужно больше времени. Понимая поведение своей муки, вы получаете контроль над временем замешивания и развитием теста.</p>
+            </div>
+            <h4 class="sub">Пример формулы с высокой гидратацией</h4>
+            <div class="stat-row">
+              <div class="stat-item"><span class="stat-val">600 г</span><span class="stat-key">хлебная мука 12% белка</span></div>
+              <div class="stat-item"><span class="stat-val">75 г</span><span class="stat-key">Pasta Madre</span></div>
+              <div class="stat-item"><span class="stat-val">100%</span><span class="stat-key">общая гидратация</span></div>
+            </div>
+            <div class="callout">
+              <strong>Распределение воды:</strong> 23 г из Pasta Madre + 400 г для ферментолиза + 229 г во время бассинажа = <strong>652 г итого</strong>
+            </div>
+            <div class="prose">
+              <p>Даже если тесто изначально хорошо замешивается, это не гарантирует, что мука удержит всю воду. Превышение способности муки к впитыванию означает, что часть воды останется несвязанной — и в процессе брожения будет ослаблять глютеновую сетку.</p>
+              <p><strong>Периоды отдыха</strong> — одно из лучших решений. Хорошо отдохнувшее тесто ведёт себя лучше: частицы муки полностью увлажняются, глютеновая сетка организуется с минимальным перемешиванием.</p>
+              <p><strong>Оценка теста после основной ферментации</strong> имеет решающее значение — именно тогда вы понимаете, как его формовать. Более рыхлое тесто лучше формовать плотнее, чтобы создать дополнительное поверхностное натяжение.</p>
+              <p><strong>Перед холодной расстойкой</strong> оцените прочность теста — это определяет стратегию надрезания. Крепкое тесто надрезают перед посадкой в печь. Слабое может выиграть от пяти минут в духовке без надреза — корочка начнёт застывать.</p>
+            </div>
+            <h4 class="sub">Как читать структуру мякиша</h4>
+            <p class="prose" style="margin-bottom:1rem">По срезу хлеба можно определить, правильно ли прошла ферментация — недостаточно, хорошо или слишком долго.</p>
+            <img src="crumb-structure.jpg" alt="Структура мякиша" style="width:100%;max-width:640px;display:block;border-radius:2px;margin:0 auto 1rem;filter:contrast(1.1) brightness(1.05) saturate(1.1)"/>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -1798,15 +1883,33 @@ footer{
       </div>
     </div>
 
+    <!-- шаг: полезные ресурсы -->
+    <div class="step-sec">
+      <div class="step-hdr" onclick="toggleStep(this)">
+        <span class="step-title">Полезные ресурсы</span>
+        <span class="step-toggle">+</span>
+      </div>
+      <div class="step-body">
+        <div class="prose" style="margin-bottom:1.2rem">
+          <p>Видео и паблики, которые помогут разобраться глубже.</p>
+        </div>
+        <div class="soc-links">
+          <a href="https://youtu.be/CRVWpvInr0g?si=IAwafFyaPxJj64hX" target="_blank" class="soc-link"><span class="soc-link-tag">YouTube</span>Как читать структуру мякиша →</a>
+          <a href="https://www.facebook.com/share/18PeQcxEu4/" target="_blank" class="soc-link"><span class="soc-link-tag">Facebook</span>Паблик по выпечке хлеба на закваске →</a>
+        </div>
+        <div class="note" style="margin-top:1rem">Паблик на Facebook англоязычный, но очень грамотный — разбирают ферментацию, гидратацию и структуру мякиша с фото и схемами.</div>
+      </div>
+    </div>
+
   </div>
 </div>
 
-<!-- ── 04. ФИНАЛЬНЫЙ ЧЕКЛИСТ ── -->
+<!-- ── 05. ФИНАЛЬНЫЙ ЧЕК-ЛИСТ ── -->
 <div class="section" id="checklist">
   <div class="s-hdr" onclick="toggleSec(this)">
     <div class="s-num">04</div>
     <div class="s-titles">
-      <div class="s-title">Финальный чеклист — все три дня</div>
+      <div class="s-title">Финальный чек-лист — все три дня</div>
       <div class="s-sub">Пройдите по всем шагам перед выпечкой</div>
     </div>
     <div class="s-toggle">+</div>
@@ -1871,7 +1974,7 @@ footer{
   </div>
 </div>
 
-<!-- ── 05. ЧТО ДЕЛАТЬ С ОСТАТКАМИ ── -->
+<!-- ── 06. ЧТО ДЕЛАТЬ С ОСТАТКАМИ ── -->
 <div class="section" id="discard">
   <div class="s-hdr" onclick="toggleSec(this)">
     <div class="s-num">05</div>
@@ -1937,16 +2040,7 @@ footer{
   <div class="gallery-hint">← листайте →</div>
 </section>
 
-<section class="contact-section">
-  <div class="contact-inner">
-    <div class="contact-label">Связаться со мной</div>
-    <a href="tel:+79151541491" class="contact-phone">+7 915 154 14 91</a>
-    <a href="https://t.me/juliareprintseva" target="_blank" class="contact-tg">@juliareprintseva</a>
-  </div>
-</section>
-
 <footer>
-  <!-- колоски -->
   <svg class="footer-wheat" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" width="80" height="54">
     <defs><style>.fw{fill:none;stroke:#1A1612;stroke-linecap:round}</style></defs>
     <line class="fw" stroke-width="1" x1="30" y1="80" x2="30" y2="28"/>
@@ -1965,8 +2059,12 @@ footer{
     <line class="fw" stroke-width=".7" x1="90" y1="62" x2="80" y2="52"/>
     <ellipse class="fw" stroke-width="1" cx="90" cy="22" rx="6" ry="13" transform="rotate(-3,90,22)"/>
   </svg>
-  <div class="footer-logo">Левито Мадре</div>
-  <div class="footer-sub">Памятка по хлебу на закваске</div>
+  <div class="footer-logo">вайбкодер-пекарь Юлия Re:Принцева</div>
+  <div class="footer-contacts">
+    <a href="tel:+79151541491" class="contact-phone">+7 91 515 414 91</a>
+    <span style="color:var(--line)">·</span>
+    <a href="https://t.me/juliareprintseva" target="_blank" class="contact-tg">@juliareprintseva</a>
+  </div>
   <div class="footer-meta">
     <span>2026</span>
     <span>·</span>
@@ -2171,6 +2269,15 @@ function calcHB(){
     if(e.key==='ArrowLeft') lbNav(-1);
     if(e.key==='ArrowRight') lbNav(1);
   });
+
+  // Touch swipe
+  let touchStartX = 0;
+  const lbEl = document.getElementById('lb');
+  lbEl.addEventListener('touchstart', e=>{ touchStartX = e.changedTouches[0].clientX; }, {passive:true});
+  lbEl.addEventListener('touchend', e=>{
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if(Math.abs(dx) > 40) lbNav(dx < 0 ? 1 : -1);
+  }, {passive:true});
 
   // Bind clicks on gallery images
   document.querySelectorAll('.gallery-item img').forEach((img, i)=>{
