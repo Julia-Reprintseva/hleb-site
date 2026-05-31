@@ -4,6 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Хлеб на закваске Левито Мадре</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<!-- SEO & Social -->
+<meta name="description" content="Пошаговый гайд по выпечке хлеба на закваске Левито Мадре. Закваска, инвентарь, план на три дня, чек-лист — всё в одном месте.">
+<meta property="og:title" content="Хлеб на закваске Левито Мадре">
+<meta property="og:description" content="Пошаговый гайд по выпечке хлеба на закваске. Закваска, инвентарь, план на три дня, чек-лист — всё в одном месте.">
+<meta property="og:image" content="https://julia-reprintseva.github.io/hleb-site/bread_closeup.jpg">
+<meta property="og:url" content="https://julia-reprintseva.github.io/hleb-site/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Хлеб на закваске Левито Мадре">
+<meta name="twitter:description" content="Пошаговый гайд по выпечке хлеба на закваске. Закваска, инвентарь, план на три дня, чек-лист.">
+<meta name="twitter:image" content="https://julia-reprintseva.github.io/hleb-site/bread_closeup.jpg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
@@ -836,13 +850,22 @@ footer{
   padding:1.8rem 1.6rem;
   display:flex;flex-direction:column;gap:.6rem;
 }
-.cta-icon{font-size:1.4rem;line-height:1}
+.cta-card svg path,.cta-card svg line,.cta-card svg rect,.cta-card svg ellipse{
+  stroke:#C4503A;
+}
+.cta-card svg ellipse[fill]{fill:rgba(196,80,58,.08);stroke:none}
+.cta-icon{line-height:1}
 .cta-card-title{
   font-family:var(--serif);font-size:1.25rem;
   font-weight:400;color:var(--ink);letter-spacing:-.01em;
 }
 .cta-card-desc{
   font-size:.88rem;color:var(--ink2);line-height:1.65;flex:1;
+}
+.cta-price{
+  font-family:var(--serif);font-size:1.1rem;
+  font-weight:300;color:var(--gold);
+  letter-spacing:.01em;margin-top:.4rem;
 }
 .cta-btn{
   display:inline-block;margin-top:.8rem;
@@ -1258,7 +1281,7 @@ footer{
           <p>Если закваска пахнет спиртом или стала кисловатой, это не значит, что она испортилась. Скорее всего, она просто проголодалась. Покормите её — и она снова придёт в норму.</p>
         </div>
         <div class="callout" style="margin-top:1.5rem">
-          Левито Мадре не нужно покупать снова и снова. Достаточно один раз приобрести закваску, а после каждой выпечки оставлять немного, кормить и хранить дальше. При правильном уходе она может жить у вас годами — и каждый раз помогать печь ароматный хлеб, пиццу, фокаччу и сладкую выпечку.
+          Левито Мадре не нужно покупать снова и снова. Достаточно один раз приобрести закваску, а после каждой выпечки оставлять немного, кормить и хранить дальше. При правильном уходе живёт годами — и каждый раз помогает печь ароматный хлеб, пиццу, фокаччу и сладкую выпечку.
         </div>
         <div class="soc-links" style="margin-top:1rem">
           <a href="https://www.hlebomoli.ru/blog/ob-italyanskoy-zakvaske-levito-madre" target="_blank" class="soc-link"><span class="soc-link-tag">Статья</span>Подробнее о Левито Мадре →</a>
@@ -2032,7 +2055,7 @@ footer{
   <div class="s-hdr" onclick="toggleSec(this)">
     <div class="s-num">05</div>
     <div class="s-titles">
-      <div class="s-title">Что делать с остатками закваски</div>
+      <div class="s-title">Что делать с остатками</div>
       <div class="s-sub">Не выбрасывать — использовать</div>
     </div>
     <div class="s-toggle">+</div>
@@ -2115,6 +2138,7 @@ footer{
         </div>
         <div class="cta-card-title">Купить хлеб</div>
         <div class="cta-card-desc">Хлеб на Левито Мадре домашней выпечки — с хрустящей коркой и живым мякишем</div>
+        <div class="cta-price">500 ₽ / буханка</div>
         <a href="https://t.me/juliareprintseva" target="_blank" class="cta-btn">Заказать хлеб →</a>
       </div>
 
@@ -2136,6 +2160,7 @@ footer{
         </div>
         <div class="cta-card-title">Сайты и мастер-классы по ИИ</div>
         <div class="cta-card-desc">Создам такой же сайт для вашего проекта. Или научу делать самостоятельно — без программирования, с помощью ИИ</div>
+        <div class="cta-price">5 000 ₽ / час индивидуально</div>
         <a href="https://t.me/juliareprintseva" target="_blank" class="cta-btn">Обсудить проект →</a>
       </div>
 
